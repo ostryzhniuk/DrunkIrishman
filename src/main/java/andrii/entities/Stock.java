@@ -2,7 +2,6 @@ package andrii.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 
 @Entity
 @Table
@@ -16,8 +15,13 @@ public class Stock implements Serializable {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    public enum Status {
+        IN_STOCK, SOLD_OUT, CHARGE_OFF
+    }
+
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public Stock() {
     }
@@ -38,11 +42,11 @@ public class Stock implements Serializable {
         this.product = product;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

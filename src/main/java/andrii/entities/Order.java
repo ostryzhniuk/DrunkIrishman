@@ -20,8 +20,13 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private String address;
 
+    public enum Status {
+        IN_PROCESS, IS_SENT, COMPLETED
+    }
+
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @Column(nullable = false)
     private BigDecimal price;
@@ -60,11 +65,11 @@ public class Order implements Serializable {
         this.address = address;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
