@@ -10,7 +10,7 @@ public class Stock implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger bar_code;
+    private Long bar_code;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
@@ -22,11 +22,11 @@ public class Stock implements Serializable {
     public Stock() {
     }
 
-    public BigInteger getBar_code() {
+    public Long getBar_code() {
         return bar_code;
     }
 
-    public void setBar_code(BigInteger bar_code) {
+    public void setBar_code(Long bar_code) {
         this.bar_code = bar_code;
     }
 

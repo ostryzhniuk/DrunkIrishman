@@ -59,7 +59,7 @@ public class DatabaseConfig {
     private Properties hibernateProperties() {
         return new Properties() {
             {
-                setProperty("hibernate.hbm2ddl.auto", "update");
+                setProperty("hibernate.hbm2ddl.auto", "validate");
                 setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
                 setProperty("hibernate.show_sql", "true");
             }
