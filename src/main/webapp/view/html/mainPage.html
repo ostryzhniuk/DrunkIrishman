@@ -4,51 +4,22 @@
     <title>DrunkIrishman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="/view/css/mainPage.css"/>-->
+    <link rel="stylesheet" type="text/css" href="/view/css/mainPage.css"/>
 </head>
-<style>
-    .navbar-default {
-        border-top: 2px solid #2c5c11;
-        border-bottom: 3px solid #2c5c11;
-        border-radius: 0px;
-    }
-    .top-header {
-        background: linear-gradient(#195600 0%, #417e14 10%, #559200 50%, #7dba00 100%);
-        height: 60px;
-        padding-top: 5px;
-    }
-    .navbar-nav {
-        font-weight: bold;
-        color: red;
-    }
-    .emblem {
-        margin: auto;
-        display: block;
-        height: 50px;
-        align-content: center;
-    }
-    .proverb {
-        font-size: 20px;
-        padding-top: 15px;
-        font-weight: bold;
-        font-family: Stencil;
-        color: rgba(85, 89, 82, 0.6);
-    }
-    .
-</style>
 <body ng-app="mainApp">
 
-    <div class="top-header">
+    <div id="top-header">
         <div class="col-sm-4 text-center proverb">G O O D &nbsp;&nbsp; P E O P L E</div>
         <div class="col-sm-4">
-            <a href="/"><img class="emblem" src="/resources/image/emblem.png"/></a>
+            <a href="/"><img id="emblem" src="/resources/image/emblem.png"/></a>
         </div>
         <div class="col-sm-4 text-center proverb">D R I N K &nbsp;&nbsp; G O O D &nbsp;&nbsp; B E E R</div>
     </div>
 
-    <nav class="navbar navbar-default">
+
+    <nav class="navbar navbar-inverse" id="main-navbar">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="#">Home</a></li>
                     <li class="dropdown">
@@ -65,9 +36,9 @@
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control search-group" placeholder="Search">
                         <div class="input-group-btn">
-                            <button style="height: 34px" class="btn btn-default" type="submit">
+                            <button class="btn btn-default search-group" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
                         </div>
@@ -82,18 +53,11 @@
     </nav>
 
 
-    <div class="panel panel-default">
-        <div class="panel-heading">Panel Heading</div>
-        <div class="panel-body">Panel Content</div>
+    <div class="panel panel-default" id="content-panel">
+        <div id="content-panel-heading" class="panel-heading">Category</div>
+        <div class="panel-body">products</div>
     </div>
-    <!--<div class="col-md-1"></div>-->
-    <!--<div class="col-md-10" style="background-color: white; margin-top: 30px; margin-bottom: 30px; height: 60%">-->
-    <!--rgba(255, 255, 255, 0.8)-->
-    <!--<div style="background-color: #f7f7f7; margin-top: 5px; margin-bottom: 30px; height: 100%;
-    margin-left: 20px; margin-right: 20px;">
-        tyury
-    </div>-->
-    <!--<div class="col-md-1"></div>-->
+
 
     <div class="navbar-bottom row-fluid">
         <footer>
