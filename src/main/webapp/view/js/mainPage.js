@@ -1,13 +1,13 @@
 var app = angular.module('mainApp', []);
 
 app.controller('UsersCtrl', function ($scope, $http) {
-    $scope.users = [];
+    $scope.products = [];
 
-    $http.get('http://localhost:8080/getAllUsers')
+    $http.get('/getProducts')
         .then(function (response) {
 
             var data = response.data;
-            $scope.users = data;
+            $scope.products = data;
         });
  });
 
