@@ -2,10 +2,21 @@ angular.
 module('login').
 component('login', {
     templateUrl: '/login/login.template.html',
-    controller: ['$http',
-        function LoginController($http) {
+    controller: ['$http', '$scope',
+        function LoginController($http, $scope) {
 
+            $scope.submit = function(){
 
+                $http({
+                    method: 'POST',
+                    url: '/postEmail',
+                    // headers: {
+                    //     // 'Content-Type': undefined
+                    // },
+                    data: {email: $scope.email}
+                });
+
+            }
 
         }
     ]
@@ -14,13 +25,13 @@ component('login', {
 
 function showPassword() {
 
-    var key_attr = $('#key').attr('type');
+    var key_attr = $('#password').attr('type');
 
     if(key_attr != 'text') {
         $('.checkbox').addClass('show');
-        $('#key').attr('type', 'text');
+        $('#password').attr('type', 'text');
     } else {
         $('.checkbox').removeClass('show');
-        $('#key').attr('type', 'password');
+        $('#password').attr('type', 'password');
     }
 }
