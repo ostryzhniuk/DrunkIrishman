@@ -12,7 +12,8 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver () {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/view/html/");
+//        viewResolver.setPrefix("/view/html/");
+//        viewResolver.setPrefix("/angular.test/app/");
         viewResolver.setSuffix(".html");
         return viewResolver;
     }

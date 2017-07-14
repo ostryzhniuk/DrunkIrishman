@@ -26,11 +26,12 @@
     color: rgba(85, 89, 82, 0.6);
 }
 #content-panel {
-    margin-bottom: 30px;
-    height: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
     border-radius: 0px;
+    position: fixed;
+    top: 130px;
+    left: 20px;
+    right: 20px;
+    bottom: 30px;
 }
 #content-panel-heading {
     color: #2c5c11;
@@ -44,6 +45,10 @@ footer {
     height: 30px;
     padding-top: 4px;
     padding-left: 50px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 .search-group {
     height: 28px;
