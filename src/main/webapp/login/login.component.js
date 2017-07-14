@@ -16,6 +16,7 @@ component('login', {
                     data: {email: $scope.email}
                 });
 
+
             }
 
         }
