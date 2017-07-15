@@ -1,25 +1,68 @@
 package andrii.services;
 
 import andrii.dao.UserDao;
+import andrii.dao.UserRoleDao;
+import andrii.dto.UserDTO;
 import andrii.entities.User;
+import andrii.entities.UserRole;
+import andrii.security.UserRoleBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class UserService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     private UserDao userDao;
 
-    public User getFirstUser() {
-        return userDao.getObjects().get(0);
+    @Autowired
+    private UserRoleDao userRoleDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public int save(UserDTO userDTO) {
+        return save(userDTO.convertToEntity());
     }
 
-    @Transactional
-    public List<User> getAllUsers() {
-        return userDao.getObjects();
+    public int save(User user) {
+        if (!validate(user)) {
+            return 0;
+        }
+
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+
+        try {
+            userDao.save(user);
+            try {
+                userRoleDao.save(createUserRole(user));
+            } catch (Exception e) {
+                throw e;
+            }
+        } catch (Exception e) {
+            LOGGER.warn("user saving failed", e);
+            return 0;
+        }
+
+        return 1;
     }
+
+    private UserRole createUserRole(User user){
+        UserRoleBuilder userRoleBuilder = new UserRoleBuilder();
+        userRoleBuilder.setUser(user);
+        userRoleBuilder.setDefaultAuthority();
+        return userRoleBuilder.getUserRole();
+    }
+
+    private boolean validate(User user){
+        return true;
+    }
+
+
 }

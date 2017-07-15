@@ -1,50 +1,24 @@
-package andrii.entities;
+package andrii.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+import andrii.entities.User;
+import org.modelmapper.ModelMapper;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+import java.time.ZoneId;
+import java.util.Date;
 
-@Entity
-@Table
-public class User implements Serializable {
+public class UserDTO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String surname;
-
-    @Column(nullable = false)
-    private LocalDate birthDate;
-
-    @Column
+    private Date date;
     private String address;
-
-    @Column(nullable = false)
     private String phone;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<UserRole> roleList;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Order> orderList;
-
-    public User() {
+    public UserDTO() {
     }
 
     public Integer getId() {
@@ -87,12 +61,12 @@ public class User implements Serializable {
         this.surname = surname;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getAddress() {
@@ -111,19 +85,19 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public List<UserRole> getRoleList() {
-        return roleList;
+    public LocalDate parseToLocalDate() {
+        if (date != null) {
+            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        } else {
+            return null;
+        }
     }
 
-    public void setRoleList(List<UserRole> roleList) {
-        this.roleList = roleList;
+    public User convertToEntity(){
+        ModelMapper modelMapper = new ModelMapper();
+        User user = modelMapper.map(this, User.class);
+        user.setBirthDate(parseToLocalDate());
+        return user;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
 }
