@@ -14,7 +14,7 @@ public class DefaultController {
 
     @RequestMapping("/")
     public String mainPage() {
-        return "/home.page/home-page.template";
+        return "/home.page/index";
 //        return "/angular.test/app/index";
     }
 
@@ -27,6 +27,7 @@ public class DefaultController {
     @ResponseBody
     public String postEmail(@RequestBody LoginDTO loginDTO) {
         LOGGER.info("email: " + loginDTO.getEmail());
+        LOGGER.info("password: " + loginDTO.getPassword());
         return HttpStatus.CREATED.toString();
     }
 

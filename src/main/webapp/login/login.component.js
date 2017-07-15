@@ -10,10 +10,8 @@ component('login', {
                 $http({
                     method: 'POST',
                     url: '/postEmail',
-                    // headers: {
-                    //     // 'Content-Type': undefined
-                    // },
-                    data: {email: $scope.email}
+                    data: {email: $scope.email,
+                            password: $scope.password}
                 });
 
 
