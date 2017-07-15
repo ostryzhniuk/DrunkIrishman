@@ -1,5 +1,4 @@
-/*
-app.controller('UsersCtrl', function ($scope, $http) {
+/*app.controller('UsersCtrl', function ($scope, $http) {
     $scope.products = [];
 
     $http.get('/getProducts')
@@ -8,5 +7,4 @@ app.controller('UsersCtrl', function ($scope, $http) {
             var data = response.data;
             $scope.products = data;
         });
- });
-*/
+ });*/

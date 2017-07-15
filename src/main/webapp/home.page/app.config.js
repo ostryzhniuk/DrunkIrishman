@@ -1,3 +1,9 @@
+angular.module('shopApp', [
+    'ngRoute',
+    'login',
+    'signUp'
+]);
+
 angular.
 module('shopApp').
 config(['$locationProvider' ,'$routeProvider',
@@ -7,10 +13,10 @@ config(['$locationProvider' ,'$routeProvider',
         $routeProvider.
         when('/login', {
             template: '<login></login>'
-        });
-        /*when('/phones/:phoneId', {
-            template: '<phone-detail></phone-detail>'
         }).
-        otherwise('/login');*/
+        when('/signUp', {
+            template: '<sign-up></sign-up>'
+        });
+        // otherwise('/login');
     }
 ]);

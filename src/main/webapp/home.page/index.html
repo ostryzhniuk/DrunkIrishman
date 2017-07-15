@@ -13,12 +13,10 @@
     <script src="/resources/js/angular-resource.min.js"></script>
     <script src="/resources/js/angular-route.min.js"></script>
 
-    <script src="/home.page/app.module.js"></script>
     <script src="/home.page/app.config.js"></script>
     <!--<script src="/home.page/home-page.component.js"></script>-->
-
-    <script src="/login/login.module.js"></script>
     <script src="/login/login.component.js"></script>
+    <script src="/sign.up/sign-up.component.js"></script>
 </head>
 <body>
 
@@ -59,7 +57,7 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#!/signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
@@ -74,7 +72,6 @@
         <div ng-view></div>
 
     </div>
-
 
     <div class="navbar-bottom row-fluid">
         <footer>

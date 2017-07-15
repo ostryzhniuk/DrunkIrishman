@@ -1,3 +1,7 @@
+angular.module('login', [
+    'ngRoute'
+]);
+
 angular.
 module('login').
 component('login', {
@@ -6,15 +10,12 @@ component('login', {
         function LoginController($http, $scope) {
 
             $scope.submit = function(){
-
                 $http({
                     method: 'POST',
                     url: '/postEmail',
                     data: {email: $scope.email,
                             password: $scope.password}
                 });
-
-
             }
 
         }
