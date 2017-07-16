@@ -7,12 +7,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -22,6 +24,9 @@ public class DefaultController {
     private UserService userService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultController.class);
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @RequestMapping("/")
     public String mainPage() {
@@ -40,19 +45,16 @@ public class DefaultController {
     }
 
     @RequestMapping("/authorize")
-    public String authorize(@RequestBody LoginDTO loginDTO, HttpServletRequest httpServletRequest) {
-        LOGGER.info("username: " + loginDTO.getUsername());
-        LOGGER.info("password: " + loginDTO.getPassword());
-        httpServletRequest.setAttribute("username", loginDTO.getUsername());
-        httpServletRequest.setAttribute("password", loginDTO.getPassword());
-        return "forward:/login";
-    }
+    @ResponseBody
+    public ResponseEntity login(@RequestBody LoginDTO loginDTO, HttpServletRequest httpServletRequest) {
 
-    @RequestMapping("/login")
-    public String login(HttpServletRequest httpServletRequest) {
-        LOGGER.info("login username: " + httpServletRequest.getAttribute("username"));
-        LOGGER.info("login password: " + httpServletRequest.getAttribute("password"));
-        return HttpStatus.CREATED.toString();
+        UsernamePasswordAuthenticationToken token =
+                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword());
+        token.setDetails(new WebAuthenticationDetails(httpServletRequest));
+        Authentication authentication = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/signUp")

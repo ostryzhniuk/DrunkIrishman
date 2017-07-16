@@ -1,10 +1,20 @@
-/*app.controller('UsersCtrl', function ($scope, $http) {
-    $scope.products = [];
+angular.module('shopApp', [
+    'ngRoute'
+]);
 
-    $http.get('/getProducts')
-        .then(function (response) {
+angular.
+module('shopApp').
+component('shopApp', {
+    templateUrl: '/home.page/index.html',
+    controller: ['$http', '$scope',
+        function LoginController($http, $scope) {
 
-            var data = response.data;
-            $scope.products = data;
-        });
- });*/
+            var ctrl = this;
+
+            $http.get('/getCategories').then(function(response) {
+                ctrl.categories = response.data;
+            });
+
+        }
+    ]
+});

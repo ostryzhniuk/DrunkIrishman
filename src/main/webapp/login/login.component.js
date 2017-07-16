@@ -13,8 +13,10 @@ component('login', {
                 $http({
                     method: 'POST',
                     url: '/authorize',
-                    data: {username: $scope.username,
-                            password: $scope.password}
+                    data: {
+                        username: $scope.username,
+                        password: $scope.password
+                    }
                 });
             }
 

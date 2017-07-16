@@ -1,5 +1,6 @@
 package andrii.controllers;
 
+import andrii.entities.Category;
 import andrii.entities.Product;
 import andrii.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,10 @@ public class CatalogController {
     public List<Product> getProducts(){
         return productService.getProducts();
     }
+
+    /*@GetMapping("/getCategories")
+    public List<Category> getCategories(){
+        
+    }*/
 
 }
