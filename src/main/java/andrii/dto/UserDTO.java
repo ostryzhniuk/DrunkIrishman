@@ -11,6 +11,7 @@ public class UserDTO implements Serializable {
 
     private Integer id;
     private String email;
+    private String username;
     private String password;
     private String name;
     private String surname;
@@ -35,6 +36,14 @@ public class UserDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -97,6 +106,7 @@ public class UserDTO implements Serializable {
         ModelMapper modelMapper = new ModelMapper();
         User user = modelMapper.map(this, User.class);
         user.setBirthDate(parseToLocalDate());
+        user.setUsername("admin");
         return user;
     }
 

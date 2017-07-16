@@ -1,0 +1,47 @@
+.thumbnail {
+    border-radius: 0px;
+    margin: 0;
+    height: 430px;
+    width: 300px;
+    padding: 0;
+}
+.container {
+    padding: 5px;
+    height: 450px;
+    width: 310px;
+}
+#photo {
+    width: 298px;
+    height: 298px;
+}
+#inner-container {
+    padding: 5px;
+}
+.capital-row {
+    margin: 5px;
+    height: 40px;
+    font-weight: bold;
+}
+.row {
+    margin: 5px;
+}
+#availability {
+    float: right;
+    color: #5cb85c;
+}
+#price {
+    padding: 1px 5px 1px 5px;
+    background-color: #9edf1f;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+#buy-button {
+    float: right;
+    margin: 10px 10px 10px 10px;
+}
+#panel-heading {
+    text-align: center;
+    color: #2c5c11;
+    font-size: 18px;
+}

@@ -1,0 +1,26 @@
+<head>
+    <link rel="stylesheet" href="/catalog/catalog.styles.css"/>
+</head>
+
+<div id="panel-heading" class="panel-heading">
+    All category
+</div>
+<div class="panel-body">
+    <div ng-repeat="product in $ctrl.products">
+        <div class="col-xs-3 container">
+            <div class="thumbnail">
+                <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
+                <div id="inner-container">
+                    <div class="capital-row">{{product.name}}</div>
+                    <div class="row">
+                        {{product.capacity}} l
+                        <span id="availability">In stock</span>
+                    </div>
+                    <div class="row"><span id="price">{{product.price}} $</span>
+                        <button type="button" class="btn btn-success" id="buy-button">Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

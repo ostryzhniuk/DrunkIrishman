@@ -1,7 +1,8 @@
 angular.module('shopApp', [
     'ngRoute',
     'login',
-    'signUp'
+    'signUp',
+    'catalog'
 ]);
 
 angular.
@@ -11,6 +12,9 @@ config(['$locationProvider' ,'$routeProvider',
         $locationProvider.hashPrefix('!');
 
         $routeProvider.
+        when('/', {
+            template: '<catalog></catalog>'
+        }).
         when('/login', {
             template: '<login></login>'
         }).

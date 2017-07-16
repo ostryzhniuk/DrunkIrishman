@@ -12,8 +12,8 @@ component('login', {
             $scope.submit = function(){
                 $http({
                     method: 'POST',
-                    url: '/postEmail',
-                    data: {email: $scope.email,
+                    url: '/authorize',
+                    data: {username: $scope.username,
                             password: $scope.password}
                 });
             }
