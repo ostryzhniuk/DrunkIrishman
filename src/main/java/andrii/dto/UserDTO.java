@@ -97,7 +97,6 @@ public class UserDTO implements Serializable {
         ModelMapper modelMapper = new ModelMapper();
         User user = modelMapper.map(this, User.class);
         user.setBirthDate(parseToLocalDate());
-        user.setUsername("admin");
         return user;
     }
 

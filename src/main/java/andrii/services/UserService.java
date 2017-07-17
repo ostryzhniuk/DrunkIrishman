@@ -30,9 +30,14 @@ public class UserService {
         return save(userDTO.convertToEntity());
     }
 
+   /**
+    * @return -1 if user already exist,
+    *          0 if exception was thrown,
+    *          1 record saved successfully.
+    */
     public int save(User user) {
-        if (!validate(user)) {
-            return 0;
+        if (isExist(user)) {
+            return -1;
         }
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -60,8 +65,8 @@ public class UserService {
         return userRoleBuilder.getUserRole();
     }
 
-    private boolean validate(User user){
-        return true;
+    private boolean isExist(User user){
+        return userDAO.getUserByEmail(user.getEmail()).isEmpty() ? false : true;
     }
 
 
