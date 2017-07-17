@@ -1,0 +1,38 @@
+.thumbnail {
+    border-radius: 0px;
+    margin: 0;
+    height: 360px;
+    width: 300px;
+    padding: 0;
+}
+.container {
+    padding: 5px;
+    height: 370px;
+    width: 310px;
+}
+#photo {
+    width: 298px;
+    height: 298px;
+}
+#inner-container {
+    padding: 5px;
+}
+.capital-row {
+    margin: 5px;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #2c5c11;
+    font-size: 18px;
+    font-family: Castellar;
+}
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+#panel-heading {
+    text-align: center;
+    color: #2c5c11;
+    font-size: 18px;
+}

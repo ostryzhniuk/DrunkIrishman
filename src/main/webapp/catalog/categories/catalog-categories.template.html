@@ -1,0 +1,21 @@
+<head>
+    <link rel="stylesheet" href="/catalog/categories/catalog-categories.styles.css"/>
+</head>
+
+<div id="panel-heading" class="panel-heading">
+    Classification
+</div>
+<div class="panel-body">
+    <div ng-repeat="category in categories | orderBy:orderProp">
+        <div class="col-xs-3 container">
+            <div class="thumbnail">
+                <a href="#!/catalog/{{category.name}}">
+                    <img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">
+                    <div id="inner-container">
+                        <div class="capital-row">{{category.name}}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
