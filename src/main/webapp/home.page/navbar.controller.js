@@ -4,10 +4,11 @@ angular.
 module('shopApp').
 controller('navbarCtrl', function ($http, $scope) {
 
+    $scope.orderProp = 'name';
+    $scope.goodsQuantity = 0;
+
     $http.get('/categories').then(function(response) {
         $scope.categories = response.data;
     });
-
-    $scope.orderProp = 'name';
 
 });

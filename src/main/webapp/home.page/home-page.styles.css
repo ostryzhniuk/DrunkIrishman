@@ -27,11 +27,6 @@
 }
 #content-panel {
     border-radius: 0px;
-    /*position: absolute;*/
-    /*top: 130px;*/
-    /*left: 20px;*/
-    /*right: 20px;*/
-    /*bottom: 30px;*/
     min-height: 70%;
     margin-left: 20px;
     margin-right: 20px;
@@ -59,4 +54,7 @@ footer {
 }
 body {
     background-color: #eee;
+}
+#goods-quantity-bracket{
+    width: 110px;
 }
