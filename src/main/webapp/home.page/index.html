@@ -17,7 +17,7 @@
     <script src="/home.page/navbar.controller.js"></script>
     <script src="/login/login.component.js"></script>
     <script src="/sign.up/sign-up.component.js"></script>
-    <script src="/catalog/catalog.component.js"></script>
+    <script src="/catalog/products/catalog-products.component.js"></script>
 </head>
 <body>
 
@@ -36,13 +36,11 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#!/">Home</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="">Category <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="">Classification <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Categories</a></li>
+                            <li><a href="#!/catalog">Classification</a></li>
                             <li ng-repeat="category in categories | orderBy:orderProp">
-                                <a href="" ng-click="chooseCategory(category)" >
-                                    {{category.name}}
-                                </a>
+                                <a href="#!/catalog/{{category.name}}">{{category.name}}</a>
                             </li>
                         </ul>
                     </li>

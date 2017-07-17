@@ -1,12 +1,12 @@
 <head>
-    <link rel="stylesheet" href="/catalog/catalog.styles.css"/>
+    <link rel="stylesheet" href="/catalog/products/catalog-products.styles.css"/>
 </head>
 
 <div id="panel-heading" class="panel-heading">
-    All categories
+    {{categoryName}}
 </div>
 <div class="panel-body">
-    <div ng-repeat="product in $ctrl.products">
+    <div ng-repeat="product in products">
         <div class="col-xs-3 container">
             <div class="thumbnail">
                 <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">

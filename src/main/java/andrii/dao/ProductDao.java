@@ -1,9 +1,9 @@
 package andrii.dao;
 
 import andrii.entities.Product;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Repository
@@ -19,6 +19,18 @@ public class ProductDao extends GenericDao<Product> {
     public List<Product> getObjects() {
         return getSession().createQuery("from Product")
                 .list();
+    }
+
+    public List<Product> getProductsByCategory(String categoryName) {
+
+        Query query = getSession().createQuery("select p " +
+                "from Product as p, Category as c " +
+                "where c.name = :categoryName and " +
+                "c.id = p.category.id");
+
+        query.setParameter("categoryName", categoryName);
+
+        return query.list();
     }
 
     @Override

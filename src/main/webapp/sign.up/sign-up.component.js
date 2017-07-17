@@ -7,7 +7,7 @@ module('signUp').
 component('signUp', {
     templateUrl: '/sign.up/sign-up.template.html',
     controller: ['$http', '$scope',
-        function LoginController($http, $scope) {
+        function SignUpController($http, $scope) {
 
             $scope.submit = function(){
                 $http({

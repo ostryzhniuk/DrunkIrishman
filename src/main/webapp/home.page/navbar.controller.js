@@ -9,10 +9,6 @@ controller('navbarCtrl', function ($http, $scope) {
     });
     $scope.orderProp = 'name';
 
-    $scope.chooseCategory = function chooseCategory(category) {
-        console.log(category);
-    };
-
     /*$http({
      method: 'GET',
      url: '/authorize',

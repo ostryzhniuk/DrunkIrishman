@@ -20,12 +20,12 @@ public class ProductService {
     private CategoryDao categoryDao;
 
     @Transactional
-    public List<Product> getProducts() {
-        return productDao.getObjects();
+    public List<Category> getCategories(){
+        return categoryDao.getObjects();
     }
 
     @Transactional
-    public List<Category> getCategories(){
-        return categoryDao.getObjects();
+    public List<Product> getProductsByCategory(String categoryName) {
+        return productDao.getProductsByCategory(categoryName);
     }
 }
