@@ -15,14 +15,15 @@ public class CatalogController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/getProducts")
-    public List<Product> getProducts(){
+    @GetMapping("/products")
+    public List<Product> products(){
         return productService.getProducts();
     }
 
-    /*@GetMapping("/getCategories")
-    public List<Category> getCategories(){
-        
-    }*/
+    @GetMapping("/categories")
+    public List<Category> categories(){
+        System.out.println("getCategories");
+        return  productService.getCategories();
+    }
 
 }

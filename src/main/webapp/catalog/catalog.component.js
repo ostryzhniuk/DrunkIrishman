@@ -11,7 +11,7 @@ component('catalog', {
 
             var ctrl = this;
 
-            $http.get('/getProducts').then(function(response) {
+            $http.get('/products').then(function(response) {
                 ctrl.products = response.data;
             });
 

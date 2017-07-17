@@ -1,13 +1,16 @@
 package andrii.dao;
 
 import andrii.entities.Category;
-
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
+@Repository
+@Transactional
 public class CategoryDao extends GenericDao<Category> {
 
     @Override
-    public void save(Category value) {
+    public void save(Category category) {
 
     }
 
@@ -17,12 +20,12 @@ public class CategoryDao extends GenericDao<Category> {
     }
 
     @Override
-    public void update(Category value) {
+    public void update(Category category) {
 
     }
 
     @Override
-    public void delete(Category value) {
+    public void delete(Category category) {
 
     }
 }

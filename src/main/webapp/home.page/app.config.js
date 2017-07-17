@@ -25,4 +25,4 @@ config(['$locationProvider' ,'$routeProvider',
         });
         // otherwise('/login');
     }
-]);
+])
