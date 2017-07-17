@@ -16,7 +16,7 @@ component('login', {
                     method: 'POST',
                     url: '/authorize',
                     data: {
-                        username: $scope.username,
+                        email: $scope.email,
                         password: $scope.password
                     }
                 });

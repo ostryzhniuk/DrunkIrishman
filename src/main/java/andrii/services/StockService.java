@@ -1,6 +1,6 @@
 package andrii.services;
 
-import andrii.dao.StockDao;
+import andrii.dao.StockDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 public class StockService {
 
     @Autowired
-    private StockDao stockDao;
+    private StockDAO stockDAO;
 
     public String getFirstStockStatus() {
-        return stockDao.getObjects().get(0).getStatus().name();
+        return stockDAO.getObjects().get(0).getStatus().name();
     }
 }

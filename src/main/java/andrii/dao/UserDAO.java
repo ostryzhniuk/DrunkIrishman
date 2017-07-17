@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class UserDao extends GenericDao<User> {
+public class UserDAO extends GenericDAO<User> {
 
     @Override
     public void save(User user) {

@@ -31,7 +31,7 @@ public class DefaultController {
     public ResponseEntity login(@RequestBody LoginDTO loginDTO, HttpServletRequest httpServletRequest) {
 
         UsernamePasswordAuthenticationToken token =
-                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword());
+                new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword());
         token.setDetails(new WebAuthenticationDetails(httpServletRequest));
         Authentication authentication = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authentication);

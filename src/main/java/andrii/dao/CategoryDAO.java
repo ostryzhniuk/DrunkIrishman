@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class CategoryDao extends GenericDao<Category> {
+public class CategoryDAO extends GenericDAO<Category> {
 
     @Override
     public void save(Category category) {

@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @Component
-public abstract class GenericDao<E> {
+public abstract class GenericDAO<E> {
 
     @Autowired
     private SessionFactory sessionFactory;

@@ -1,7 +1,7 @@
 package andrii.services;
 
-import andrii.dao.UserDao;
-import andrii.dao.UserRoleDao;
+import andrii.dao.UserDAO;
+import andrii.dao.UserRoleDAO;
 import andrii.dto.UserDTO;
 import andrii.entities.User;
 import andrii.entities.UserRole;
@@ -18,10 +18,10 @@ public class UserService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDAO;
 
     @Autowired
-    private UserRoleDao userRoleDao;
+    private UserRoleDAO userRoleDAO;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -39,9 +39,9 @@ public class UserService {
         user.setPassword(hashedPassword);
 
         try {
-            userDao.save(user);
+            userDAO.save(user);
             try {
-                userRoleDao.save(createUserRole(user));
+                userRoleDAO.save(createUserRole(user));
             } catch (Exception e) {
                 throw e;
             }

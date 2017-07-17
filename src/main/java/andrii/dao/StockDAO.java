@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class StockDao extends GenericDao<Stock> {
+public class StockDAO extends GenericDAO<Stock> {
 
     @Override
     public void save(Stock stock) {
