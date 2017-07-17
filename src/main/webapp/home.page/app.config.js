@@ -14,12 +14,6 @@ config(['$locationProvider' ,'$routeProvider',
         $locationProvider.hashPrefix('!');
 
         $routeProvider.
-        /*when('/', {
-            template: '<catalog></catalog>'
-        }).
-        when('/catalog', {
-            template: '<catalog></catalog>'
-        }).*/
         when('/catalog/:categoryName', {
             template: '<catalog-products></catalog-products>'
         }).

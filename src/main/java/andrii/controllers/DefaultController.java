@@ -13,11 +13,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class DefaultController {
 
     @Autowired
@@ -28,24 +27,7 @@ public class DefaultController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @RequestMapping("/")
-    public String mainPage() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication != null) {
-            System.out.println(authentication.getName());
-        }
-        return "/home.page/index";
-//        return "/angular.test/app/index";
-    }
-
-    @RequestMapping("/home")
-    public String home() {
-        return "/home";
-    }
-
-    @RequestMapping("/authorize")
-    @ResponseBody
+    @PostMapping("/authorize")
     public ResponseEntity login(@RequestBody LoginDTO loginDTO, HttpServletRequest httpServletRequest) {
 
         UsernamePasswordAuthenticationToken token =
@@ -58,7 +40,6 @@ public class DefaultController {
     }
 
     @PostMapping("/signUp")
-    @ResponseBody
     public String signUp(@RequestBody UserDTO userDTO) {
         Integer success = userService.save(userDTO);
         return HttpStatus.CREATED.toString();

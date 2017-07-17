@@ -23,7 +23,6 @@ public class CatalogController {
 
     @GetMapping("/categories")
     public List<Category> categories(){
-        System.out.println("getCategories");
         return  productService.getCategories();
     }
 
