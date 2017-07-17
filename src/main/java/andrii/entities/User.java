@@ -19,9 +19,6 @@ public class User implements Serializable {
     private String email;
 
     @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -64,14 +61,6 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
