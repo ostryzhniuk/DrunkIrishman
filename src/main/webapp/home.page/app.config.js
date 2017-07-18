@@ -2,7 +2,6 @@
 
 angular.module('shopApp', [
     'ngRoute',
-    'ngStorage',
     'login',
     'signUp',
     'catalogProducts',
@@ -34,4 +33,4 @@ config(['$locationProvider' ,'$routeProvider',
         }).
         otherwise('/catalog');
     }
-])
+]);

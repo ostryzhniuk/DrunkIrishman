@@ -2,10 +2,13 @@
 
 angular.
 module('shopApp').
-controller('navbarCtrl', function ($http, $scope, $sessionStorage) {
+controller('navbarCtrl', function ($http, $scope, $rootScope) {
 
     $scope.orderProp = 'name';
-    $scope.goodsQuantity = 0;
+
+    $rootScope.goodsQuantity = $http.get('/goodsQuantity').then(function(response) {
+        $rootScope.goodsQuantity = response.data;
+    });
 
     $http.get('/categories').then(function(response) {
         $scope.categories = response.data;
@@ -17,8 +20,7 @@ controller('navbarCtrl', function ($http, $scope, $sessionStorage) {
             url: '/addToBasket',
             data: product
         }).then(function(response) {
-            $sessionStorage.goodsQuantity = response.data;
-            $scope.goodsQuantity = response.data;
+            $rootScope.goodsQuantity = response.data;
         });
     };
 

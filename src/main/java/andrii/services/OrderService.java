@@ -21,4 +21,8 @@ public class OrderService {
         return basketSet;
     }
 
+    public Integer getBasketSetSize() {
+        return basketSet.size();
+    }
+
 }
