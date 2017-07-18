@@ -38,9 +38,6 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderContent> contentList;
 
-    public Order() {
-    }
-
     public Integer getId() {
         return id;
     }

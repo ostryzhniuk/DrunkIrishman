@@ -9,11 +9,8 @@ import andrii.security.UserRoleBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -32,11 +29,8 @@ public class UserService {
 
     @Transactional
     public void save(UserDTO userDTO) {
-        save(userDTO.convertToEntity());
-    }
+        User user = userDTO.convertToEntity();
 
-    @Transactional
-    public void save(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
 

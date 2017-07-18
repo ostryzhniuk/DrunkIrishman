@@ -23,9 +23,6 @@ public class Stock {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Stock() {
-    }
-
     public Long getBar_code() {
         return bar_code;
     }

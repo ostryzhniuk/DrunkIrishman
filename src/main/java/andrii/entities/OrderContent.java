@@ -19,9 +19,6 @@ public class OrderContent {
     @PrimaryKeyJoinColumn
     private Stock stock;
 
-    public OrderContent() {
-    }
-
     public Integer getId() {
         return id;
     }

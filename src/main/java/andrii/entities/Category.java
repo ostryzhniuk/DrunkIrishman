@@ -21,9 +21,6 @@ public class Category {
     @JsonIgnore
     private List<Product> productList;
 
-    public Category() {
-    }
-
     public Integer getId() {
         return id;
     }

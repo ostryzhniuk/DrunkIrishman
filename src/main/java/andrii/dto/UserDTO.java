@@ -21,9 +21,6 @@ public class UserDTO {
     private String address;
     private String phone;
 
-    public UserDTO() {
-    }
-
     public Integer getId() {
         return id;
     }
@@ -90,6 +87,10 @@ public class UserDTO {
 
     public User convertToEntity() {
         return new ModelMapper().map(this, User.class);
+    }
+
+    public static UserDTO convertToDTO(User user) {
+       return new ModelMapper().map(user, UserDTO.class);
     }
 
 }

@@ -1,7 +1,7 @@
 package andrii.controllers;
 
+import andrii.dto.ProductDTO;
 import andrii.entities.Category;
-import andrii.entities.Product;
 import andrii.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class CatalogController {
     private ProductService productService;
 
     @GetMapping("/products/{categoryName}")
-    public List<Product> products(@PathVariable("categoryName") String categoryName){
+    public List<ProductDTO> products(@PathVariable("categoryName") String categoryName){
         return productService.getProductsByCategory(categoryName);
     }
 
@@ -27,7 +27,7 @@ public class CatalogController {
     }
 
     @GetMapping("/product/{productId}")
-    public Product product(@PathVariable("productId") Integer productId) {
+    public ProductDTO product(@PathVariable("productId") Integer productId) {
         return productService.getProductById(productId);
     }
 

@@ -36,9 +36,6 @@ public class Product {
     @JsonIgnore
     private List<Stock> stockList;
 
-    public Product() {
-    }
-
     public Integer getId() {
         return id;
     }

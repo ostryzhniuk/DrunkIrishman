@@ -18,9 +18,6 @@ public class UserRole {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public UserRole() {
-    }
-
     public Integer getId() {
         return id;
     }
