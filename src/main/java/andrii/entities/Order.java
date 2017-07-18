@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table
-public class Order implements Serializable {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

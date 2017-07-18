@@ -28,4 +28,8 @@ public class ProductService {
     public List<Product> getProductsByCategory(String categoryName) {
         return productDAO.getProductsByCategory(categoryName);
     }
+
+    public Product getProductById(Integer productId) {
+        return productDAO.getProductById(productId);
+    }
 }

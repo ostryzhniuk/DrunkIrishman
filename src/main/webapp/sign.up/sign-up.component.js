@@ -12,6 +12,9 @@ component('signUp', {
         function SignUpController($http, $scope) {
 
             $scope.submit = function(){
+
+                var dateStr = $scope.birthDate.toISOString().substring(0, 10);
+
                 $http({
                     method: 'POST',
                     url: '/signUp',
@@ -20,7 +23,7 @@ component('signUp', {
                         password: $scope.password,
                         name: $scope.firstName,
                         surname: $scope.lastName,
-                        date: $scope.birthDate,
+                        birthDate: dateStr,
                         address: $scope.address,
                         phone: $scope.phone}
                 });
@@ -29,8 +32,6 @@ component('signUp', {
         }
     ]
 });
-
-
 
 function checkPass() {
 

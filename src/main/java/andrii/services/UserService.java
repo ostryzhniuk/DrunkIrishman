@@ -9,8 +9,12 @@ import andrii.security.UserRoleBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -26,36 +30,18 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public int save(UserDTO userDTO) {
-        return save(userDTO.convertToEntity());
+    @Transactional
+    public void save(UserDTO userDTO) {
+        save(userDTO.convertToEntity());
     }
 
-   /**
-    * @return -1 if user already exist,
-    *          0 if exception was thrown,
-    *          1 record saved successfully.
-    */
-    public int save(User user) {
-        if (isExist(user)) {
-            return -1;
-        }
-
+    @Transactional
+    public void save(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
 
-        try {
-            userDAO.save(user);
-            try {
-                userRoleDAO.save(createUserRole(user));
-            } catch (Exception e) {
-                throw e;
-            }
-        } catch (Exception e) {
-            LOGGER.warn("user saving failed", e);
-            return 0;
-        }
-
-        return 1;
+        userDAO.save(user);
+        userRoleDAO.save(createUserRole(user));
     }
 
     private UserRole createUserRole(User user){
@@ -64,10 +50,5 @@ public class UserService {
         userRoleBuilder.setDefaultAuthority();
         return userRoleBuilder.getUserRole();
     }
-
-    private boolean isExist(User user){
-        return userDAO.getUserByEmail(user.getEmail()).isEmpty() ? false : true;
-    }
-
 
 }

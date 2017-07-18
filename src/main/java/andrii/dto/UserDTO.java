@@ -1,20 +1,23 @@
 package andrii.dto;
 
 import andrii.entities.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.modelmapper.ModelMapper;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class UserDTO implements Serializable {
+public class UserDTO {
 
     private Integer id;
     private String email;
     private String password;
     private String name;
     private String surname;
-    private Date date;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
     private String address;
     private String phone;
 
@@ -61,12 +64,12 @@ public class UserDTO implements Serializable {
         this.surname = surname;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getAddress() {
@@ -85,19 +88,8 @@ public class UserDTO implements Serializable {
         this.phone = phone;
     }
 
-    public LocalDate parseToLocalDate() {
-        if (date != null) {
-            return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        } else {
-            return null;
-        }
-    }
-
-    public User convertToEntity(){
-        ModelMapper modelMapper = new ModelMapper();
-        User user = modelMapper.map(this, User.class);
-        user.setBirthDate(parseToLocalDate());
-        return user;
+    public User convertToEntity() {
+        return new ModelMapper().map(this, User.class);
     }
 
 }

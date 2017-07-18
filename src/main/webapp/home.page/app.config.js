@@ -5,7 +5,8 @@ angular.module('shopApp', [
     'login',
     'signUp',
     'catalogProducts',
-    'catalogCategories'
+    'catalogCategories',
+    // 'productDetail'
 ]);
 
 angular.
@@ -27,6 +28,9 @@ config(['$locationProvider' ,'$routeProvider',
         when('/signUp', {
             template: '<sign-up></sign-up>'
         }).
+        // when('/catalog/:categoryName/:productId', {
+        //     template: '<sign-up></sign-up>'
+        // }).
         otherwise('/catalog');
     }
 ])

@@ -26,4 +26,9 @@ public class CatalogController {
         return  productService.getCategories();
     }
 
+    @GetMapping("/product/{productId}")
+    public Product product(@PathVariable("productId") Integer productId) {
+        return productService.getProductById(productId);
+    }
+
 }

@@ -40,9 +40,8 @@ public class DefaultController {
     }
 
     @PostMapping("/signUp")
-    public String signUp(@RequestBody UserDTO userDTO) {
-        Integer success = userService.save(userDTO);
-        return HttpStatus.CREATED.toString();
+    public void signUp(@RequestBody UserDTO userDTO) {
+        userService.save(userDTO);
     }
 
     @RequestMapping("/admin")

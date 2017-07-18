@@ -33,6 +33,16 @@ public class ProductDAO extends GenericDAO<Product> {
         return query.list();
     }
 
+    public Product getProductById(Integer productId) {
+
+        Query<Product> query = getSession().createQuery("from Product " +
+                "where id = :productId");
+
+        query.setParameter("productId", productId);
+
+        return query.getSingleResult();
+    }
+
     @Override
     public void update(Product product) {
 
