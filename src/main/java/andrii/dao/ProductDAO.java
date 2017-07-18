@@ -43,6 +43,16 @@ public class ProductDAO extends GenericDAO<Product> {
         return query.getSingleResult();
     }
 
+    public List<Product> getProductByName(String productName) {
+
+        Query<Product> query = getSession().createQuery("from Product " +
+                "where lower(name) like lower(:productName)");
+
+        query.setParameter("productName", "%"+productName+"%");
+
+        return query.list();
+    }
+
     @Override
     public void update(Product product) {
 

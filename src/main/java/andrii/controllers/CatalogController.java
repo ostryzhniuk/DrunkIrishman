@@ -34,6 +34,11 @@ public class CatalogController {
         return productService.getProductById(productId);
     }
 
+    @GetMapping("/search/{parameter}")
+    public List<ProductDTO> search(@PathVariable("parameter") String parameter){
+        return productService.search(parameter);
+    }
+
     /*@GetMapping("/photo/{name}")
     public byte[] getImage(@PathVariable("name") String name) throws IOException {
         InputStream inputStream = getClass().getResourceAsStream("/" + name + ".jpg");

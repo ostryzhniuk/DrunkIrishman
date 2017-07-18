@@ -28,11 +28,7 @@ public class ProductService {
     @Transactional
     public List<ProductDTO> getProductsByCategory(String categoryName) {
         List<Product> products = productDAO.getProductsByCategory(categoryName);
-        List<ProductDTO> dtoList = new LinkedList<>();
-        for (Product product : products) {
-            dtoList.add(ProductDTO.convertToDTO(product));
-        }
-        return dtoList;
+        return convertToDTOList(products);
     }
 
     @Transactional
@@ -40,4 +36,20 @@ public class ProductService {
         Product product = productDAO.getProductById(productId);
         return product == null ? null : ProductDTO.convertToDTO(product);
     }
+
+    @Transactional
+    public List<ProductDTO> search(String parameter) {
+        List<Product> products = productDAO.getProductByName(parameter);
+        return convertToDTOList(products);
+    }
+
+    private List<ProductDTO> convertToDTOList(List<Product> productList) {
+        List<ProductDTO> dtoList = new LinkedList<>();
+        for (Product product : productList) {
+            dtoList.add(ProductDTO.convertToDTO(product));
+        }
+        return dtoList;
+    }
+
+
 }
