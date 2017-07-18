@@ -9,17 +9,19 @@
     <div ng-repeat="product in products">
         <div class="col-xs-3 container">
             <div class="thumbnail">
-                <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
-                <div id="inner-container">
-                    <div class="capital-row">{{product.name}}</div>
-                    <div class="row">
-                        {{product.capacity}} l
-                        <span id="availability">In stock</span>
+                <a href="#!/catalog/{{categoryName}}/{{product.id}}">
+                    <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
+                    <div id="inner-container">
+                        <div class="capital-row">{{product.name}}</div>
+                        <div class="row">
+                            {{product.capacity}} l
+                            <span id="availability">In stock</span>
+                        </div>
+                        <div class="row"><span id="price">{{product.price}} $</span>
+                            <button type="button" class="btn btn-success" id="buy-button">Add to basket</button>
+                        </div>
                     </div>
-                    <div class="row"><span id="price">{{product.price}} $</span>
-                        <button type="button" class="btn btn-success" id="buy-button">Add to basket</button>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

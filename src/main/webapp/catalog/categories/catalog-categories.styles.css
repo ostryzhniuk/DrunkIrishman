@@ -26,11 +26,6 @@
     font-size: 18px;
     font-family: Castellar;
 }
-span {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-}
 #panel-heading {
     text-align: center;
     color: #2c5c11;
