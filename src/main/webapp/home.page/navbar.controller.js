@@ -11,4 +11,12 @@ controller('navbarCtrl', function ($http, $scope) {
         $scope.categories = response.data;
     });
 
+    $scope.addToBasket = function addToBasket(product){
+        $http({
+            method: 'PUT',
+            url: '/addToBasket',
+            data: product
+        });
+    };
+
 });

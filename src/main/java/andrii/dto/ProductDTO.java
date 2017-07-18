@@ -60,4 +60,12 @@ public class ProductDTO {
         return new ModelMapper().map(product, ProductDTO.class);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        ProductDTO productDTO = (ProductDTO) obj;
+        return this.name.equals(productDTO.getName());
+    }
 }

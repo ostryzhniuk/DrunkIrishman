@@ -24,7 +24,10 @@
                         </div>
                         <div class="row">
                             <span id="price">{{product.price}}&nbsp;$</span>
-                            <button type="button" class="btn btn-success" id="buy-button">Add to basket</button>
+                            <a>
+                            <button ng-controller="navbarCtrl" ng-click="addToBasket(product)"
+                                    type="button" class="btn btn-success" id="buy-button">Add to basket</button>
+                            </a>
                         </div>
                         </a>
                     </div>

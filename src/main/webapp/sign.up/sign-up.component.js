@@ -57,7 +57,7 @@ function checkPass() {
 }
 
 function validatePhone(phone) {
-    var maintainplus = '';
+    /*var maintainplus = '';
     var numval = phone.value
     if (numval.charAt(0)=='+') {
         var maintainplus = '';
@@ -65,7 +65,7 @@ function validatePhone(phone) {
     curphonevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g,'');
     phone.value = maintainplus + curphonevar;
     maintainplus = '';
-    phone.focus;
+    phone.focus;*/
 }
 
 function validateText(txt) {
