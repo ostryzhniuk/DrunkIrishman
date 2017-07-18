@@ -8,11 +8,16 @@
 <div class="panel-body">
     <div ng-repeat="product in products">
         <div id="#outer-container" class="col-xs-3">
-            <a id="clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
+            <a class="clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
                 <div class="thumbnail panel-body">
                     <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
                     <div id="inner-container">
-                        <div id="capital-row">{{product.name}}</div>
+                        <a id="name-clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
+                            <div id="capital-row">
+                                {{product.name}}
+                            </div>
+                        </a>
+                        <a class="clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
                         <div class="row">
                             {{product.capacity}}&nbsp;l
                             <span id="availability">In stock</span>
@@ -21,6 +26,7 @@
                             <span id="price">{{product.price}}&nbsp;$</span>
                             <button type="button" class="btn btn-success" id="buy-button">Add to basket</button>
                         </div>
+                        </a>
                     </div>
                 </div>
             </a>

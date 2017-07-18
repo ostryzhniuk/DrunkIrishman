@@ -47,7 +47,10 @@
     float: right;
     margin: 10px 10px 10px 10px;
 }
-#clickable-panel {
+a.clickable-panel {
     text-decoration: none;
+    color: inherit;
+}
+#name-clickable-panel{
     color: inherit;
 }
