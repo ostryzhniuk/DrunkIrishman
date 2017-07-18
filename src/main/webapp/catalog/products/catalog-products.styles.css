@@ -1,3 +1,10 @@
+#panel-heading {
+    text-align: center;
+    color: #2c5c11;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Cambria;
+}
 .thumbnail {
     border-radius: 0px;
     margin: 0;
@@ -5,7 +12,7 @@
     width: 300px;
     padding: 0;
 }
-.container {
+#outer-container {
     padding: 5px;
     height: 450px;
     width: 310px;
@@ -17,7 +24,7 @@
 #inner-container {
     padding: 5px;
 }
-.capital-row {
+#capital-row {
     margin: 5px;
     height: 40px;
     font-weight: bold;
@@ -40,10 +47,7 @@
     float: right;
     margin: 10px 10px 10px 10px;
 }
-#panel-heading {
-    text-align: center;
-    color: #2c5c11;
-    font-size: 18px;
-    font-weight: bold;
-    font-family: Cambria;
+#clickable-panel {
+    text-decoration: none;
+    color: inherit;
 }

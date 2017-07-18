@@ -1,1 +1,27 @@
-{{product.name}}
+<head>
+    <link rel="stylesheet" href="/catalog/product.detail/product-detail.styles.css"/>
+</head>
+
+<div id="panel-heading" class="panel-heading">
+    {{categoryName}}
+</div>
+<div class="panel-body">
+    <div class=" col-sm-4 thumbnail">
+        <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
+    </div>
+
+    <div class="col-sm-6" id="details-container">
+        <div id="capital-row">
+            {{product.name}}
+        </div>
+        <div>
+            {{product.capacity}}&nbsp;l
+        </div>
+        <div>
+            {{product.description}}
+        </div>
+        <div>
+            {{product.price}}&nbsp;$
+        </div>
+    </div>
+</div>

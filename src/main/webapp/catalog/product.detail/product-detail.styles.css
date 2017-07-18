@@ -1,0 +1,27 @@
+#panel-heading {
+    text-align: center;
+    color: #2c5c11;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Cambria;
+}
+.panel-body {
+    padding: 20px;
+}
+.thumbnail {
+    border-radius: 0px;
+    margin: 10px;
+    height: 402px;
+    width: 402px;
+    padding: 0;
+}
+#photo {
+    width: 400px;
+    height: 400px;
+}
+#details-container {
+    margin: 10px;
+}
+#capital-row {
+    font-weight: bold;
+}
