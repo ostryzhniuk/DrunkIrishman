@@ -1,8 +1,15 @@
 package andrii.core;
 
 import andrii.dto.BasketDTO;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 import java.util.HashSet;
 
+/** * Annotation-based configuration of session scope */
+@Component
+@Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class BasketSet<T extends BasketDTO> extends HashSet<T> {
 
     @Override

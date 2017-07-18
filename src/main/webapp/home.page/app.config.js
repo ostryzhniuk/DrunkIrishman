@@ -2,6 +2,7 @@
 
 angular.module('shopApp', [
     'ngRoute',
+    'ngStorage',
     'login',
     'signUp',
     'catalogProducts',

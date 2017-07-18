@@ -2,7 +2,7 @@
 
 angular.
 module('shopApp').
-controller('navbarCtrl', function ($http, $scope) {
+controller('navbarCtrl', function ($http, $scope, $sessionStorage) {
 
     $scope.orderProp = 'name';
     $scope.goodsQuantity = 0;
@@ -16,6 +16,9 @@ controller('navbarCtrl', function ($http, $scope) {
             method: 'PUT',
             url: '/addToBasket',
             data: product
+        }).then(function(response) {
+            $sessionStorage.goodsQuantity = response.data;
+            $scope.goodsQuantity = response.data;
         });
     };
 
