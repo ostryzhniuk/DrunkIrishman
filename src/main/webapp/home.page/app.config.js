@@ -6,7 +6,9 @@ angular.module('shopApp', [
     'signUp',
     'catalogProducts',
     'catalogCategories',
-    'productDetail'
+    'productDetail',
+    'ui.bootstrap',
+    'basket'
 ]);
 
 angular.

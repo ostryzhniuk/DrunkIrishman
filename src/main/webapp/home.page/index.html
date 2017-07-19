@@ -10,6 +10,7 @@
     <script src="/resources/js/jquery-3.2.1.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="/resources/js/angular.min.js"></script>
+    <script src="/resources/js/ui-bootstrap-tpls.min.js"></script>
     <script src="/resources/js/angular-resource.min.js"></script>
     <script src="/resources/js/angular-route.min.js"></script>
 
@@ -20,6 +21,7 @@
     <script src="/catalog/products/catalog-products.component.js"></script>
     <script src="/catalog/categories/catalog-categories.component.js"></script>
     <script src="/catalog/product.detail/product-detail.component.js"></script>
+    <script src="/basket/basket.component.js"></script>
 </head>
 <body>
 
@@ -68,7 +70,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <div class="nav navbar-nav">
-                        <li><a href="#!/">
+                        <li><a href="" ng-click="showBasket()">
                             <div id="goods-quantity-bracket">
                                 <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Basket
                                 ({{goodsQuantity}})

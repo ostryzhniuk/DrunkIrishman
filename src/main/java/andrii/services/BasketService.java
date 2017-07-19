@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderService {
+public class BasketService {
 
     @Autowired
     private BasketSet<BasketDTO> basketSet;
@@ -25,4 +25,7 @@ public class OrderService {
         return basketSet.size();
     }
 
+    public BasketSet<BasketDTO> getBasketSet() {
+        return basketSet;
+    }
 }

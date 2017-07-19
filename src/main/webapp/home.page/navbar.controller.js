@@ -2,7 +2,7 @@
 
 angular.
 module('shopApp').
-controller('navbarCtrl', function ($http, $scope, $rootScope) {
+controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
 
     $scope.orderProp = 'name';
 
@@ -21,6 +21,16 @@ controller('navbarCtrl', function ($http, $scope, $rootScope) {
             data: product
         }).then(function(response) {
             $rootScope.goodsQuantity = response.data;
+        });
+    };
+
+    $scope.showBasket = function () {
+
+        $uibModal.open({
+            component: 'basket',
+            resolve: {
+
+            }
         });
     };
 
