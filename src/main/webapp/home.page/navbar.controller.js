@@ -6,8 +6,8 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
 
     $scope.orderProp = 'name';
 
-    $rootScope.goodsQuantity = $http.get('/goodsQuantity').then(function(response) {
-        $rootScope.goodsQuantity = response.data;
+    $http.get('/basketSize').then(function(response) {
+        $rootScope.basketSize = response.data;
     });
 
     $http.get('/categories').then(function(response) {
@@ -20,14 +20,16 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
             url: '/addToBasket',
             data: product
         }).then(function(response) {
-            $rootScope.goodsQuantity = response.data;
+            $rootScope.basketSize = response.data;
         });
     };
 
     $scope.showBasket = function () {
-
-        $uibModal.open({
+        $rootScope.modalInstance = $uibModal.open({
             component: 'basket',
+            windowClass: 'app-modal-window',
+            size: 'lg',
+            backdrop: true,
             resolve: {
 
             }

@@ -13,9 +13,10 @@ angular.module('shopApp', [
 
 angular.
 module('shopApp').
-config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
+config(['$locationProvider' ,'$routeProvider', '$qProvider',
+    function config($locationProvider, $routeProvider, $qProvider) {
         $locationProvider.hashPrefix('!');
+        $qProvider.errorOnUnhandledRejections(false);
 
         $routeProvider.
         when('/catalog', {

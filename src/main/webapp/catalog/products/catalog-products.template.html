@@ -6,7 +6,7 @@
     {{categoryName}}
 </div>
 <div class="panel-body">
-    <div ng-repeat="product in products">
+    <div ng-repeat="product in products | orderBy:orderProp">
         <div id="outer-container" class="col-xs-3">
             <a class="clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
                 <div class="thumbnail panel-body">

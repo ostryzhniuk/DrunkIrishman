@@ -12,6 +12,7 @@ component('catalogProducts', {
         function CatalogProductsController($http, $scope, $routeParams) {
 
             $scope.categoryName = $routeParams.categoryName;
+            $scope.orderProp = 'name';
 
             $http.get('/products/' + $routeParams.categoryName).then(function(response) {
                 $scope.products = response.data;

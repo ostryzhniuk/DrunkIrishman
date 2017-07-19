@@ -4,7 +4,6 @@ import andrii.dto.BasketDTO;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
-
 import java.util.HashSet;
 
 /** * Annotation-based configuration of session scope */
@@ -12,14 +11,11 @@ import java.util.HashSet;
 @Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class BasketSet<T extends BasketDTO> extends HashSet<T> {
 
-    private Integer size = 0;
-
     @Override
     public boolean add(T t) {
         if (!super.add(t)) {
             getObjectFromSet(t).increaseCounter();
         }
-        size();
         return true;
     }
 
@@ -34,7 +30,6 @@ public class BasketSet<T extends BasketDTO> extends HashSet<T> {
             } else {
                 super.remove(itemToRemove);
             }
-            size();
             return true;
         }
         return false;
@@ -42,11 +37,10 @@ public class BasketSet<T extends BasketDTO> extends HashSet<T> {
 
     @Override
     public int size() {
-        size = stream()
-                .map(item -> item.getCounter())
-                .reduce((integer, integer2) -> integer + integer2)
-                .get();
-
+        Integer size = 0;
+        for (T t : this) {
+            size += t.getCounter();
+        }
         return size;
     }
 
@@ -59,7 +53,4 @@ public class BasketSet<T extends BasketDTO> extends HashSet<T> {
         return null;
     }
 
-    public Integer getSize() {
-        return size;
-    }
 }

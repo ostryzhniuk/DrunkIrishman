@@ -2,7 +2,16 @@
     <link rel="stylesheet" href="/basket/basket.styles.css"/>
 </head>
 
-BASKET
-<div ng-repeat="product in basket">
-    <p>{{product.name}} {{product.counter}}</p>
+<div class="app-modal-window">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"  ng-click="cancel()">&times;</button>
+        <h4 class="modal-title">Basket <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span id="basketSize">({{basketSize}})</span></h4>
+    </div>
+
+    <div id="body">
+        <div ng-repeat="product in basket">
+            {{product.name}}
+        </div>
+    </div>
 </div>

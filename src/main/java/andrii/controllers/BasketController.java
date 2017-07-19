@@ -20,8 +20,8 @@ public class BasketController {
         return basketService.addToBasket(basketDTO).size();
     }
 
-    @GetMapping("/goodsQuantity")
-    public Integer goodsQuantity() {
+    @GetMapping("/basketSize")
+    public Integer basketSize() {
         return basketService.getBasketSetSize();
     }
 
