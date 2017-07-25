@@ -14,7 +14,7 @@
     </div>
 
     <div class="modal-body">
-        <div id="productBloc" ng-repeat="product in basket">
+        <div ng-repeat="product in basket">
 
             <img ng-src="/resources/image/products/{{product.id}}.jpg" id="productPhoto">
 
@@ -41,12 +41,18 @@
 				        </span>
                     </div>
                 </div>
-                <div id="total">Total:&nbsp;{{sum(product)}}&nbsp;$</div>
+                <div id="total">Total:&nbsp;{{sumTotal(product)}}&nbsp;$</div>
             </div>
 
             <button type="button" class="close" aria-hidden  ng-click="removeFromBasket(product)">&#128937;</button>
 
             <hr>
         </div>
+
+        <div ng-hide="isEmpty()" id="orderContainer">
+            <span id="orderAmount">Order amount:&nbsp;{{orderAmount()}}&nbsp;$</span>
+            <button ng-click="makeOrder()" type="button" class="btn btn-success">Proceed to checkout</button>
+        </div>
+
     </div>
 </div>

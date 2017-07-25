@@ -29,8 +29,20 @@ component('basket', {
                 }
             };
 
-            $scope.sum = function sum(product){
-                return (product.counter * product.price).toFixed(2);
+            function sum(product) {
+                return (product.counter * product.price);
+            };
+
+            $scope.sumTotal = function sumTotal(product){
+                return sum(product).toFixed(2);
+            };
+
+            $scope.orderAmount = function orderAmount(){
+                var orderAmount = 0;
+                for (var product in $scope.basket) {
+                    orderAmount += sum($scope.basket[product]);
+                }
+                return orderAmount.toFixed(2);
             };
 
             $scope.addToBasket = function addToBasket(product){
@@ -80,6 +92,10 @@ component('basket', {
                         $scope.basket = response.data;
                     });
                 });
+            };
+
+            $scope.makeOrder = function makeOrder(){
+                alert("Sorry, but this service is temporarily unavailable.");
             };
 
         }

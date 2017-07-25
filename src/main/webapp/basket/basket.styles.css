@@ -49,6 +49,14 @@ hr {
     display: inline-flex;
     vertical-align: top;
 }
+#orderContainer {
+    text-align: right;
+}
+#orderAmount {
+    margin-left: 300px;
+    margin-top: 5px;
+    float: left;
+}
 
 
 
