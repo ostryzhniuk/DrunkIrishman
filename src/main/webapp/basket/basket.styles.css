@@ -21,7 +21,6 @@
     width: 400px;
     height: 50px;
     display: inline-block;
-    /*border: 1px solid;*/
 }
 #productPhoto {
     width: 100px;
@@ -39,3 +38,12 @@ hr {
     margin-top: 20px;
     color: #989898;
 }
+#numberField {
+    width: 150px;
+}
+.btn {
+    height: 34px;
+}
+
+
+

@@ -25,7 +25,17 @@
                 <div id="productPrice">Price:&nbsp;{{product.price}}&nbsp;$</div>
             </div>
 
-            
+            <div class="input-group number-spinner" id="numberField">
+				<span class="input-group-btn">
+					<button ng-controller="navbarCtrl" ng-click="removeFromBasket(product)" class="btn btn-default"
+                            data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+				</span>
+                <input class="form-control text-center" value="{{product.counter}}" readonly>
+                <span class="input-group-btn">
+					<button ng-controller="navbarCtrl" ng-click="addToBasket(product)" class="btn btn-default"
+                            data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+				</span>
+            </div>
 
             <hr>
         </div>

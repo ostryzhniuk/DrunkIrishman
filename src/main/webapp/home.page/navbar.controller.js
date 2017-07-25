@@ -24,6 +24,16 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
         });
     };
 
+    $scope.removeFromBasket = function removeFromBasket(product){
+        $http({
+            method: 'PUT',
+            url: '/removeFromBasket',
+            data: product
+        }).then(function(response) {
+            $rootScope.basketSize = response.data;
+        });
+    };
+
     $scope.showBasket = function () {
         $rootScope.modalInstance = $uibModal.open({
             component: 'basket',

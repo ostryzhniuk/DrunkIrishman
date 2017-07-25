@@ -20,6 +20,11 @@ public class BasketController {
         return basketService.addToBasket(basketDTO).size();
     }
 
+    @PutMapping("/removeFromBasket")
+    public Integer removeFromBasket(@RequestBody BasketDTO basketDTO){
+        return basketService.removeFromBasket(basketDTO).size();
+    }
+
     @GetMapping("/basketSize")
     public Integer basketSize() {
         return basketService.getBasketSetSize();
