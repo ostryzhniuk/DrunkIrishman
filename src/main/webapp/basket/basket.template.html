@@ -9,9 +9,25 @@
             <span id="basketSize">({{basketSize}})</span></h4>
     </div>
 
-    <div id="body">
-        <div ng-repeat="product in basket">
-            {{product.name}}
+    <div id="emptyCondition" ng-show="isEmpty()">
+        Your basket is empty
+    </div>
+
+    <div class="modal-body">
+        <div id="productBloc" ng-repeat="product in basket">
+
+            <img ng-src="/resources/image/products/{{product.id}}.jpg" id="productPhoto">
+
+            <div id="detailContainer">
+                <div id="productName">
+                    {{product.name}}
+                </div>
+                <div id="productPrice">Price:&nbsp;{{product.price}}&nbsp;$</div>
+            </div>
+
+            
+
+            <hr>
         </div>
     </div>
 </div>

@@ -21,6 +21,14 @@ component('basket', {
                 $rootScope.modalInstance.close();
             };
 
+            $scope.isEmpty = function isEmpty(){
+                if ($scope.basketSize == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
         }
     ]
 });
