@@ -18,23 +18,30 @@
 
             <img ng-src="/resources/image/products/{{product.id}}.jpg" id="productPhoto">
 
-            <div id="detailContainer">
+            <div class="column">
                 <div id="productName">
                     {{product.name}}
                 </div>
                 <div id="productPrice">Price:&nbsp;{{product.price}}&nbsp;$</div>
             </div>
 
-            <div class="input-group number-spinner" id="numberField">
-				<span class="input-group-btn">
-					<button ng-controller="navbarCtrl" ng-click="removeFromBasket(product)" class="btn btn-default"
-                            data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
-				</span>
-                <input class="form-control text-center" value="{{product.counter}}" readonly>
-                <span class="input-group-btn">
-					<button ng-controller="navbarCtrl" ng-click="addToBasket(product)" class="btn btn-default"
-                            data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
-				</span>
+            <div class="column">
+                <div style="display: inline-flex; vertical-align: top">
+                    <div class="input-group number-spinner" id="numberField">
+				        <span class="input-group-btn">
+					        <button ng-click="removeFromBasket(product)"
+                                    class="btn btn-default" data-dir="dwn">
+                            <span class="glyphicon glyphicon-minus"></span></button>
+				        </span>
+                        <input class="form-control text-center" value="{{product.counter}}" readonly>
+                        <span class="input-group-btn">
+					        <button ng-click="addToBasket(product)"
+                                    class="btn btn-default" data-dir="up">
+                            <span class="glyphicon glyphicon-plus"></span></button>
+				        </span>
+                    </div>
+                </div>
+                <div id="total">Total:&nbsp;{{sum(product)}}&nbsp;$</div>
             </div>
 
             <hr>

@@ -2,7 +2,7 @@
 
 angular.
 module('shopApp').
-controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
+controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal, basketService) {
 
     $scope.orderProp = 'name';
 
@@ -15,6 +15,7 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
     });
 
     $scope.addToBasket = function addToBasket(product){
+        // $rootScope.basketSize = basketService.addProduct(product);
         $http({
             method: 'PUT',
             url: '/addToBasket',

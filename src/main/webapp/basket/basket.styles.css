@@ -29,13 +29,17 @@
 hr {
     border-color: #c7bfbf;
 }
-#detailContainer {
+.column {
     display: inline-table;
     vertical-align: top;
     margin-left: 10px;
 }
 #productPrice {
     margin-top: 20px;
+    color: #989898;
+}
+#total {
+    margin-top: 36px;
     color: #989898;
 }
 #numberField {
