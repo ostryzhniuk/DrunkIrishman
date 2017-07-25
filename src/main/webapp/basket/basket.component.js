@@ -30,7 +30,7 @@ component('basket', {
             };
 
             $scope.sum = function sum(product){
-                return product.counter * product.price;
+                return (product.counter * product.price).toFixed(2);
             };
 
             $scope.addToBasket = function addToBasket(product){
@@ -58,6 +58,20 @@ component('basket', {
                 $http({
                     method: 'PUT',
                     url: '/removeFromBasket',
+                    data: product
+                }).then(function(response) {
+                    $scope.basketSize = response.data;
+                    $rootScope.basketSize = response.data;
+                    $http.get('/basket').then(function(response) {
+                        $scope.basket = response.data;
+                    });
+                });
+            };
+
+            $scope.decrease = function decrease(product){
+                $http({
+                    method: 'PUT',
+                    url: '/decrease',
                     data: product
                 }).then(function(response) {
                     $scope.basketSize = response.data;

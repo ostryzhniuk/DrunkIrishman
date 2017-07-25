@@ -19,11 +19,10 @@ public class BasketSet<T extends BasketDTO> extends HashSet<T> {
         return true;
     }
 
-    @Override
-    public boolean remove(Object o) {
+    public boolean decrease(T t) {
 
         T itemToRemove;
-        if ((itemToRemove = getObjectFromSet((T) o)) != null) {
+        if ((itemToRemove = getObjectFromSet(t)) != null) {
 
             if (itemToRemove.getCounter() > 1) {
                 itemToRemove.decreaseCounter();

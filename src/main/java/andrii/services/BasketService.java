@@ -16,8 +16,8 @@ public class BasketService {
         return basketSet;
     }
 
-    public BasketSet<BasketDTO> removeFromBasket(BasketDTO basketDTO) {
-        basketSet.remove(basketDTO);
+    public BasketSet<BasketDTO> decrease(BasketDTO basketDTO) {
+        basketSet.decrease(basketDTO);
         return basketSet;
     }
 
@@ -26,6 +26,11 @@ public class BasketService {
     }
 
     public BasketSet<BasketDTO> getBasketSet() {
+        return basketSet;
+    }
+
+    public BasketSet<BasketDTO> removeFromBasket(BasketDTO basketDTO) {
+        basketSet.remove(basketDTO);
         return basketSet;
     }
 }

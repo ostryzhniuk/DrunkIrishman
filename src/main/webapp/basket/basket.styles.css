@@ -11,9 +11,6 @@
     margin-top: 30px;
     color: gray;
 }
-#productBloc {
-
-}
 #productName {
     vertical-align: top;
     font-size: 15px;
@@ -48,6 +45,11 @@ hr {
 .btn {
     height: 34px;
 }
+#number-spinner-container {
+    display: inline-flex;
+    vertical-align: top;
+}
+
 
 
 
