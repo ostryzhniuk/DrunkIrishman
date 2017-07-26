@@ -30,7 +30,7 @@
 .spinner-btn {
     height: 34px;
 }
-#numberField {
+#number-field {
     width: 150px;
 }
 #number-spinner-container {
@@ -39,18 +39,46 @@
     vertical-align: top;
 }
 #price {
-    padding: 1px 5px 1px 5px;
+    padding: 2px 6px 2px 6px;
     background-color: #9edf1f;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     color: white;
     border-radius: 5px;
+}
+div#price-container {
+    margin-top: 10px;
 }
 .no-spin::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
     -webkit-appearance: none !important;
     margin: 0 !important;
     -moz-appearance:textfield !important;
 }
-a#category{
+a#category {
     color: inherit;
+}
+div#main-information {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+div#capacity {
+    margin-top: 30px;
+    margin-bottom: 50px
+}
+div#buy-container {
+    padding-left: 30px;
+    margin-top: 10px;
+}
+div#description {
+    margin-top: 50px;
+}
+#inStockStatus {
+    color: #5cb85c;
+}
+#soldOutStatus {
+    color: #717171;
+}
+div#availability{
+    margin-top: 30px;
+    margin-left: 2px;
 }

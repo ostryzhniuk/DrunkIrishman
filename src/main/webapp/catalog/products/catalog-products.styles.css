@@ -32,9 +32,13 @@
 .row {
     margin: 5px;
 }
-#availability {
+#inStockStatus {
     float: right;
     color: #5cb85c;
+}
+#soldOutStatus {
+    float: right;
+    color: #717171;
 }
 #price {
     padding: 1px 5px 1px 5px;

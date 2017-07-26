@@ -20,13 +20,14 @@
                         <a class="clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
                         <div class="row">
                             {{product.capacity}}&nbsp;l
-                            <span id="availability">In stock</span>
+                            <span ng-show="isInStock(product)" id="inStockStatus">In stock</span>
+                            <span ng-hide="isInStock(product)" id="soldOutStatus">Sold out</span>
                         </div>
                         <div class="row">
                             <span id="price">{{product.price}}&nbsp;$</span>
                             <a>
-                            <button ng-click="addToBasket(product)" type="button" class="btn btn-success"
-                                    id="buy-button">Add to basket</button>
+                            <button ng-disabled="!isInStock(product)" ng-click="addToBasket(product)" type="button"
+                                    class="btn btn-success" id="buy-button">Add to basket</button>
                             </a>
                         </div>
                         </a>

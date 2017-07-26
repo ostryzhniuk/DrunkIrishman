@@ -18,6 +18,14 @@ component('catalogProducts', {
                 $scope.products = response.data;
             });
 
+            $scope.isInStock = function (product){
+                if (product.status == 'IN_STOCK') {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
             $scope.addToBasket = function (product){
                 // $rootScope.basketSize = basketService.addProduct(product);
                 $http({

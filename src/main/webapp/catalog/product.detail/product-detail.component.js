@@ -31,6 +31,13 @@ component('productDetail', {
                 });
             };
 
+            $scope.isInStock = function (product){
+                if (product.status == 'IN_STOCK') {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
         }
     ]
 });

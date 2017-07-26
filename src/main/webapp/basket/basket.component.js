@@ -21,7 +21,7 @@ component('basket', {
                 $rootScope.modalInstance.close();
             };
 
-            $scope.isEmpty = function isEmpty(){
+            $scope.isEmpty = function (){
                 if ($rootScope.basketSize == 0) {
                     return true;
                 } else {

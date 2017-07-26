@@ -10,51 +10,60 @@
         <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
     </div>
 
-    <div class="col-sm-4" style="margin-top: 10px; padding-left: 10px;">
+    <div class="col-sm-4" id="main-information">
 
         <div id="capital-row">
             {{product.name}}
         </div>
-        <div style="margin-top: 10px;">
-            Capacity:&nbsp;{{product.capacity}}&nbsp;l
-        </div>
 
-
-        <div style="margin-top: 30px; margin-bottom: 50px">
+        <div id="price-container">
             <span id="price">
                 {{product.price}}&nbsp;$
             </span>
         </div>
 
+        <div id="capacity">
+            Capacity:&nbsp;{{product.capacity}}&nbsp;l
+        </div>
+
     </div>
 
-    <div class="col-sm-2" style="padding-left: 30px; margin-top: 10px;">
+    <div class="col-sm-2" id="buy-container">
         <div>
             <a>
-                <button ng-click="addToBasket(product)"
-                        type="button" class="btn btn-success" id="buy-button">Add to basket
+                <button ng-click="addToBasket(product)" type="button" class="btn btn-success" id="buy-button"
+                        ng-disabled="!isInStock(product)">
+                    Add to basket
                 </button>
             </a>
         </div>
 
         <div id="number-spinner-container">
-            <div class="input-group number-spinner" id="numberField">
+            <div class="input-group number-spinner" id="number-field">
                 <span class="input-group-btn">
-                    <button class="btn btn-default spinner-btn" data-dir="dwn">
+                    <button class="btn btn-default spinner-btn" data-dir="dwn" ng-disabled="!isInStock(product)">
                             <span class="glyphicon glyphicon-minus"></span>
                     </button>
                 </span>
-                <input ng-model="number" type="number" min="1" max="1000" class="form-control text-center no-spin">
+                <input ng-model="number" type="number" min="1" max="1000" class="form-control text-center no-spin"
+                       ng-disabled="!isInStock(product)">
                 <span class="input-group-btn">
-                    <button class="btn btn-default spinner-btn" data-dir="up">
+                    <button class="btn btn-default spinner-btn" data-dir="up" ng-disabled="!isInStock(product)">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </span>
             </div>
         </div>
+
+        <div id="availability">
+            Availability:&nbsp;
+            <span ng-show="isInStock(product)" id="inStockStatus">In stock</span>
+            <span ng-hide="isInStock(product)" id="soldOutStatus">Sold out</span>
+        </div>
+
     </div>
 
-    <div class="col-sm-8" style="margin-top: 50px;">
+    <div class="col-sm-8" id="description">
         <b>Description:</b>
         <p>
             {{product.description}}
