@@ -12,6 +12,7 @@ public class ProductDTO {
     private BigDecimal price;
     private String description;
     private CategoryDTO category;
+    private StockDTO.Status status;
 
     public Integer getId() {
         return id;
@@ -69,6 +70,14 @@ public class ProductDTO {
 
     public void setCategory(CategoryDTO category) {
         this.category = category;
+    }
+
+    public StockDTO.Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(StockDTO.Status status) {
+        this.status = status;
     }
 
     @Override

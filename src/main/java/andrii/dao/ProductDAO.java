@@ -1,6 +1,7 @@
 package andrii.dao;
 
 import andrii.entities.Product;
+import andrii.entities.Stock;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +50,19 @@ public class ProductDAO extends GenericDAO<Product> {
                 "where lower(name) like lower(:productName)");
 
         query.setParameter("productName", "%"+productName+"%");
+
+        return query.list();
+    }
+
+    public List<Product> getProductsWithStatus(Integer productId, Stock.Status status) {
+        Query query = getSession().createQuery("select p " +
+                "from Product as p, Stock as s " +
+                "where p.id = :productId and " +
+                "p.id = s.product.id and " +
+                "s.status = :status");
+
+        query.setParameter("productId", productId);
+        query.setParameter("status", status);
 
         return query.list();
     }

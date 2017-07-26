@@ -19,8 +19,12 @@ component('login', {
                         email: $scope.email,
                         password: $scope.password
                     }
+                }).then(function(response) {
+                    console.log(response.status);
+                },function errorCallback(response) {
+                    console.log(response.status);
                 });
-            }
+            };
 
         }
     ]
