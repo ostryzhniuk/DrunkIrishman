@@ -23,6 +23,7 @@
     <script src="/catalog/product.detail/product-detail.component.js"></script>
     <script src="/basket/basket.component.js"></script>
     <script src="/basket/basket.service.js"></script>
+    <script src="/search.product/search-product.component.js"></script>
 </head>
 <body>
 
@@ -58,9 +59,9 @@
                     <!--<li><a href="#">Page 3</a></li>-->
                 </ul>
 
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left" ng-submit="search()">
                     <div class="input-group">
-                        <input type="text" class="form-control search-group" placeholder="Search">
+                        <input ng-model="searchParameter" class="form-control search-group" placeholder="Search">
                         <div class="input-group-btn">
                             <button class="btn btn-default search-group" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>

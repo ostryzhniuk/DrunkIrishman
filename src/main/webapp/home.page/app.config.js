@@ -8,7 +8,8 @@ angular.module('shopApp', [
     'catalogCategories',
     'productDetail',
     'ui.bootstrap',
-    'basket'
+    'basket',
+    'searchProduct'
 ]);
 
 angular.
@@ -33,6 +34,9 @@ config(['$locationProvider' ,'$routeProvider', '$qProvider',
         }).
         when('/catalog/:categoryName/:productId', {
             template: '<product-detail></product-detail>'
+        }).
+        when('/search/:searchParameter', {
+            template: '<search-product></search-product>'
         }).
         otherwise('/catalog');
     }

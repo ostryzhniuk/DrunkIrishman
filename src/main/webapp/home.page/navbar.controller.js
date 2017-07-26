@@ -14,6 +14,10 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
         $scope.categories = response.data;
     });
 
+    $scope.search = function () {
+        window.location.href = '#!/search/' + $scope.searchParameter;
+    };
+
     $scope.showBasket = function () {
         $rootScope.modalInstance = $uibModal.open({
             component: 'basket',

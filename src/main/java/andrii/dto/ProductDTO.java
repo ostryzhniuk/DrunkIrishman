@@ -11,6 +11,7 @@ public class ProductDTO {
     private BigDecimal capacity;
     private BigDecimal price;
     private String description;
+    private CategoryDTO category;
 
     public Integer getId() {
         return id;
@@ -57,7 +58,17 @@ public class ProductDTO {
     }
 
     public static ProductDTO convertToDTO(Product product) {
-        return new ModelMapper().map(product, ProductDTO.class);
+        ProductDTO productDTO = new ModelMapper().map(product, ProductDTO.class);
+        productDTO.setCategory(CategoryDTO.convertToDTO(product.getCategory()));
+        return productDTO;
+    }
+
+    public CategoryDTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
     }
 
     @Override
@@ -68,4 +79,5 @@ public class ProductDTO {
         ProductDTO productDTO = (ProductDTO) obj;
         return this.name.equals(productDTO.getName());
     }
+
 }
