@@ -51,3 +51,6 @@
     margin: 0 !important;
     -moz-appearance:textfield !important;
 }
+a#category{
+    color: inherit;
+}
