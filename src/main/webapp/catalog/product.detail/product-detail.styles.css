@@ -19,9 +19,35 @@
     width: 400px;
     height: 400px;
 }
-#details-container {
-    margin: 10px;
-}
 #capital-row {
     font-weight: bold;
+    height: 40px;
+}
+#buy-button {
+    width: 150px;
+    margin-top: 20px;
+}
+.spinner-btn {
+    height: 34px;
+}
+#numberField {
+    width: 150px;
+}
+#number-spinner-container {
+    margin-top: 20px;
+    display: inline-flex;
+    vertical-align: top;
+}
+#price {
+    padding: 1px 5px 1px 5px;
+    background-color: #9edf1f;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+}
+.no-spin::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+    -moz-appearance:textfield !important;
 }

@@ -12,8 +12,8 @@ public class BasketDTO extends ProductDTO  {
         this.counter = counter;
     }
 
-    public void increaseCounter(){
-        counter++;
+    public void increaseCounter(Integer value){
+        counter += value;
     }
 
     public void decreaseCounter(){

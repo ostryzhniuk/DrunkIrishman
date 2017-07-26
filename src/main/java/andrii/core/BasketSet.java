@@ -14,7 +14,7 @@ public class BasketSet<T extends BasketDTO> extends HashSet<T> {
     @Override
     public boolean add(T t) {
         if (!super.add(t)) {
-            getObjectFromSet(t).increaseCounter();
+            getObjectFromSet(t).increaseCounter(t.getCounter());
         }
         return true;
     }

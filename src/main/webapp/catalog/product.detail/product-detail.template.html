@@ -10,18 +10,54 @@
         <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
     </div>
 
-    <div class="col-sm-6" id="details-container">
+    <div class="col-sm-4" style="margin-top: 10px; padding-left: 10px;">
+
         <div id="capital-row">
             {{product.name}}
         </div>
-        <div>
-            {{product.capacity}}&nbsp;l
+        <div style="margin-top: 10px;">
+            Capacity:&nbsp;{{product.capacity}}&nbsp;l
         </div>
-        <div>
-            {{product.description}}
+
+
+        <div style="margin-top: 30px; margin-bottom: 50px">
+            <span id="price">
+                {{product.price}}&nbsp;$
+            </span>
         </div>
+
+    </div>
+
+    <div class="col-sm-2" style="padding-left: 30px; margin-top: 10px;">
         <div>
-            {{product.price}}&nbsp;$
+            <a>
+                <button ng-click="addToBasket(product)"
+                        type="button" class="btn btn-success" id="buy-button">Add to basket
+                </button>
+            </a>
+        </div>
+
+        <div id="number-spinner-container">
+            <div class="input-group number-spinner" id="numberField">
+                <span class="input-group-btn">
+                    <button class="btn btn-default spinner-btn" data-dir="dwn">
+                            <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+                <input ng-model="number" type="number" min="1" max="1000" class="form-control text-center no-spin">
+                <span class="input-group-btn">
+                    <button class="btn btn-default spinner-btn" data-dir="up">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
         </div>
     </div>
+
+    <div class="col-sm-8" style="margin-top: 50px;">
+        <b>Description:</b>
+        <p>
+            {{product.description}}
+    </div>
+
 </div>

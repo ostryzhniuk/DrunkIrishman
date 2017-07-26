@@ -2,7 +2,7 @@
 
 angular.
 module('shopApp').
-controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal, basketService) {
+controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
 
     $scope.orderProp = 'name';
 
@@ -13,17 +13,6 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal, basketS
     $http.get('/categories').then(function(response) {
         $scope.categories = response.data;
     });
-
-    $scope.addToBasket = function addToBasket(product){
-        // $rootScope.basketSize = basketService.addProduct(product);
-        $http({
-            method: 'PUT',
-            url: '/addToBasket',
-            data: product
-        }).then(function(response) {
-            $rootScope.basketSize = response.data;
-        });
-    };
 
     $scope.showBasket = function () {
         $rootScope.modalInstance = $uibModal.open({

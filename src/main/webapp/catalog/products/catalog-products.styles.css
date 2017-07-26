@@ -40,12 +40,13 @@
     padding: 1px 5px 1px 5px;
     background-color: #9edf1f;
     font-weight: bold;
+    font-size: 15px;
     color: white;
     border-radius: 5px;
 }
 #buy-button {
     float: right;
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
 }
 a.clickable-panel {
     text-decoration: none;
