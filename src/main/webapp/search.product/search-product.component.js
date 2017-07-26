@@ -7,7 +7,6 @@ angular.module('searchProduct', [
 angular.
 module('searchProduct').
 component('searchProduct', {
-    // templateUrl: '/search.product/search-product.template.html',
     templateUrl: '/catalog/products/catalog-products.template.html',
     controller: ['$http', '$scope', '$routeParams', '$rootScope',
         function SearchProductController($http, $scope, $routeParams, $rootScope) {
@@ -17,6 +16,12 @@ component('searchProduct', {
 
             $http.get('/search/' + $routeParams.searchParameter).then(function(response) {
                 $scope.products = response.data;
+                if ($scope.products.length == 0) {
+                    $scope.categoryName = 'Sorry, but nothing matched your search criteria. ' +
+                        'Please try again with some different keywords.';
+                } else {
+                    $scope.categoryName = $scope.products.length + ' results for: ' + $routeParams.searchParameter;
+                }
             });
 
             $scope.addToBasket = function (product){

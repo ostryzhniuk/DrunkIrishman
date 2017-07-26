@@ -8,16 +8,16 @@
 <div class="panel-body">
     <div ng-repeat="product in products | orderBy:orderProp">
         <div id="outer-container" class="col-xs-3">
-            <a class="clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
+            <a class="clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
                 <div class="thumbnail panel-body">
                     <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
                     <div id="inner-container">
-                        <a id="name-clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
+                        <a id="name-clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
                             <div id="capital-row">
                                 {{product.name}}
                             </div>
                         </a>
-                        <a class="clickable-panel" href="#!/catalog/{{categoryName}}/{{product.id}}">
+                        <a class="clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
                         <div class="row">
                             {{product.capacity}}&nbsp;l
                             <span id="availability">In stock</span>

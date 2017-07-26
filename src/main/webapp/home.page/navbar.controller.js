@@ -15,7 +15,10 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
     });
 
     $scope.search = function () {
-        window.location.href = '#!/search/' + $scope.searchParameter;
+        if ($scope.searchParameter != undefined && $scope.searchParameter != "") {
+            console.log($scope.searchParameter);
+            window.location.href = '#!/search/' + $scope.searchParameter;
+        }
     };
 
     $scope.showBasket = function () {
