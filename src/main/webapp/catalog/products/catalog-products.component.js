@@ -18,7 +18,7 @@ component('catalogProducts', {
                 $scope.products = response.data;
             });
 
-            $scope.addToBasket = function addToBasket(product){
+            $scope.addToBasket = function (product){
                 // $rootScope.basketSize = basketService.addProduct(product);
                 $http({
                     method: 'PUT',

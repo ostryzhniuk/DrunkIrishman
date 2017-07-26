@@ -33,7 +33,7 @@ component('basket', {
                 return (product.counter * product.price);
             };
 
-            $scope.sumTotal = function sumTotal(product){
+            $scope.sumTotal = function (product){
                 return sum(product).toFixed(2);
             };
 
@@ -45,7 +45,7 @@ component('basket', {
                 return orderAmount.toFixed(2);
             };
 
-            $scope.addToBasket = function addToBasket(product){
+            $scope.addToBasket = function (product){
                 product.counter = 1;
                 $http({
                     method: 'PUT',
@@ -67,7 +67,7 @@ component('basket', {
 
             };
 
-            $scope.removeFromBasket = function removeFromBasket(product){
+            $scope.removeFromBasket = function (product){
                 $http({
                     method: 'PUT',
                     url: '/removeFromBasket',
@@ -81,7 +81,7 @@ component('basket', {
                 });
             };
 
-            $scope.decrease = function decrease(product){
+            $scope.decrease = function (product){
                 $http({
                     method: 'PUT',
                     url: '/decrease',
@@ -95,7 +95,7 @@ component('basket', {
                 });
             };
 
-            $scope.makeOrder = function makeOrder(){
+            $scope.makeOrder = function (){
                 alert("Sorry, but this service is temporarily unavailable.");
             };
 

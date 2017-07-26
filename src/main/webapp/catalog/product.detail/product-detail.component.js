@@ -19,7 +19,7 @@ component('productDetail', {
                 $scope.product = response.data;
             });
 
-            $scope.addToBasket = function addToBasket(product){
+            $scope.addToBasket = function (product){
                 product.counter = $scope.number;
                 console.log($scope.number);
                 $http({
