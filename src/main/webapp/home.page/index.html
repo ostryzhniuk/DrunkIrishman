@@ -71,6 +71,9 @@
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
+                    <div class="nav navbar-nav" ng-if="!isAuthority('ROLE_ANONYMOUS')" style="margin-right: 50px; font-weight: 100">
+                        <li><a><span class="glyphicon glyphicon-user"></span>&nbsp;{{user.username}}</a></li>
+                    </div>
                     <div class="nav navbar-nav">
                         <li id="basket"><a href="" ng-click="showBasket()">
                             <div id="goods-quantity-bracket">
@@ -79,8 +82,24 @@
                             </div>
                         </a></li>
                     </div>
-                    <li><a href="#!/signUp"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a></li>
-                    <li><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+                    <div class="nav navbar-nav" id="user-functions-button-panel">
+                        <li ng-if="isAuthority('ROLE_ANONYMOUS')">
+                            <a href="#!/signUp"><span class="glyphicon glyphicon-user"></span>&nbsp;Sign Up</a>
+                        </li>
+                        <li ng-if="isAuthority('ROLE_ANONYMOUS')">
+                            <a href="#!/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a>
+                        </li>
+                        <li ng-if="!isAuthority('ROLE_ANONYMOUS')">
+                            <a href="" ng-click="showHistory()">
+                                <span class="glyphicon glyphicon-list-alt"></span>&nbsp;History
+                            </a>
+                        </li>
+                        <li ng-if="!isAuthority('ROLE_ANONYMOUS')">
+                            <a href="" ng-click="logout()">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout
+                            </a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>

@@ -20,6 +20,10 @@ component('login', {
                         password: $scope.password
                     }
                 }).then(function(response) {
+                    if (response.status == 200) {
+                        window.location.reload();
+                        window.location.replace('#!/');
+                    }
                     console.log(response.status);
                 },function errorCallback(response) {
                     console.log(response.status);

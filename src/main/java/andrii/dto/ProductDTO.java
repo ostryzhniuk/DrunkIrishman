@@ -54,16 +54,6 @@ public class ProductDTO {
         this.description = description;
     }
 
-    public Product convertToEntity() {
-        return new ModelMapper().map(this, Product.class);
-    }
-
-    public static ProductDTO convertToDTO(Product product) {
-        ProductDTO productDTO = new ModelMapper().map(product, ProductDTO.class);
-        productDTO.setCategory(CategoryDTO.convertToDTO(product.getCategory()));
-        return productDTO;
-    }
-
     public CategoryDTO getCategory() {
         return category;
     }
@@ -78,6 +68,16 @@ public class ProductDTO {
 
     public void setStatus(StockDTO.Status status) {
         this.status = status;
+    }
+
+    public Product convertToEntity() {
+        return new ModelMapper().map(this, Product.class);
+    }
+
+    public static ProductDTO convertToDTO(Product product) {
+        ProductDTO productDTO = new ModelMapper().map(product, ProductDTO.class);
+        productDTO.setCategory(CategoryDTO.convertToDTO(product.getCategory()));
+        return productDTO;
     }
 
     @Override

@@ -1,10 +1,32 @@
 'use strict';
 
-angular.
-module('shopApp').
-controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
+angular
+.module('shopApp')
+.controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
 
     $scope.orderProp = 'name';
+
+    $http.get('/currentUser').then(function(response) {
+        $rootScope.user = response.data;
+    });
+
+    $rootScope.isAuthority = function (role) {
+        if ($rootScope.user == undefined) {
+            return false;
+        }
+        var authorities = $rootScope.user.authorities;
+        for (var authority in authorities) {
+            if (authorities[authority].authority == role) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    $scope.logout = function () {
+        $http.get('/logout');
+        window.location.reload();
+    };
 
     $http.get('/basketSize').then(function(response) {
         $rootScope.basketSize = response.data;
@@ -26,11 +48,12 @@ controller('navbarCtrl', function ($http, $scope, $rootScope, $uibModal) {
             component: 'basket',
             windowClass: 'app-modal-window',
             size: 'lg',
-            backdrop: true,
-            resolve: {
-
-            }
+            backdrop: true
         });
+    };
+
+    $scope.showHistory = function (){
+        alert("Sorry, but this service is temporarily unavailable.");
     };
 
 });
