@@ -4,6 +4,9 @@
 
 <div id="panel-heading" class="panel-heading">
     Classification
+    <a id="createCategory" ng-click="createCategory()" href="" ng-if="isAuthority('ADMIN')">
+        <span class="glyphicon glyphicon-plus"></span>
+    </a>
 </div>
 <div class="panel-body">
     <div ng-repeat="category in categories | orderBy:orderProp">

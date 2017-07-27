@@ -33,3 +33,7 @@
     font-weight: bold;
     font-family: Cambria;
 }
+#createCategory {
+    float: right;
+    color: inherit;
+}
