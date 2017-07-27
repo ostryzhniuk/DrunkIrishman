@@ -7,6 +7,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-wrap">
+                    <div style="color: red; text-align: center; height: 20px">
+                        {{errorMessage}}
+                    </div>
                     <h1>Log in with email for your account</h1>
                     <form ng-submit="submit()" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">

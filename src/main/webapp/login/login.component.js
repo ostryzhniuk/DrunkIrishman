@@ -11,7 +11,10 @@ component('login', {
     controller: ['$http', '$scope',
         function LoginController($http, $scope) {
 
+            $scope.errorMessage = '';
+
             $scope.submit = function(){
+                $scope.errorMessage = '';
                 $http({
                     method: 'POST',
                     url: '/authorize',
@@ -24,9 +27,12 @@ component('login', {
                         window.location.reload();
                         window.location.replace('#!/');
                     }
-                    console.log(response.status);
                 },function errorCallback(response) {
-                    console.log(response.status);
+                    if (response.status == 404) {
+                        $scope.errorMessage = 'No such user found.';
+                    } else {
+                        $scope.errorMessage = 'Sorry, but system error occurred. Try again later, please.';
+                    }
                 });
             };
 
