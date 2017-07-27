@@ -11,8 +11,11 @@ component('signUp', {
     controller: ['$http', '$scope',
         function SignUpController($http, $scope) {
 
+            $scope.errorMessage = '';
+
             $scope.submit = function(){
 
+                $scope.errorMessage = '';
                 var dateStr = $scope.birthDate.toISOString().substring(0, 10);
 
                 $http({
@@ -26,8 +29,26 @@ component('signUp', {
                         birthDate: dateStr,
                         address: $scope.address,
                         phone: $scope.phone}
+                }).then(function(response) {
+                    $http({
+                        method: 'POST',
+                        url: '/authorize',
+                        data: {
+                            email: $scope.email,
+                            password: $scope.password
+                        }
+                    }).then(function() {
+                        window.location.reload();
+                        window.location.replace('#!/');
+                    });
+                },function errorCallback(response) {
+                    if (response.status == 409) {
+                        $scope.errorMessage = 'Email address already exists.';
+                    } else {
+                        $scope.errorMessage = 'Sorry, but system error occurred. Try again later, please.';
+                    }
                 });
-            }
+            };
 
         }
     ]

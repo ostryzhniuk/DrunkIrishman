@@ -63,3 +63,8 @@
 .btn-custom:focus {
     color: #fff;
 }
+div#errorMessage {
+    color: red;
+    text-align: center;
+    height: 20px;
+}

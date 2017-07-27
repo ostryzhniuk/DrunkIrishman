@@ -4,7 +4,12 @@
 
 <section id="sign-up">
     <form ng-submit="submit()" method="post" class="form-horizontal" id="sign-up-form" autocomplete="off">
+
         <h1>Create your account</h1>
+
+        <div id="errorMessage">
+            {{errorMessage}}
+        </div>
 
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label"><span class="req">* </span>First Name</label>
@@ -67,7 +72,7 @@
         </div>
 
         <div class="form-group">
-            <label for="phone" class="col-sm-3 control-label"><span class="req">* </span>Contact No.</label>
+            <label for="phone" class="col-sm-3 control-label"><span class="req">* </span>Contact Phone</label>
             <div class="col-sm-9">
                 <input ng-model="phone" type="text" id="phone" class="form-control phone" maxlength="28"
                        onkeyup="validatePhone(this);" placeholder="Insert your Phone Number" required/>

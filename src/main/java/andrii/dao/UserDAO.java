@@ -12,7 +12,6 @@ public class UserDAO extends GenericDAO<User> {
 
     @Override
     public void save(User user) {
-        getSession().close();
         getSession().save(user);
     }
 

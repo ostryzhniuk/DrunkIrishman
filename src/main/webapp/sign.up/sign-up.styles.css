@@ -20,7 +20,7 @@
     font-size: 18px;
     text-align: center;
     font-weight: bold;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 #sign-up .form-group {
     margin-bottom: 20px;
@@ -65,4 +65,10 @@ label small {
 span.req {
     color:maroon;
     font-size: 112%;
+}
+div#errorMessage {
+    color: red;
+    text-align: center;
+    height: 25px;
+    padding-bottom: 5px;
 }
