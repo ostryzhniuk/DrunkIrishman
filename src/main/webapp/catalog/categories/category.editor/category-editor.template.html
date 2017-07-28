@@ -7,25 +7,27 @@
 </div>
 <div class="panel-body">
 
-    <form>
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input id="name" ng-model="name" class="form-control" style="width: 300px" placeholder="Category name">
-        </div>
-        <button ng-click="save()" type="button" class="btn btn-success" style="width: 200px" >Save</button>
-    </form>
-
-
-
-
-    <!--<div class="col-xs-3 container">
+    <div class="col-xs-3 container">
         <div class="thumbnail">
-            <a href="#!/catalog/{{category.name}}">
-                <img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">
-                <div id="inner-container">
-                    <div class="capital-row">{{category.name}}</div>
-                </div>
-            </a>
+            <!--<img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">-->
+
+            <!--<button id="choosePhoto2" type="button" class="btn btn-default">-->
+                <!--Choose photo-->
+            <!--</button>-->
+
+            <input ng-model="photo" id="choosePhoto" type="file">
+
         </div>
-    </div>-->
+    </div>
+
+    <div class="col-xs-3">
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input id="name" ng-model="name" class="form-control" placeholder="Category name">
+            </div>
+            <button id="save" ng-click="save()" type="button" class="btn btn-success">Save</button>
+        </form>
+    </div>
+
 </div>

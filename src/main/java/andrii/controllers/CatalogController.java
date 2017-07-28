@@ -42,7 +42,7 @@ public class CatalogController {
         return productService.search(parameter);
     }
 
-    @PostMapping("/category/crate")
+    @PostMapping("/category/create")
     public void createCategory (@RequestBody CategoryDTO categoryDTO) {
         categoryService.create(categoryDTO);
     }

@@ -5,7 +5,7 @@ import andrii.dao.UserRoleDAO;
 import andrii.dto.UserDTO;
 import andrii.entities.User;
 import andrii.entities.UserRole;
-import andrii.security.UserRoleBuilder;
+import andrii.core.UserRoleBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

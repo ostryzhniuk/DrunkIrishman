@@ -7,6 +7,7 @@ public class CategoryDTO {
 
     private Integer id;
     private String name;
+    private String photo;
 
     public Integer getId() {
         return id;
@@ -22,6 +23,14 @@ public class CategoryDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Category convertToEntity() {

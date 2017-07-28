@@ -1,11 +1,8 @@
-package andrii.security;
+package andrii.core;
 
 import andrii.entities.User;
 import andrii.entities.UserRole;
 
-/**
- * Created by Andriy on 07/15/2017.
- */
 public class UserRoleBuilder {
 
     private UserRole userRole;
