@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="/catalog/categories/category.editor/category-editor.styles.css"/>
+</head>
+
+<div id="panel-heading" class="panel-heading">
+    Edit category
+</div>
+<div class="panel-body">
+
+    <form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" ng-model="name" class="form-control" style="width: 300px" placeholder="Category name">
+        </div>
+        <button ng-click="save()" type="button" class="btn btn-success" style="width: 200px" >Save</button>
+    </form>
+
+
+
+
+    <!--<div class="col-xs-3 container">
+        <div class="thumbnail">
+            <a href="#!/catalog/{{category.name}}">
+                <img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">
+                <div id="inner-container">
+                    <div class="capital-row">{{category.name}}</div>
+                </div>
+            </a>
+        </div>
+    </div>-->
+</div>

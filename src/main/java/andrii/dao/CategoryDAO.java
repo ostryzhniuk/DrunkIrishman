@@ -11,7 +11,7 @@ public class CategoryDAO extends GenericDAO<Category> {
 
     @Override
     public void save(Category category) {
-
+        getSession().save(category);
     }
 
     @Override

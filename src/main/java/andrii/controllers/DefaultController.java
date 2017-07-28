@@ -64,19 +64,4 @@ public class DefaultController {
         }
     }
 
-    @RequestMapping("/admin")
-    public String admin() {
-        return "/admin";
-    }
-
-    @RequestMapping("/user")
-    public String user() {
-        return "/user";
-    }
-
-    @RequestMapping("/403")
-    public String error403() {
-        return "/error/403";
-    }
-
 }

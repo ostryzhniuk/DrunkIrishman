@@ -56,11 +56,8 @@ public class ProductService {
     private ProductDTO buildProductDTO(Product product) {
         ProductDTO productDTO = ProductDTO.convertToDTO(product);
         Integer inStockNumber = getProductsWithStatus(product.getId(), Stock.Status.IN_STOCK).size();
-        if (inStockNumber == 0) {
-            productDTO.setStatus(StockDTO.Status.SOLD_OUT);
-        } else {
-            productDTO.setStatus(StockDTO.Status.IN_STOCK);
-        }
+
+        productDTO.setStatus(inStockNumber == 0 ? StockDTO.Status.SOLD_OUT : StockDTO.Status.IN_STOCK);
         return productDTO;
     }
 

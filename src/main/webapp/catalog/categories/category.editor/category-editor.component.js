@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('catalogCategories', [
+angular.module('categoryEditor', [
     'ngRoute'
 ]);
 
 angular.
-module('catalogCategories').
-component('catalogCategories', {
-    templateUrl: '/catalog/categories/catalog-categories.template.html',
+module('categoryEditor').
+component('categoryEditor', {
+    templateUrl: '/catalog/categories/category.editor/category-editor.template.html',
     controller: ['$http', '$scope', '$routeParams', '$rootScope',
-        function CatalogCategoriesController($http, $scope, $rootScope) {
+        function CategoryEditorController($http, $scope, $rootScope) {
 
             $http.get('/categories').then(function(response) {
                 $scope.categories = response.data;
@@ -33,6 +33,10 @@ component('catalogCategories', {
                 }
                 return false;
             };
+
+            $scope.createCategory = function() {
+
+            }
 
         }
     ]

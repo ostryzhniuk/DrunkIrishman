@@ -1,13 +1,13 @@
 package andrii.controllers;
 
+import andrii.dto.CategoryDTO;
 import andrii.dto.ProductDTO;
 import andrii.entities.Category;
+import andrii.services.CategoryService;
 import andrii.services.ProductService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +18,9 @@ public class CatalogController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/products/{categoryName}")
     public List<ProductDTO> products(@PathVariable("categoryName") String categoryName){
@@ -37,6 +40,11 @@ public class CatalogController {
     @GetMapping("/search/{parameter}")
     public List<ProductDTO> search(@PathVariable("parameter") String parameter){
         return productService.search(parameter);
+    }
+
+    @PostMapping("/category/crate")
+    public void createCategory (@RequestBody CategoryDTO categoryDTO) {
+        categoryService.create(categoryDTO);
     }
 
     /*@GetMapping("/photo/{name}")
