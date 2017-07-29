@@ -4,6 +4,7 @@
     font-size: 18px;
     font-weight: bold;
     font-family: Cambria;
+    position: relative;
 }
 .thumbnail {
     border-radius: 0px;
@@ -58,4 +59,14 @@ a.clickable-panel {
 }
 #name-clickable-panel{
     color: inherit;
+}
+#add-product-button {
+    height: 24px;
+    padding-top: 1px;
+    width: 103px;
+}
+#create-product {
+    color: inherit;
+    position: absolute;
+    right: 15px;
 }

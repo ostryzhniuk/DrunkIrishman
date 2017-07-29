@@ -4,6 +4,9 @@
 
 <div id="panel-heading" class="panel-heading">
     {{categoryName}}
+    <a id="create-product" href="#!/catalog/products/create/" ng-if="isAuthority('ADMIN')">
+        <button id="add-product-button" type="button" class="btn btn-default">Add product</button>
+    </a>
 </div>
 <div class="panel-body">
     <div ng-repeat="product in products | orderBy:orderProp">

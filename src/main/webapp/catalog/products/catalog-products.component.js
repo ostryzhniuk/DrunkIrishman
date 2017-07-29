@@ -37,6 +37,23 @@ component('catalogProducts', {
                 });
             };
 
+            $http.get('/currentUser').then(function(response) {
+                $rootScope.user = response.data;
+            });
+
+            $scope.isAuthority = function (role) {
+                if ($rootScope.user == undefined) {
+                    return false;
+                }
+                var authorities = $rootScope.user.authorities;
+                for (var authority in authorities) {
+                    if (authorities[authority].authority == role) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
         }
     ]
 });
