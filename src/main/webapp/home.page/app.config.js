@@ -12,7 +12,8 @@ angular.module('shopApp', [
     'searchProduct',
     'categoryEditor',
     'categoryCreator',
-    'productCreator'
+    'productCreator',
+    'productEditor'
 ]);
 
 angular.
@@ -37,6 +38,9 @@ config(['$locationProvider' ,'$routeProvider', '$qProvider',
         }).
         when('/catalog/products/create/', {
             template: '<product-creator></product-creator>'
+        }).
+        when('/catalog/products/edit/:productId', {
+            template: '<product-editor></product-editor>'
         }).
         when('/login', {
             template: '<login></login>'

@@ -71,4 +71,9 @@ public class ProductService {
         productDAO.save(productDTO.convertToEntity());
     }
 
+    @Transactional
+    public void update(ProductDTO productDTO) {
+        productDAO.update(productDTO.convertToEntity());
+    }
+
 }

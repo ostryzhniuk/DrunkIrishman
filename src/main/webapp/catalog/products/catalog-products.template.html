@@ -15,10 +15,20 @@
 </div>
 <div class="panel-body">
     <div ng-repeat="product in products | orderBy:orderProp">
-        <div id="outer-container" class="col-xs-3">
+        <div id="outer-container" class="col-xs-3" onmouseover="mouseOver2(this)" onmouseout="mouseOut2(this)">
+
+            <div id="edit-container" ng-show="isAuthority('ADMIN')">
+                <span type="button" class="close glyphicon glyphicon-remove" ng-click="delete(category)"></span>
+                <a href="#!/catalog/products/edit/{{product.id}}">
+                    <span id="edit-button" type="button" class="close glyphicon glyphicon-pencil"></span>
+                </a>
+            </div>
+
             <a class="clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
-                <div class="thumbnail panel-body">
+                <div class="thumbnail panel-body" >
+
                     <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
+
                     <div id="inner-container">
                         <a id="name-clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
                             <div id="capital-row">
