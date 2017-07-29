@@ -34,6 +34,16 @@ component('catalogCategories', {
                 return false;
             };
 
+            $scope.delete = function (category) {
+                var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
+                    'permanently delete the ' + category.name + ' category and all products of this category.');
+                if (request == true) {
+                    $http.delete('/category/delete/' + category.id).then(function(response) {
+                        window.location.reload();
+                    });
+                };
+            };
+
         }
     ]
 });

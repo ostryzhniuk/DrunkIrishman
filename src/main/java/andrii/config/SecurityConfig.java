@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home").permitAll()
                 .antMatchers("/category/crate",
                         "/category/update",
-                        "/category/delete").hasAuthority("ADMIN")
+                        "/category/delete/**").hasAuthority("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login")

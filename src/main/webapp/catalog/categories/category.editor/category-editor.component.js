@@ -14,6 +14,7 @@ component('categoryEditor', {
             $scope.errorMessage = '';
             $scope.successMessage = '';
             $scope.editor = true;
+            $scope.action = 'Edit';
 
             $http.get('/category/' + $routeParams.categoryName).then(function(response) {
                 $scope.category = response.data;

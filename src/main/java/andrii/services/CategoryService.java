@@ -46,10 +46,9 @@ public class CategoryService {
         categoryDAO.update(category);
     }
 
-    public void delete(CategoryDTO categoryDTO){
-        Category category = categoryDTO.convertToEntity();
-        productDAO.deleteByCategory(category.getId());
-        categoryDAO.delete(category);
+    public void delete(Integer categoryId){
+        productDAO.deleteByCategory(categoryId);
+        categoryDAO.deleteById(categoryId);
     }
 
 }

@@ -47,3 +47,7 @@ div#message-container {
     float: right;
     color: inherit;
 }
+#add-category-button {
+    height: 24px;
+    padding-top: 1px;
+}

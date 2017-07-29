@@ -25,8 +25,8 @@ public class EditCatalogController {
         categoryService.update(categoryDTO);
     }
 
-    @DeleteMapping("/category/delete")
-    public void deleteCategory (@RequestBody CategoryDTO categoryDTO) {
-        categoryService.delete(categoryDTO);
+    @DeleteMapping("/category/delete/{categoryId}")
+    public void deleteCategory (@PathVariable("categoryId") Integer categoryId) {
+        categoryService.delete(categoryId);
     }
 }

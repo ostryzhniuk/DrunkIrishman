@@ -12,6 +12,7 @@ component('categoryCreator', {
             var photoBase64 = '';
             $scope.errorMessage = '';
             $scope.editor = false;
+            $scope.action = 'Create';
 
             $scope.save = function () {
                 $scope.errorMessage = '';

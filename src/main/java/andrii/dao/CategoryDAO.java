@@ -37,4 +37,11 @@ public class CategoryDAO extends GenericDAO<Category> {
     public void delete(Category category) {
         getSession().delete(category);
     }
+
+    public void deleteById(Integer categoryId) {
+        Query query = getSession().createQuery("delete Category " +
+                "where id = :categoryId");
+        query.setParameter("categoryId", categoryId);
+        query.executeUpdate();
+    }
 }
