@@ -39,19 +39,9 @@ public class CatalogController {
         return productService.search(parameter);
     }
 
-    @PostMapping("/category/create")
-    public void createCategory (@RequestBody CategoryDTO categoryDTO) {
-        categoryService.create(categoryDTO);
-    }
-
     @GetMapping("/category/{categoryName}")
     public CategoryDTO categoryByName (@PathVariable("categoryName") String categoryName) {
         return categoryService.getCategoryByName(categoryName);
-    }
-
-    @PutMapping("/category/update")
-    public void updateCategory (@RequestBody CategoryDTO categoryDTO) {
-        categoryService.update(categoryDTO);
     }
 
     /*@GetMapping("/photo/{name}")

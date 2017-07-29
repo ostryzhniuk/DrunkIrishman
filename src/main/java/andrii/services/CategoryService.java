@@ -2,6 +2,7 @@ package andrii.services;
 
 import andrii.core.ImageHandler;
 import andrii.dao.CategoryDAO;
+import andrii.dao.ProductDAO;
 import andrii.dto.CategoryDTO;
 import andrii.entities.Category;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class CategoryService {
 
     @Autowired
     private CategoryDAO categoryDAO;
+
+    @Autowired
+    private ProductDAO productDAO;
 
     @Transactional
     public void create (CategoryDTO categoryDTO) {
@@ -40,6 +44,12 @@ public class CategoryService {
     public void update(CategoryDTO categoryDTO) {
         Category category = categoryDTO.convertToEntity();
         categoryDAO.update(category);
+    }
+
+    public void delete(CategoryDTO categoryDTO){
+        Category category = categoryDTO.convertToEntity();
+        productDAO.deleteByCategory(category.getId());
+        categoryDAO.delete(category);
     }
 
 }

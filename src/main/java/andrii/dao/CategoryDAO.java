@@ -30,16 +30,11 @@ public class CategoryDAO extends GenericDAO<Category> {
 
     @Override
     public void update(Category category) {
-        Query query = getSession().createQuery("update Category " +
-                "set name = :name " +
-                "where id = :id");
-        query.setParameter("name", category.getName());
-        query.setParameter("id", category.getId());
-        query.executeUpdate();
+        getSession().update(category);
     }
 
     @Override
     public void delete(Category category) {
-
+        getSession().delete(category);
     }
 }

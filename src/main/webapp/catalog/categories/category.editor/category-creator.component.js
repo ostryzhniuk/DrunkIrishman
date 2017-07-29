@@ -11,6 +11,7 @@ component('categoryCreator', {
 
             var photoBase64 = '';
             $scope.errorMessage = '';
+            $scope.editor = false;
 
             $scope.save = function () {
                 $scope.errorMessage = '';
@@ -26,10 +27,12 @@ component('categoryCreator', {
                         name: $scope.name,
                         photo: photoBase64
                     }
-                }).then(function(response) {},function errorCallback(response) {
+                }).then(function(response) {
+                    var categoryName = $scope.name;
+                    window.location.replace('#!/catalog/categories/edit/' + categoryName);
+                },function errorCallback(response) {
                     if (response.status == 409) {
                         $scope.errorMessage = 'Such category already exists.';
-                        console.log('response.status: ' + response.status);
                     } else {
                         $scope.errorMessage = 'Sorry, but system error occurred. Try again later, please.';
                     }

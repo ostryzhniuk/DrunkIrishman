@@ -13,6 +13,7 @@ component('categoryEditor', {
 
             $scope.errorMessage = '';
             $scope.successMessage = '';
+            $scope.editor = true;
 
             $http.get('/category/' + $routeParams.categoryName).then(function(response) {
                 $scope.category = response.data;
@@ -36,7 +37,6 @@ component('categoryEditor', {
                 },function errorCallback(response) {
                     if (response.status == 409) {
                         $scope.errorMessage = 'Such category already exists';
-                        console.log('response.status: ' + response.status);
                     } else {
                         $scope.errorMessage = 'Sorry, but system error occurred. Try again later, please.';
                     }

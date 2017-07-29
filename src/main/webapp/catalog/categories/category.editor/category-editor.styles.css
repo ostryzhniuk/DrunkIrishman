@@ -43,3 +43,7 @@ div#message-container {
 #successMessage {
     color: green;
 }
+#createCategory {
+    float: right;
+    color: inherit;
+}

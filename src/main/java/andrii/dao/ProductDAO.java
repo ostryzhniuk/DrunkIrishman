@@ -69,11 +69,18 @@ public class ProductDAO extends GenericDAO<Product> {
 
     @Override
     public void update(Product product) {
-
+        getSession().update(product);
     }
 
     @Override
     public void delete(Product product) {
+        getSession().delete(product);
+    }
 
+    public void deleteByCategory(Integer categoryId) {
+        Query query = getSession().createQuery("delete Product " +
+                "where category.id = :categoryId");
+        query.setParameter("categoryId", categoryId);
+        query.executeUpdate();
     }
 }
