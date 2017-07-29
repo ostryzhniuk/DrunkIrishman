@@ -26,4 +26,20 @@ public class CategoryService {
 //        ImageHandler.save(bufferedImage, category.getId().toString());
     }
 
+    @Transactional
+    public CategoryDTO getCategoryByName(String categoryName) {
+        Category category = categoryDAO.getCategoryByName(categoryName);
+        if (category != null) {
+            return CategoryDTO.convertToDTO(category);
+        } else {
+            throw new NullPointerException();
+        }
+    }
+
+    @Transactional
+    public void update(CategoryDTO categoryDTO) {
+        Category category = categoryDTO.convertToEntity();
+        categoryDAO.update(category);
+    }
+
 }

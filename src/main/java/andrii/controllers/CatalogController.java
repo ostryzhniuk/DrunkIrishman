@@ -5,12 +5,9 @@ import andrii.dto.ProductDTO;
 import andrii.entities.Category;
 import andrii.services.CategoryService;
 import andrii.services.ProductService;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 @RestController
@@ -45,6 +42,16 @@ public class CatalogController {
     @PostMapping("/category/create")
     public void createCategory (@RequestBody CategoryDTO categoryDTO) {
         categoryService.create(categoryDTO);
+    }
+
+    @GetMapping("/category/{categoryName}")
+    public CategoryDTO categoryByName (@PathVariable("categoryName") String categoryName) {
+        return categoryService.getCategoryByName(categoryName);
+    }
+
+    @PutMapping("/category/update")
+    public void updateCategory (@RequestBody CategoryDTO categoryDTO) {
+        categoryService.update(categoryDTO);
     }
 
     /*@GetMapping("/photo/{name}")

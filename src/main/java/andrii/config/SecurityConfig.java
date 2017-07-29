@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-                .antMatchers("/category/crate").hasAuthority("ADMIN")
+                .antMatchers("/category/crate", "/category/update").hasAuthority("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login")

@@ -34,3 +34,12 @@ button#save{
 input#choosePhoto{
     margin-top: 50%;
 }
+div#message-container {
+    margin-top: 25px;
+}
+#errorMessage {
+    color: red;
+}
+#successMessage {
+    color: green;
+}

@@ -27,6 +27,10 @@
                 <input id="name" ng-model="name" class="form-control" placeholder="Category name">
             </div>
             <button id="save" ng-click="save()" type="button" class="btn btn-success">Save</button>
+            <div id="message-container">
+                <span id="errorMessage">{{errorMessage}}</span>
+                <span id="successMessage">{{successMessage}}</span>
+            </div>
         </form>
     </div>
 

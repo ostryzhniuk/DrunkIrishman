@@ -15,7 +15,9 @@
             <div class="thumbnail" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
                 <div id="edit-container" ng-show="isAuthority('ADMIN')">
                     <span type="button" class="close glyphicon glyphicon-remove" ng-click=""></span>
-                    <span id="edit-button" type="button" class="close glyphicon glyphicon-pencil" ng-click=""></span>
+                    <a href="#!/catalog/categories/edit/{{category.name}}">
+                        <span id="edit-button" type="button" class="close glyphicon glyphicon-pencil" ng-click=""></span>
+                    </a>
                 </div>
                 <a href="#!/catalog/{{category.name}}">
                     <img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">
