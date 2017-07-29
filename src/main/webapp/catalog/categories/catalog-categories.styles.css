@@ -4,6 +4,7 @@
     height: 360px;
     width: 300px;
     padding: 0;
+    position: relative;
 }
 .container {
     padding: 5px;
@@ -36,4 +37,13 @@
 #createCategory {
     float: right;
     color: inherit;
+}
+#edit-container {
+    position: absolute;
+    margin: 5px;
+    right: 0px;
+    visibility: hidden;
+}
+#edit-button {
+    margin-right: 15px;
 }

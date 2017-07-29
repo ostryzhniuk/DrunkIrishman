@@ -5,13 +5,18 @@
 <div id="panel-heading" class="panel-heading">
     Classification
     <a id="createCategory" href="#!/catalog/categories/create/" ng-if="isAuthority('ADMIN')">
-        <span class="glyphicon glyphicon-plus"></span>
+        <button type="button" class="btn btn-default" style="height: 24px; padding-top: 1px;">Add category</button>
+        <!--<span class="glyphicon glyphicon-plus"></span>-->
     </a>
 </div>
 <div class="panel-body">
     <div ng-repeat="category in categories | orderBy:orderProp">
         <div class="col-xs-3 container">
-            <div class="thumbnail">
+            <div class="thumbnail" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+                <div id="edit-container" ng-show="isAuthority('ADMIN')">
+                    <span type="button" class="close glyphicon glyphicon-remove" ng-click=""></span>
+                    <span id="edit-button" type="button" class="close glyphicon glyphicon-pencil" ng-click=""></span>
+                </div>
                 <a href="#!/catalog/{{category.name}}">
                     <img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">
                     <div id="inner-container">

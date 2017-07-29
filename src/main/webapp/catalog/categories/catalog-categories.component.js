@@ -37,3 +37,12 @@ component('catalogCategories', {
         }
     ]
 });
+
+
+function mouseOver(element){
+    element.childNodes[1].style.visibility='visible';
+};
+
+function mouseOut(element){
+    element.childNodes[1].style.visibility='hidden';
+};
