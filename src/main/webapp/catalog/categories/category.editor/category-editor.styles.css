@@ -1,14 +1,17 @@
+.panel-body {
+    text-align: center;
+}
 .thumbnail {
     border-radius: 0px;
     margin: 0;
-    height: 360px;
+    height: 300px;
     width: 300px;
     padding: 0;
     text-align: center;
 }
 .container {
     padding: 5px;
-    height: 370px;
+    height: 310px;
     width: 310px;
 }
 #photo {
@@ -24,18 +27,20 @@
     font-size: 18px;
     font-weight: bold;
     font-family: Cambria;
+    position: relative;
 }
 input#name {
     width: 300px;
 }
 button#save{
-    width: 200px;
+    margin-top: 10px;
+    width: 300px;
 }
 input#choosePhoto{
     margin-top: 50%;
 }
 div#message-container {
-    margin-top: 25px;
+    height: 25px;
 }
 #errorMessage {
     color: red;
@@ -43,11 +48,18 @@ div#message-container {
 #successMessage {
     color: green;
 }
-#createCategory {
-    float: right;
+#create-category {
     color: inherit;
+    position: absolute;
+    right: 15px;
 }
-#add-category-button {
+.category-actions-button {
     height: 24px;
     padding-top: 1px;
+    margin-left: 5px;
+    width: 127px;
+}
+.form-group {
+    text-align:center;
+    display: inline-block;
 }

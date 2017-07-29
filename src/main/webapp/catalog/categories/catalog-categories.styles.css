@@ -33,10 +33,12 @@
     font-size: 18px;
     font-weight: bold;
     font-family: Cambria;
+    position: relative;
 }
-#createCategory {
-    float: right;
+#create-category {
     color: inherit;
+    position: absolute;
+    right: 15px;
 }
 #edit-container {
     position: absolute;

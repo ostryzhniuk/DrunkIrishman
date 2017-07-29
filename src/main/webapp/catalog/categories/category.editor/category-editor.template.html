@@ -4,19 +4,29 @@
 
 <div id="panel-heading" class="panel-heading">
     {{action}} category
-    <a id="createCategory" href="#!/catalog/categories/create/" ng-if='editor'>
-        <button id="add-category-button" type="button" class="btn btn-default">Add category</button>
-        <!--<span class="glyphicon glyphicon-plus"></span>-->
-    </a>
+    <span id="create-category" ng-if='editor'>
+        <a href="#!/catalog/categories/create/">
+            <button type="button" class="btn btn-default category-actions-button">Add category</button>
+            <!--<span class="glyphicon glyphicon-plus"></span>-->
+        </a>
+        <button type="button" class="btn btn-default category-actions-button" ng-click="delete(category)">
+            Remove category
+        </button>
+    </span>
 </div>
 <div class="panel-body">
 
-    <div class="col-xs-3 container">
+    <div id="message-container">
+        <span id="errorMessage">{{errorMessage}}</span>
+        <span id="successMessage">{{successMessage}}</span>
+    </div>
+
+    <div class="container">
         <div class="thumbnail">
             <!--<img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">-->
 
             <!--<button id="choosePhoto2" type="button" class="btn btn-default">-->
-                <!--Choose photo-->
+            <!--Choose photo-->
             <!--</button>-->
 
             <input ng-model="photo" id="choosePhoto" type="file">
@@ -24,18 +34,13 @@
         </div>
     </div>
 
-    <div class="col-xs-3">
-        <form>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input id="name" ng-model="name" class="form-control" placeholder="Category name">
-            </div>
+    <form>
+        <div class="form-group">
+            <input id="name" ng-model="name" class="form-control" placeholder="Category name">
+        </div>
+        <div>
             <button id="save" ng-click="save()" type="button" class="btn btn-success">Save</button>
-            <div id="message-container">
-                <span id="errorMessage">{{errorMessage}}</span>
-                <span id="successMessage">{{successMessage}}</span>
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
 </div>
