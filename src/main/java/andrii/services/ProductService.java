@@ -66,4 +66,9 @@ public class ProductService {
         return productDAO.getProductsWithStatus(productId, status);
     }
 
+    @Transactional
+    public void save(ProductDTO productDTO) {
+        productDAO.save(productDTO.convertToEntity());
+    }
+
 }

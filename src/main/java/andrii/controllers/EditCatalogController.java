@@ -1,6 +1,7 @@
 package andrii.controllers;
 
 import andrii.dto.CategoryDTO;
+import andrii.dto.ProductDTO;
 import andrii.services.CategoryService;
 import andrii.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,10 @@ public class EditCatalogController {
     @DeleteMapping("/category/delete/{categoryId}")
     public void deleteCategory (@PathVariable("categoryId") Integer categoryId) {
         categoryService.delete(categoryId);
+    }
+
+    @PostMapping("/product/create")
+    public void createProduct (@RequestBody ProductDTO productDTO) {
+        productService.save(productDTO);
     }
 }

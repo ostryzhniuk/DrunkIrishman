@@ -4,9 +4,14 @@
 
 <div id="panel-heading" class="panel-heading">
     {{categoryName}}
-    <a id="create-product" href="#!/catalog/products/create/" ng-if="isAuthority('ADMIN')">
-        <button id="add-product-button" type="button" class="btn btn-default">Add product</button>
-    </a>
+    <span id="create-panel" ng-if="isAuthority('ADMIN')">
+        <a id="create-product" href="#!/catalog/products/create/">
+            <button type="button" class="btn btn-default category-actions-button">Add product</button>
+        </a>
+        <a href="#!/catalog/categories/create/">
+            <button type="button" class="btn btn-default category-actions-button">Add category</button>
+        </a>
+    </span>
 </div>
 <div class="panel-body">
     <div ng-repeat="product in products | orderBy:orderProp">

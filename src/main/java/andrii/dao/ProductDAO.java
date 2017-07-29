@@ -13,7 +13,7 @@ public class ProductDAO extends GenericDAO<Product> {
 
     @Override
     public void save(Product product) {
-
+        getSession().save(product);
     }
 
     @Override

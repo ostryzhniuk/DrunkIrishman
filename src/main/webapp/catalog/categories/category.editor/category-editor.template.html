@@ -15,30 +15,30 @@
 </div>
 <div class="panel-body">
 
-    <div id="message-container">
-        <span id="errorMessage">{{errorMessage}}</span>
-        <span id="successMessage">{{successMessage}}</span>
-    </div>
-
-    <div class="container">
-        <div class="thumbnail">
-            <!--<img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">-->
-
-            <!--<button id="choosePhoto2" type="button" class="btn btn-default">-->
-            <!--Choose photo-->
-            <!--</button>-->
-
-            <input ng-model="photo" id="choosePhoto" type="file">
-
+    <form ng-submit="save()">
+        <div id="message-container">
+            <span id="errorMessage">{{errorMessage}}</span>
+            <span id="successMessage">{{successMessage}}</span>
         </div>
-    </div>
 
-    <form>
+        <div class="container">
+            <div class="thumbnail">
+                <!--<img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">-->
+
+                <!--<button id="choosePhoto2" type="button" class="btn btn-default">-->
+                <!--Choose photo-->
+                <!--</button>-->
+
+                <input ng-model="photo" id="choosePhoto" type="file" required>
+
+            </div>
+        </div>
+
         <div class="form-group">
             <input id="name" ng-model="name" class="form-control" placeholder="Category name" required>
         </div>
         <div>
-            <button id="save" ng-click="save()" type="button" class="btn btn-success">Save</button>
+            <button id="save" type="submit" class="btn btn-success">Save</button>
         </div>
     </form>
 

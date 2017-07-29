@@ -16,8 +16,20 @@ component('productCreator', {
             });
 
             $scope.save = function () {
+                $http({
+                    method: 'POST',
+                    url: '/product/create',
+                    data: {
+                        name: $scope.name,
+                        price: $scope.price,
+                        capacity: $scope.capacity,
+                        category: $scope.category,
+                        description: $scope.description
+                    }
+                }).then(function(response) {
 
-            }
+                });
+            };
 
         }
     ]
