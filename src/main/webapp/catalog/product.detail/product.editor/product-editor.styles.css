@@ -19,32 +19,49 @@
     width: 400px;
     height: 400px;
 }
-#capital-row {
+#name {
+    height: 25px;
     font-weight: bold;
-    height: 40px;
-}
-#price {
-    padding: 2px 6px 2px 6px;
-    background-color: #9edf1f;
-    font-weight: bold;
-    font-size: 16px;
-    color: white;
-    border-radius: 5px;
-}
-div#price-container {
-    margin-top: 10px;
-}
-a#category {
-    color: inherit;
 }
 div#main-information {
     margin-top: 10px;
     padding-left: 10px;
 }
-div#capacity {
-    margin-top: 30px;
-    margin-bottom: 50px
+div#capacity-container {
+    margin-left: 20px;
 }
-div#description {
-    margin-top: 50px;
+div#description-container {
+    margin-top: 25px;
+}
+#description {
+    height: 200px;
+    font-size: 13px;
+}
+#price{
+    width: 150px;
+    height: 25px;
+    font-size: 13px;
+}
+#capacity{
+    width: 150px;
+    height: 25px;
+    font-size: 13px;
+}
+#category {
+    height: 25px;
+    width: 200px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 20px;
+    font-size: 13px;
+}
+label {
+    font-size: 13px;
+}
+#save-button-container{
+    text-align: center;
+}
+#save-button {
+    width: 300px;
+    margin-top: 30px;
 }

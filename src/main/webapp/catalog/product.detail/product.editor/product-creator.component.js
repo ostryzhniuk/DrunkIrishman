@@ -11,7 +11,13 @@ component('productCreator', {
     controller: ['$http', '$scope', '$routeParams', '$rootScope',
         function ProductDetailController($http, $scope, $routeParams, $rootScope) {
 
+            $http.get('/categories').then(function(response) {
+                $scope.categories = response.data;
+            });
 
+            $scope.save = function () {
+
+            }
 
         }
     ]
