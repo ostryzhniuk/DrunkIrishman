@@ -14,7 +14,7 @@ public class CartSet<T extends CartDTO> extends HashSet<T> {
     @Override
     public boolean add(T t) {
         if (!super.add(t)) {
-            get(t).increaseCounter(t.getCounter());
+            get(t).increaseQuantity(t.getQuantity());
         }
         return true;
     }
@@ -24,8 +24,8 @@ public class CartSet<T extends CartDTO> extends HashSet<T> {
         T itemToRemove;
         if ((itemToRemove = get(t)) != null) {
 
-            if (itemToRemove.getCounter() > 1) {
-                itemToRemove.decreaseCounter();
+            if (itemToRemove.getQuantity() > 1) {
+                itemToRemove.decreaseQuantity();
             } else {
                 super.remove(itemToRemove);
             }
@@ -37,7 +37,7 @@ public class CartSet<T extends CartDTO> extends HashSet<T> {
     @Override
     public int size() {
         return this.stream()
-                .mapToInt(CartDTO::getCounter)
+                .mapToInt(CartDTO::getQuantity)
                 .sum();
     }
 

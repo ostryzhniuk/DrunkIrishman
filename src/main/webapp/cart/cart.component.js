@@ -30,7 +30,7 @@ component('cart', {
             };
 
             function sum(product) {
-                return (product.counter * product.price);
+                return (product.quantity * product.price);
             };
 
             $scope.sumTotal = function (product){
@@ -46,7 +46,7 @@ component('cart', {
             };
 
             $scope.addToCart = function (product){
-                product.counter = 1;
+                product.quantity = 1;
                 $http({
                     method: 'PUT',
                     url: '/addToCart',

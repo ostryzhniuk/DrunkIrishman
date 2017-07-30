@@ -22,7 +22,7 @@ component('productDetail', {
             });
 
             $scope.addToCart = function (product){
-                product.counter = $scope.number;
+                product.quantity = $scope.number;
                 $http({
                     method: 'PUT',
                     url: '/addToCart',

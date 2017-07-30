@@ -2,22 +2,22 @@ package andrii.dto;
 
 public class CartDTO extends ProductDTO  {
 
-    private Integer counter = 1;
+    private Integer quantity = 1;
 
-    public Integer getCounter() {
-        return counter;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setCounter(Integer counter) {
-        this.counter = counter;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public void increaseCounter(Integer value){
-        counter += value;
+    public void increaseQuantity(Integer value){
+        quantity += value;
     }
 
-    public void decreaseCounter(){
-        counter--;
+    public void decreaseQuantity(){
+        quantity--;
     }
 
     @Override
