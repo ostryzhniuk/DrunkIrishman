@@ -17,6 +17,8 @@ component('productDetail', {
 
             $http.get('/product/' + $routeParams.productId).then(function(response) {
                 $scope.product = response.data;
+                $scope.description = $scope.product.description;
+                descriptionHeightSensitive();
             });
 
             $scope.addToBasket = function (product){
@@ -32,11 +34,19 @@ component('productDetail', {
             };
 
             $scope.isInStock = function (product){
-                if (product.status == 'IN_STOCK') {
+                if (product != undefined && product.status == 'IN_STOCK') {
                     return true;
                 } else {
                     return false;
                 }
+            };
+
+            function descriptionHeightSensitive() {
+                setTimeout(function(){
+                    var textarea = document.querySelector('textarea');
+                    var height = textarea.scrollHeight + 15;
+                    textarea.style.cssText = 'height:' + height + 'px';
+                },0);
             };
         }
     ]

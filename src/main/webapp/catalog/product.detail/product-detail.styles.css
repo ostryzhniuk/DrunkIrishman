@@ -69,8 +69,18 @@ div#buy-container {
     padding-left: 30px;
     margin-top: 10px;
 }
-div#description {
+div#description-container {
     margin-top: 50px;
+}
+textarea#description {
+    margin-top: 5px;
+    height:auto;
+    padding:0;
+    border: none;
+    resize: none;
+    background-color: inherit;
+    outline: none;
+    box-shadow: none;
 }
 #inStockStatus {
     color: #5cb85c;

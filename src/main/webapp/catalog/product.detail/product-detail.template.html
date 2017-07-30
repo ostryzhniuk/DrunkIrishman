@@ -9,7 +9,7 @@
     <div class=" col-sm-4 thumbnail">
         <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
     </div>
-
+    <form>
     <div class="col-sm-4" id="main-information">
 
         <div id="capital-row">
@@ -63,9 +63,10 @@
 
     </div>
 
-    <div class="col-sm-8" id="description">
+    <div class="col-sm-8" id="description-container">
         <b>Description:</b>
-        <p>{{product.description}}
+        <textarea id="description" ng-model="description" class="form-control" readonly></textarea>
     </div>
+    </form>
 
 </div>

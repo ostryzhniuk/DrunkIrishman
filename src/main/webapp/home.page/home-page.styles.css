@@ -48,9 +48,17 @@ footer {
     bottom: 0;
     left: 0;
 }
+#search-input {
+    outline: none;
+    box-shadow: none;
+}
 .search-group {
     height: 28px;
     margin-top: 3px;
+}
+#search-submit {
+    outline: none;
+    box-shadow: none;
 }
 body {
     background-color: #eee;
@@ -60,4 +68,12 @@ body {
 }
 #user-functions-button-panel{
     width: 200px;
+}
+#a-basket {
+    outline: none;
+    box-shadow: none;
+}
+#user-name {
+    margin-right: 50px;
+    font-weight: 100
 }
