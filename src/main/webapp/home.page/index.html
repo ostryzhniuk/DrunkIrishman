@@ -21,8 +21,7 @@
     <script src="/catalog/products/catalog-products.component.js"></script>
     <script src="/catalog/categories/catalog-categories.component.js"></script>
     <script src="/catalog/product.detail/product-detail.component.js"></script>
-    <script src="/basket/basket.component.js"></script>
-    <script src="/basket/basket.service.js"></script>
+    <script src="/cart/cart.component.js"></script>
     <script src="/search.product/search-product.component.js"></script>
     <script src="/catalog/categories/category.editor/category-creator.component.js"></script>
     <script src="/catalog/categories/category.editor/category-editor.component.js"></script>
@@ -80,10 +79,10 @@
                         <li><a><span class="glyphicon glyphicon-user"></span>&nbsp;{{user.username}}</a></li>
                     </div>
                     <div class="nav navbar-nav">
-                        <li id="basket"><a id="a-basket" href="" ng-click="showBasket()">
+                        <li id="cart"><a id="a-cart" href="" ng-click="showCart()">
                             <div id="goods-quantity-bracket">
-                                <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Basket
-                                ({{basketSize}})
+                                <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Cart
+                                ({{cartSize}})
                             </div>
                         </a></li>
                     </div>

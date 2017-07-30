@@ -8,7 +8,7 @@ angular.module('shopApp', [
     'catalogCategories',
     'productDetail',
     'ui.bootstrap',
-    'basket',
+    'cart',
     'searchProduct',
     'categoryEditor',
     'categoryCreator',

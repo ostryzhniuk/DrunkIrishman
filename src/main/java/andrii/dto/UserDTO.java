@@ -3,11 +3,8 @@ package andrii.dto;
 import andrii.entities.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.modelmapper.ModelMapper;
-import java.io.Serializable;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 public class UserDTO {
 

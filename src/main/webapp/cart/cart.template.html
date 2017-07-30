@@ -1,20 +1,20 @@
 <head>
-    <link rel="stylesheet" href="/basket/basket.styles.css"/>
+    <link rel="stylesheet" href="/cart/cart.styles.css"/>
 </head>
 
 <div class="app-modal-window">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden  ng-click="cancel()">&#128473;</button>
-        <h4 class="modal-title">Basket <span class="glyphicon glyphicon-shopping-cart"></span>
-            <span id="basketSize">({{basketSize}})</span></h4>
+        <h4 class="modal-title">Shopping Cart <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span id="cartSize">({{cartSize}})</span></h4>
     </div>
 
     <div id="emptyCondition" ng-show="isEmpty()">
-        Your basket is empty
+        Your shopping cart is empty
     </div>
 
     <div class="modal-body">
-        <div ng-repeat="product in basket">
+        <div ng-repeat="product in cart">
 
             <img ng-src="/resources/image/products/{{product.id}}.jpg" id="productPhoto">
 
@@ -35,7 +35,7 @@
 				        </span>
                         <input class="form-control text-center" value="{{product.counter}}" readonly>
                         <span class="input-group-btn">
-					        <button ng-click="addToBasket(product)"
+					        <button ng-click="addToCart(product)"
                                     class="btn btn-default spinner-btn" data-dir="up">
                             <span class="glyphicon glyphicon-plus"></span></button>
 				        </span>
@@ -44,7 +44,7 @@
                 <div id="total">Total:&nbsp;{{sumTotal(product)}}&nbsp;$</div>
             </div>
 
-            <button type="button" class="close" aria-hidden  ng-click="removeFromBasket(product)">&#128937;</button>
+            <button type="button" class="close" aria-hidden  ng-click="removeFromCart(product)">&#128937;</button>
 
             <hr>
         </div>

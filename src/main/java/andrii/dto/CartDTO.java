@@ -1,6 +1,6 @@
 package andrii.dto;
 
-public class BasketDTO extends ProductDTO  {
+public class CartDTO extends ProductDTO  {
 
     private Integer counter = 1;
 
@@ -25,9 +25,9 @@ public class BasketDTO extends ProductDTO  {
         if (obj == null) {
             return false;
         }
-        BasketDTO basketDTO = (BasketDTO) obj;
+        CartDTO cartDTO = (CartDTO) obj;
 
-        return getId().equals(basketDTO.getId());
+        return getId().equals(cartDTO.getId());
     }
 
     @Override

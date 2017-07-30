@@ -2,8 +2,6 @@ package andrii.dto;
 
 import andrii.entities.Product;
 
-import javax.persistence.*;
-
 public class StockDTO {
 
     private Long bar_code;

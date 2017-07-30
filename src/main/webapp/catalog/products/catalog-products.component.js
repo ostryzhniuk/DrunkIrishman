@@ -8,8 +8,8 @@ angular.
 module('catalogProducts').
 component('catalogProducts', {
     templateUrl: '/catalog/products/catalog-products.template.html',
-    controller: ['$http', '$scope', '$routeParams', '$rootScope', 'basketService',
-        function CatalogProductsController($http, $scope, $routeParams, $rootScope, basketService) {
+    controller: ['$http', '$scope', '$routeParams', '$rootScope',
+        function CatalogProductsController($http, $scope, $routeParams, $rootScope) {
 
             $scope.categoryName = $routeParams.categoryName;
             $scope.orderProp = 'name';
@@ -26,14 +26,13 @@ component('catalogProducts', {
                 }
             };
 
-            $scope.addToBasket = function (product){
-                // $rootScope.basketSize = basketService.addProduct(product);
+            $scope.addToCart = function (product){
                 $http({
                     method: 'PUT',
-                    url: '/addToBasket',
+                    url: '/addToCart',
                     data: product
                 }).then(function(response) {
-                    $rootScope.basketSize = response.data;
+                    $rootScope.cartSize = response.data;
                 });
             };
 

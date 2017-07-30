@@ -1,20 +1,20 @@
 'use strict';
 
-angular.module('basket', ['ui.bootstrap']);
+angular.module('cart', ['ui.bootstrap']);
 
 angular.
-module('basket').
-component('basket', {
-    templateUrl: '/basket/basket.template.html',
-    controller: ['$http', '$scope', '$rootScope', 'basketService',
-        function BasketController($http, $scope, $rootScope, basketService) {
+module('cart').
+component('cart', {
+    templateUrl: '/cart/cart.template.html',
+    controller: ['$http', '$scope', '$rootScope',
+        function CartController($http, $scope, $rootScope) {
 
-            $http.get('/basket').then(function(response) {
-                $scope.basket = response.data;
+            $http.get('/cart').then(function(response) {
+                $scope.cart = response.data;
             });
 
-            $http.get('/basketSize').then(function(response) {
-                $scope.basketSize = response.data;
+            $http.get('/cartSize').then(function(response) {
+                $scope.cartSize = response.data;
             });
 
             $scope.cancel = function () {
@@ -22,7 +22,7 @@ component('basket', {
             };
 
             $scope.isEmpty = function (){
-                if ($rootScope.basketSize == 0) {
+                if ($rootScope.cartSize == 0) {
                     return true;
                 } else {
                     return false;
@@ -39,44 +39,38 @@ component('basket', {
 
             $scope.orderAmount = function orderAmount(){
                 var orderAmount = 0;
-                for (var product in $scope.basket) {
-                    orderAmount += sum($scope.basket[product]);
+                for (var product in $scope.cart) {
+                    orderAmount += sum($scope.cart[product]);
                 }
                 return orderAmount.toFixed(2);
             };
 
-            $scope.addToBasket = function (product){
+            $scope.addToCart = function (product){
                 product.counter = 1;
                 $http({
                     method: 'PUT',
-                    url: '/addToBasket',
+                    url: '/addToCart',
                     data: product
                 }).then(function(response) {
-                    $scope.basketSize = response.data;
-                    $rootScope.basketSize = response.data;
-                    $http.get('/basket').then(function(response) {
-                        $scope.basket = response.data;
+                    $scope.cartSize = response.data;
+                    $rootScope.cartSize = response.data;
+                    $http.get('/cart').then(function(response) {
+                        $scope.cart = response.data;
                     });
                 });
 
-                /*$scope.basketSize = basketService.addProduct(product);
-                $rootScope.basketSize = $scope.basketSize;
-                $http.get('/basket').then(function(response) {
-                    $scope.basket = response.data;
-                });*/
-
             };
 
-            $scope.removeFromBasket = function (product){
+            $scope.removeFromCart = function (product){
                 $http({
                     method: 'PUT',
-                    url: '/removeFromBasket',
+                    url: '/removeFromCart',
                     data: product
                 }).then(function(response) {
-                    $scope.basketSize = response.data;
-                    $rootScope.basketSize = response.data;
-                    $http.get('/basket').then(function(response) {
-                        $scope.basket = response.data;
+                    $scope.cartSize = response.data;
+                    $rootScope.cartSize = response.data;
+                    $http.get('/cart').then(function(response) {
+                        $scope.cart = response.data;
                     });
                 });
             };
@@ -87,10 +81,10 @@ component('basket', {
                     url: '/decrease',
                     data: product
                 }).then(function(response) {
-                    $scope.basketSize = response.data;
-                    $rootScope.basketSize = response.data;
-                    $http.get('/basket').then(function(response) {
-                        $scope.basket = response.data;
+                    $scope.cartSize = response.data;
+                    $rootScope.cartSize = response.data;
+                    $http.get('/cart').then(function(response) {
+                        $scope.cart = response.data;
                     });
                 });
             };

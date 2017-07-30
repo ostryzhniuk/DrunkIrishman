@@ -1,8 +1,5 @@
 package andrii.entities;
 
-import andrii.entities.User;
-import andrii.entities.UserRole;
-
 public class UserRoleBuilder {
 
     private final UserRole userRole;

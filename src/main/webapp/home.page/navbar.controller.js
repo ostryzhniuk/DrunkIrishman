@@ -28,8 +28,8 @@ angular
         window.location.reload();
     };
 
-    $http.get('/basketSize').then(function(response) {
-        $rootScope.basketSize = response.data;
+    $http.get('/cartSize').then(function(response) {
+        $rootScope.cartSize = response.data;
     });
 
     $http.get('/categories').then(function(response) {
@@ -43,9 +43,9 @@ angular
         }
     };
 
-    $scope.showBasket = function () {
+    $scope.showCart = function () {
         $rootScope.modalInstance = $uibModal.open({
-            component: 'basket',
+            component: 'cart',
             windowClass: 'app-modal-window',
             size: 'lg',
             backdrop: true

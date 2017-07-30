@@ -21,15 +21,14 @@ component('productDetail', {
                 descriptionHeightSensitive();
             });
 
-            $scope.addToBasket = function (product){
+            $scope.addToCart = function (product){
                 product.counter = $scope.number;
-                console.log($scope.number);
                 $http({
                     method: 'PUT',
-                    url: '/addToBasket',
+                    url: '/addToCart',
                     data: product
                 }).then(function(response) {
-                    $rootScope.basketSize = response.data;
+                    $rootScope.cartSize = response.data;
                 });
             };
 

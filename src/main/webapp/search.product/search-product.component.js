@@ -24,13 +24,13 @@ component('searchProduct', {
                 }
             });
 
-            $scope.addToBasket = function (product){
+            $scope.addToCart = function (product){
                 $http({
                     method: 'PUT',
-                    url: '/addToBasket',
+                    url: '/addToCart',
                     data: product
                 }).then(function(response) {
-                    $rootScope.basketSize = response.data;
+                    $rootScope.cartSize = response.data;
                 });
             };
         }

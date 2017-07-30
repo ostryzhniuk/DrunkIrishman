@@ -53,6 +53,9 @@
 #buy-button {
     float: right;
     margin: 10px;
+    width: 120px;
+    outline: none;
+    box-shadow: none;
 }
 a.clickable-panel {
     text-decoration: none;
