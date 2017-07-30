@@ -28,7 +28,8 @@ component('productCreator', {
                         description: $scope.description
                     }
                 }).then(function(response) {
-
+                    var productId = response.data.id;
+                    window.location.replace('#!/catalog/products/edit/' + productId);
                 });
             };
 

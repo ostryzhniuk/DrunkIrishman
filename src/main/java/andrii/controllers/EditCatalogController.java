@@ -32,8 +32,8 @@ public class EditCatalogController {
     }
 
     @PostMapping("/product/create")
-    public void createProduct (@RequestBody ProductDTO productDTO) {
-        productService.save(productDTO);
+    public ProductDTO createProduct (@RequestBody ProductDTO productDTO) {
+        return productService.save(productDTO);
     }
 
     @PutMapping("/product/update")
