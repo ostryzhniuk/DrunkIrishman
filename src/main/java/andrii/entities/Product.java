@@ -31,6 +31,9 @@ public class Product {
     @Column
     private String description;
 
+    @Column(nullable = false)
+    private boolean isActive = true;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Stock> stockList;
@@ -81,6 +84,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public List<Stock> getStockList() {

@@ -17,7 +17,8 @@ public class CategoryDAO extends GenericDAO<Category> {
 
     @Override
     public List<Category> getObjects() {
-        return getSession().createQuery("from Category").list();
+        return getSession().createQuery("from Category " +
+                "where isActive = true").list();
     }
 
     public Category getCategoryByName(String categoryName) {
