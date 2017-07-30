@@ -87,3 +87,13 @@ button#to-review-button {
     padding-top: 1px;
     margin-left: 2px;
 }
+div#message-container {
+    margin-top: 20px;
+    height: 25px;
+}
+#errorMessage {
+    color: red;
+}
+#successMessage {
+    color: green;
+}

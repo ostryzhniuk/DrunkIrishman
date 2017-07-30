@@ -11,6 +11,8 @@ component('productEditor', {
     controller: ['$http', '$scope', '$routeParams',
         function ProductEditorController($http, $scope, $routeParams) {
 
+            $scope.errorMessage = '';
+            $scope.successMessage = '';
             $scope.editor = true;
             $scope.action = 'Edit';
 
@@ -28,6 +30,8 @@ component('productEditor', {
             });
 
             $scope.save = function () {
+                $scope.errorMessage = '';
+                $scope.successMessage = '';
                 $http({
                     method: 'PUT',
                     url: '/product/update',
@@ -40,7 +44,11 @@ component('productEditor', {
                         description: $scope.description
                     }
                 }).then(function(response) {
-
+                    if (response.status == 200) {
+                        $scope.successMessage = 'Product saved successfully';
+                    }
+                },function errorCallback(response) {
+                    $scope.errorMessage = 'Sorry, but an error occurred. Try again again, please.';
                 });
             };
 

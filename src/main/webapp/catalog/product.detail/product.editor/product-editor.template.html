@@ -32,9 +32,6 @@
                 <select ng-model="category" id="category" class="form-control" required
                         ng-options="category.name for category in categories track by category.id">
                     <option value="" disabled selected hidden>Category</option>
-                    <!--<option value="{{category}}" ng-repeat="category in categories | orderBy:orderProp">
-                        {{category.name}}
-                    </option>-->
                 </select>
             </div>
 
@@ -61,6 +58,11 @@
 
         <div class="col-sm-12" id="save-button-container">
             <button id="save-button" type="submit" class="btn btn-success">Save</button>
+
+            <div id="message-container">
+                <span id="errorMessage">{{errorMessage}}</span>
+                <span id="successMessage">{{successMessage}}</span>
+            </div>
         </div>
     </form>
 

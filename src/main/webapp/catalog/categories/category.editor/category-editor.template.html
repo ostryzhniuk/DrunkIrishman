@@ -16,10 +16,6 @@
 <div class="panel-body">
 
     <form ng-submit="save()">
-        <div id="message-container">
-            <span id="errorMessage">{{errorMessage}}</span>
-            <span id="successMessage">{{successMessage}}</span>
-        </div>
 
         <div class="container">
             <div class="thumbnail">
@@ -37,8 +33,14 @@
         <div class="form-group">
             <input id="name" ng-model="name" class="form-control" placeholder="Category name" required>
         </div>
+
         <div>
             <button id="save" type="submit" class="btn btn-success">Save</button>
+
+            <div id="message-container">
+                <span id="errorMessage">{{errorMessage}}</span>
+                <span id="successMessage">{{successMessage}}</span>
+            </div>
         </div>
     </form>
 

@@ -9,6 +9,8 @@ component('productCreator', {
     controller: ['$http', '$scope',
         function ProductCreatorController($http, $scope) {
 
+            $scope.errorMessage = '';
+            $scope.successMessage = '';
             $scope.editor = false;
             $scope.action = 'Create';
 
@@ -17,6 +19,8 @@ component('productCreator', {
             });
 
             $scope.save = function () {
+                $scope.errorMessage = '';
+                $scope.successMessage = '';
                 $http({
                     method: 'POST',
                     url: '/product/create',
@@ -30,6 +34,8 @@ component('productCreator', {
                 }).then(function(response) {
                     var productId = response.data.id;
                     window.location.replace('#!/catalog/products/edit/' + productId);
+                },function errorCallback(response) {
+                    $scope.errorMessage = 'Sorry, but an error occurred. Try again again, please.';
                 });
             };
 
