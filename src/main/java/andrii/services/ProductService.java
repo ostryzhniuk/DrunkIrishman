@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -46,11 +47,10 @@ public class ProductService {
     }
 
     private List<ProductDTO> convertToDTOList(List<Product> productList) {
-        List<ProductDTO> dtoList = new LinkedList<>();
-        for (Product product : productList) {
-            dtoList.add(buildProductDTO(product));
-        }
-        return dtoList;
+        return productList
+                .stream()
+                .map(this::buildProductDTO)
+                .collect(Collectors.toList());
     }
 
     private ProductDTO buildProductDTO(Product product) {

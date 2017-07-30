@@ -16,12 +16,12 @@ class GlobalControllerExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)  // 409
     @ExceptionHandler(DataIntegrityViolationException.class)
     public void handleConflict() {
-        // Nothing to do
+        LOGGER.warn("message");
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)  // 500
     @ExceptionHandler(IllegalStateException.class)
     public void handleInternalServerError(IllegalStateException e) {
-        LOGGER.trace("Java environment is not in an appropriate state for the requested operation", e);
+        LOGGER.error("Java environment is not in an appropriate state for the requested operation", e);
     }
 }

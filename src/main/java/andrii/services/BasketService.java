@@ -1,6 +1,5 @@
 package andrii.services;
 
-import andrii.core.BasketSet;
 import andrii.dto.BasketDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

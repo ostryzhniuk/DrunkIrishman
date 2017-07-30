@@ -1,6 +1,6 @@
 package andrii.services;
 
-import andrii.core.ImageHandler;
+import andrii.utils.ImageHandler;
 import andrii.dao.CategoryDAO;
 import andrii.dao.ProductDAO;
 import andrii.dto.CategoryDTO;
@@ -25,9 +25,8 @@ public class CategoryService {
         Category category = categoryDTO.convertToEntity();
         categoryDAO.save(category);
 
-        ImageHandler.save(categoryDTO.getPhoto(), category.getId().toString());
-//        BufferedImage bufferedImage = ImageHandler.decodeBASE64(categoryDTO.getPhoto());
-//        ImageHandler.save(bufferedImage, category.getId().toString());
+        BufferedImage bufferedImage = ImageHandler.decodeBASE64(categoryDTO.getPhoto());
+        ImageHandler.save(bufferedImage, category.getId().toString());
     }
 
     @Transactional
@@ -46,6 +45,7 @@ public class CategoryService {
         categoryDAO.update(category);
     }
 
+    @Transactional
     public void delete(Integer categoryId){
         productDAO.deleteByCategory(categoryId);
         categoryDAO.deleteById(categoryId);

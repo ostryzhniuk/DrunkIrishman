@@ -1,6 +1,6 @@
 package andrii.controllers;
 
-import andrii.core.BasketSet;
+import andrii.services.BasketSet;
 import andrii.dto.BasketDTO;
 import andrii.services.BasketService;
 import org.springframework.beans.factory.annotation.Autowired;

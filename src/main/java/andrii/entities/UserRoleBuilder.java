@@ -1,11 +1,11 @@
-package andrii.core;
+package andrii.entities;
 
 import andrii.entities.User;
 import andrii.entities.UserRole;
 
 public class UserRoleBuilder {
 
-    private UserRole userRole;
+    private final UserRole userRole;
 
     public UserRoleBuilder() {
         this.userRole = new UserRole();

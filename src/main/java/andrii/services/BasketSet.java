@@ -1,4 +1,4 @@
-package andrii.core;
+package andrii.services;
 
 import andrii.dto.BasketDTO;
 import org.springframework.context.annotation.Scope;
@@ -36,11 +36,9 @@ public class BasketSet<T extends BasketDTO> extends HashSet<T> {
 
     @Override
     public int size() {
-        Integer size = 0;
-        for (T t : this) {
-            size += t.getCounter();
-        }
-        return size;
+        return this.stream()
+                .mapToInt(BasketDTO::getCounter)
+                .sum();
     }
 
     private T getObjectFromSet(T wantedObject) {
