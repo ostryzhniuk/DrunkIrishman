@@ -3,10 +3,8 @@ package andrii.services;
 import andrii.dao.CategoryDAO;
 import andrii.dao.ProductDAO;
 import andrii.dto.ProductDTO;
-import andrii.dto.StockDTO;
 import andrii.entities.Category;
 import andrii.entities.Product;
-import andrii.entities.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +35,7 @@ public class ProductService {
     @Transactional
     public ProductDTO getProductById(Integer productId) {
         Product product = productDAO.getProductById(productId);
-        return product == null ? null : buildProductDTO(product);
+        return ProductDTO.convertToDTO(product);
     }
 
     @Transactional
@@ -49,21 +47,8 @@ public class ProductService {
     private List<ProductDTO> convertToDTOList(List<Product> productList) {
         return productList
                 .stream()
-                .map(this::buildProductDTO)
+                .map(product -> ProductDTO.convertToDTO(product))
                 .collect(Collectors.toList());
-    }
-
-    private ProductDTO buildProductDTO(Product product) {
-        ProductDTO productDTO = ProductDTO.convertToDTO(product);
-        Integer inStockNumber = getProductsWithStatus(product.getId(), Stock.Status.IN_STOCK).size();
-
-        productDTO.setStatus(inStockNumber == 0 ? StockDTO.Status.SOLD_OUT : StockDTO.Status.IN_STOCK);
-        return productDTO;
-    }
-
-    @Transactional
-    public List<Product> getProductsWithStatus(Integer productId, Stock.Status status) {
-        return productDAO.getProductsWithStatus(productId, status);
     }
 
     @Transactional

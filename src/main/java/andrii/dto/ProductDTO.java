@@ -12,7 +12,11 @@ public class ProductDTO {
     private BigDecimal price;
     private String description;
     private CategoryDTO category;
-    private StockDTO.Status status;
+    private Status status = Status.IN_STOCK;
+
+    private enum Status {
+        IN_STOCK, SOLD_OUT
+    }
 
     public Integer getId() {
         return id;
@@ -62,11 +66,11 @@ public class ProductDTO {
         this.category = category;
     }
 
-    public StockDTO.Status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(StockDTO.Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

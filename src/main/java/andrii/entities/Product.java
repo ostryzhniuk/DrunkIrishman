@@ -1,10 +1,8 @@
 package andrii.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table
@@ -31,12 +29,16 @@ public class Product {
     @Column
     private String description;
 
+    private enum Status {
+        IN_STOCK, SOLD_OUT
+    }
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.IN_STOCK;
+
     @Column(nullable = false)
     private boolean isActive = true;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Stock> stockList;
 
     public Integer getId() {
         return id;
@@ -94,11 +96,11 @@ public class Product {
         isActive = active;
     }
 
-    public List<Stock> getStockList() {
-        return stockList;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStockList(List<Stock> stockList) {
-        this.stockList = stockList;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

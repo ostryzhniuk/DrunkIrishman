@@ -16,7 +16,7 @@ class GlobalControllerExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)  // 409
     @ExceptionHandler(DataIntegrityViolationException.class)
     public void handleConflict() {
-        LOGGER.warn("message");
+        LOGGER.warn("DataIntegrityViolationException occurred");
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)  // 500

@@ -23,7 +23,8 @@ public class CategoryDAO extends GenericDAO<Category> {
 
     public Category getCategoryByName(String categoryName) {
         Query<Category> query = getSession().createQuery("from Category " +
-                "where name = :categoryName");
+                "where name = :categoryName and " +
+                "isActive = true");
 
         query.setParameter("categoryName", categoryName);
         return query.getSingleResult();

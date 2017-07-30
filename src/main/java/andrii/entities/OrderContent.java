@@ -14,9 +14,9 @@ public class OrderContent {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Stock stock;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
     public Integer getId() {
         return id;
@@ -34,11 +34,11 @@ public class OrderContent {
         this.order = order;
     }
 
-    public Stock getStock() {
-        return stock;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setStock(Stock stock) {
-        this.stock = stock;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
