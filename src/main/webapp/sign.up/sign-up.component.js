@@ -13,10 +13,21 @@ component('signUp', {
 
             $scope.errorMessage = '';
 
-            $scope.submit = function(){
+            $scope.minBirthDate = getMinBirthDate();
 
+            function getMinBirthDate() {
+                var date = new Date();
+                date.setFullYear(date.getFullYear() - 21);
+                return date.toISOString().substring(0, 10);
+            };
+
+            $scope.submit = function(){
                 $scope.errorMessage = '';
                 var dateStr = $scope.birthDate.toISOString().substring(0, 10);
+
+                if (!validateEmail($scope.email) || !checkPass()) {
+                    return;
+                }
 
                 $http({
                     method: 'POST',
@@ -64,61 +75,42 @@ function checkPass() {
     var goodColor = "#66cc66";
     var badColor = "#ff6666";
 
-    if(pass1.value == pass2.value){
-
+    if(pass1.value == pass2.value) {
         pass2.style.backgroundColor = goodColor;
         message.style.color = goodColor;
-        message.innerHTML = "Passwords Match"
-    }else{
-
+        message.innerHTML = "";
+        return true;
+    } else {
         pass2.style.backgroundColor = badColor;
         message.style.color = badColor;
-        message.innerHTML = "Passwords Do Not Match!"
+        message.innerHTML = "Passwords Do Not Match!";
+        return false;
     }
 }
 
 function validatePhone(phone) {
-    /*var maintainplus = '';
-    var numval = phone.value
-    if (numval.charAt(0)=='+') {
-        var maintainplus = '';
-    }
-    curphonevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g,'');
-    phone.value = maintainplus + curphonevar;
-    maintainplus = '';
-    phone.focus;*/
+    phone.value = phone.value.replace(/[^0-9]/, '');
 }
 
-function validateText(txt) {
-    txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+function validateName(txt) {
+    txt.value = txt.value.replace(/[^a-zA-Z-'\n\s\r.]+/g, '');
+    if (txt.value.length == 1) {
+        txt.value = txt.value.charAt(0).toUpperCase();
+    }
 }
 
 function validateEmail(email) {
     var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
 
-    if(regMail.test(email) == false)
-    {
-        document.getElementById("status").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
-    }
-    else
-    {
-        document.getElementById("status").innerHTML	= "<span class='valid'>Thanks, you have entered a valid Email address!</span>";
+    if(regMail.test(email) == false) {
+        document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
+        return false;
+    } else {
+        document.getElementById("status").innerHTML	= "";
+        return true;
     }
 }
 
 function validateAddress(address) {
-    address.value = address.value.replace(/[^A-Za-z0-9'\.\-\s\,]/, '');
+    address.value = address.value.replace(/[^A-Za-z0-9'\.\-\s\,()\\]/, '');
 }
-
-/*function validateAddress(address) {
-    var regAdd = /^\\d+ [a-zA-Z ]+, \\d+ [a-zA-Z ]+, [a-zA-Z ]+$/;
-
-    if(regAdd.test(address) == false)
-    {
-        document.getElementById("statusAdd").innerHTML	= "<span class='warning'>Address is not valid yet.</span>";
-    }
-    else
-    {
-        document.getElementById("statusAdd").innerHTML	= "<span class='valid'>Thanks, Address looks valid!</span>";
-    }
-}*/

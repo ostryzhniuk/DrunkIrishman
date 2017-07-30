@@ -71,3 +71,6 @@ div#errorMessage {
     height: 25px;
     padding-bottom: 5px;
 }
+#status {
+    color: red;
+}

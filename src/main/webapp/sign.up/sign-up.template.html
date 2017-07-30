@@ -14,8 +14,8 @@
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label"><span class="req">* </span>First Name</label>
             <div class="col-sm-9">
-                <input ng-model="firstName" class="form-control" type="text" id="firstName"
-                       onkeyup="validateText(this)" placeholder="Insert your Firs Name" required/>
+                <input ng-model="firstName" class="form-control" id="firstName"
+                       oninput="validateName(this)" placeholder="Insert your Firs Name" required/>
                 <div id="errFirst"></div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="form-group">
             <label for="lastName" class="col-sm-3 control-label"><span class="req">* </span>Last Name</label>
             <div class="col-sm-9">
-                <input ng-model="lastName" class="form-control" type="text" id="lastName" onkeyup="validateText(this)"
+                <input ng-model="lastName" class="form-control" id="lastName" onkeyup="validateName(this)"
                        placeholder="Insert your Last Name" required/>
                 <div id="errLast"></div>
             </div>
@@ -33,7 +33,7 @@
             <label for="email" class="col-sm-3 control-label"><span class="req">* </span>E-mail</label>
             <div class="col-sm-9">
                 <input ng-model="email" class="form-control" type="email" id="email"
-                       onchange="validateEmail(this.value);" placeholder="somebody@example.com" required/>
+                       oninput="validateEmail(this.value);" placeholder="somebody@example.com" required/>
                 <div class="status" id="status"></div>
             </div>
         </div>
@@ -59,14 +59,15 @@
         <div class="form-group">
             <label for="birthDate" class="col-sm-3 control-label"><span class="req">* </span>Date of Birth</label>
             <div class="col-sm-9">
-                <input ng-model="birthDate" type="date" id="birthDate" class="form-control" required>
+                <input ng-model="birthDate" type="date" id="birthDate" class="form-control" required
+                       max="{{minBirthDate}}">
             </div>
         </div>
 
         <div class="form-group">
             <label for="address" class="col-sm-3 control-label">Address</label>
             <div class="col-sm-9">
-                <input ng-model="address" class="form-control" type="text" id="address" onkeyup="validateAddress(this)"
+                <input ng-model="address" class="form-control" id="address" oninput="validateAddress(this)"
                        placeholder="Insert your Address"/>
             </div>
         </div>
@@ -74,8 +75,8 @@
         <div class="form-group">
             <label for="phone" class="col-sm-3 control-label"><span class="req">* </span>Contact Phone</label>
             <div class="col-sm-9">
-                <input ng-model="phone" type="text" id="phone" class="form-control phone" maxlength="28"
-                       onkeyup="validatePhone(this);" placeholder="Insert your Phone Number" required/>
+                <input ng-model="phone" id="phone" class="form-control phone" maxlength="28"
+                       oninput="validatePhone(this);" placeholder="Insert your Phone Number" required/>
             </div>
         </div>
 
@@ -87,8 +88,4 @@
         </div>
 
     </form>
-
-    <script type="text/javascript">
-        document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
-    </script>
 </section>
