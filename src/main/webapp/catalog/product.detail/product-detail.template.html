@@ -4,6 +4,17 @@
 
 <div id="panel-heading" class="panel-heading">
     <a id="category" href="#!/catalog/{{categoryName}}">{{categoryName}}</a>
+    <span id="create-product" ng-if="isAuthority('ADMIN')">
+        <a href="#!/catalog/products/edit/{{product.id}}">
+            <button type="button" class="btn btn-default product-actions-button">Edit product</button>
+        </a>
+        <a href="#!/catalog/products/create/">
+            <button type="button" class="btn btn-default product-actions-button">Add product</button>
+        </a>
+        <button type="button" class="btn btn-default product-actions-button" ng-click="delete(product)">
+            Remove product
+        </button>
+    </span>
 </div>
 <div class="panel-body">
     <div class=" col-sm-4 thumbnail">

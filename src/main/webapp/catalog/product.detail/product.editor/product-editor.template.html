@@ -3,7 +3,18 @@
 </head>
 
 <div id="panel-heading" class="panel-heading">
+    <a href="#!/catalog/{{product.category.name}}/{{product.id}}" id="to-review" ng-if='editor'>
+        <button type="button" class="btn btn-default" id="to-review-button">To review</button>
+    </a>
     {{action}} product
+    <span id="create-product" ng-if='editor'>
+        <a href="#!/catalog/products/create/">
+            <button type="button" class="btn btn-default product-actions-button">Add product</button>
+        </a>
+        <button type="button" class="btn btn-default product-actions-button" ng-click="delete(product)">
+            Remove product
+        </button>
+    </span>
 </div>
 <div class="panel-body">
     <div class=" col-sm-4 thumbnail">
