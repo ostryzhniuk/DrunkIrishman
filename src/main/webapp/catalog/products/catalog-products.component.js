@@ -54,13 +54,19 @@ component('catalogProducts', {
             };
 
             $scope.delete = function (product) {
-                /*var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
-                    'permanently delete the ' + product.id + ' category and all products of this category.');
+                var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
+                    'permanently delete the ' + product.name + ' category and all products of this category.');
                 if (request == true) {
-                    $http.delete('/product/delete/' + product.id).then(function(response) {
-                        window.location.reload();
+                    $http({
+                        method: 'PUT',
+                        url: '/product/deactivate',
+                        data: product
+                    }).then(function(response) {
+                        if (response.status == 200) {
+                            window.location.reload();
+                        }
                     });
-                };*/
+                };
             };
 
         }

@@ -46,9 +46,8 @@ public class CategoryService {
     }
 
     @Transactional
-    public void delete(Integer categoryId){
-        productDAO.deleteByCategory(categoryId);
-        categoryDAO.deleteById(categoryId);
+    public void deactivate(CategoryDTO categoryDTO){
+        categoryDAO.deactivate(categoryDTO.getId());
     }
 
 }

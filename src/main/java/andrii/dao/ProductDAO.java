@@ -77,10 +77,12 @@ public class ProductDAO extends GenericDAO<Product> {
         getSession().delete(product);
     }
 
-    public void deleteByCategory(Integer categoryId) {
-        Query query = getSession().createQuery("delete Product " +
-                "where category.id = :categoryId");
-        query.setParameter("categoryId", categoryId);
+    public void deactivate(Integer productId) {
+        Query query = getSession().createQuery("update Product " +
+                "set isActive = false " +
+                "where id = :id");
+
+        query.setParameter("id", productId);
         query.executeUpdate();
     }
 }

@@ -48,8 +48,14 @@ component('categoryEditor', {
                 var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
                     'permanently delete the ' + category.name + ' category and all products of this category.');
                 if (request == true) {
-                    $http.delete('/category/delete/' + category.id).then(function(response) {
-                        window.location.replace('#!/catalog/');
+                    $http({
+                        method: 'PUT',
+                        url: '/category/deactivate',
+                        data: category
+                    }).then(function(response) {
+                        if (response.status == 200) {
+                            window.location.replace('#!/catalog/');
+                        }
                     });
                 };
             };

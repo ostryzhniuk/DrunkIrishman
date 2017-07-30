@@ -63,4 +63,8 @@ public class ProductService {
         productDAO.update(productDTO.convertToEntity());
     }
 
+    @Transactional
+    public void deactivate(ProductDTO productDTO) {
+        productDAO.deactivate(productDTO.getId());
+    }
 }

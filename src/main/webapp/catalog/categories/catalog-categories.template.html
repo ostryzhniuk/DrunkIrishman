@@ -18,9 +18,11 @@
         <div class="col-xs-3 container">
             <div class="thumbnail" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
                 <div id="edit-container" ng-show="isAuthority('ADMIN')">
-                    <span type="button" class="close glyphicon glyphicon-remove" ng-click="delete(category)"></span>
+                    <span type="button" class="close glyphicon glyphicon-remove" ng-click="delete(category)"
+                          data-toggle="tooltip" title="Remove"></span>
                     <a href="#!/catalog/categories/edit/{{category.name}}">
-                        <span id="edit-button" type="button" class="close glyphicon glyphicon-pencil"></span>
+                        <span id="edit-button" type="button" class="close glyphicon glyphicon-pencil"
+                              data-toggle="tooltip" title="Edit"></span>
                     </a>
                 </div>
                 <a href="#!/catalog/{{category.name}}">

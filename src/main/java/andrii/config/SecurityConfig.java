@@ -50,9 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home").permitAll()
                 .antMatchers("/category/crate",
                         "/category/update",
-                        "/category/delete/**",
+                        "/category/deactivate",
                         "/product/create",
-                        "/product/update").hasAuthority("ADMIN")
+                        "/product/update",
+                        "/product/deactivate").hasAuthority("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login")

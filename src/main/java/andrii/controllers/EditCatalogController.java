@@ -26,9 +26,9 @@ public class EditCatalogController {
         categoryService.update(categoryDTO);
     }
 
-    @DeleteMapping("/category/delete/{categoryId}")
-    public void deleteCategory (@PathVariable("categoryId") Integer categoryId) {
-        categoryService.delete(categoryId);
+    @PutMapping("/category/deactivate")
+    public void deactivateCategory (@RequestBody CategoryDTO categoryDTO) {
+        categoryService.deactivate(categoryDTO);
     }
 
     @PostMapping("/product/create")
@@ -39,5 +39,10 @@ public class EditCatalogController {
     @PutMapping("/product/update")
     public void updateProduct (@RequestBody ProductDTO productDTO) {
         productService.update(productDTO);
+    }
+
+    @PutMapping("/product/deactivate")
+    public void deactivateProduct (@RequestBody ProductDTO productDTO) {
+        productService.deactivate(productDTO);
     }
 }
