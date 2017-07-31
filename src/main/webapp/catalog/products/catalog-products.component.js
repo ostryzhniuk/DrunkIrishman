@@ -60,8 +60,8 @@ component('catalogProducts', {
             };
 
             $scope.delete = function (product) {
-                var request = confirm('Are you sure?\nProduct '
-                    + product.name + ' will and not be displayed.');
+                var request = confirm('Are you sure?\nProduct "'
+                    + product.name + '" will and not be displayed.');
                 if (request == true) {
                     $http({
                         method: 'PUT',

@@ -53,8 +53,8 @@ component('productEditor', {
             };
 
             $scope.delete = function (product) {
-                var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
-                    'permanently delete the ' + product.name + ' category and all products of this category.');
+                var request = confirm('Are you sure?\nProduct "'
+                    + product.name + '" will and not be displayed.');
                 if (request == true) {
                     $http({
                         method: 'PUT',

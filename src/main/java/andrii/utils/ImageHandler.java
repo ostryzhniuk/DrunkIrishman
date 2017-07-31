@@ -2,6 +2,8 @@ package andrii.utils;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
@@ -14,6 +16,8 @@ import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
 public class ImageHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ImageHandler.class);
 
     public static BufferedImage decodeBASE64 (String sourceData) {
         String formattedData = sourceData.split(",")[1];
@@ -49,7 +53,8 @@ public class ImageHandler {
             return new String(Base64.encodeBase64(binaryData));
 
         }catch (IOException e){
-            throw new UncheckedIOException(e);
+            LOGGER.warn("Category or product photo not found.", e);
+            return null;
         }
     }
 

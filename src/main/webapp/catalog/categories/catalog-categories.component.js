@@ -33,8 +33,8 @@ component('catalogCategories', {
             };
 
             $scope.delete = function (category) {
-                var request = confirm('Are you sure?\nCategory '
-                    + category.name + ' will and not be displayed.');
+                var request = confirm('Are you sure?\nCategory "'
+                    + category.name + '" will and not be displayed.');
                 if (request == true) {
                     $http({
                         method: 'PUT',

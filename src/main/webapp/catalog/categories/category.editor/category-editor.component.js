@@ -27,10 +27,12 @@ component('categoryEditor', {
                 $http.get('/category/image/' + categoryId).then(function(response) {
                     $scope.photo = 'data:image/jpeg;base64,' + response.data;
                     photoBase64 = $scope.photo;
+                    isPhoto = true;
                 });
             };
 
             $scope.save = function () {
+                $scope.successMessage = '';
                 $scope.errorMessage = '';
                 validatePhoto(getPhoto())
             };
@@ -38,7 +40,7 @@ component('categoryEditor', {
             function validatePhoto(file) {
                 if (file == undefined) {
                     if (photoBase64 == undefined || photoBase64 == '') {
-                        $scope.errorMessage = 'choose photo';
+                        $scope.errorMessage = 'Choose photo, please.';
                         return;
                     }
                     editCategory();
@@ -61,8 +63,6 @@ component('categoryEditor', {
             };
 
             function editCategory () {
-                $scope.errorMessage = '';
-                $scope.successMessage = '';
                 $http({
                     method: 'PUT',
                     url: '/category/update',
@@ -85,8 +85,8 @@ component('categoryEditor', {
             };
 
             $scope.delete = function (category) {
-                var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
-                    'permanently delete the ' + category.name + ' category and all products of this category.');
+                var request = confirm('Are you sure?\nCategory "'
+                    + category.name + '" will and not be displayed.');
                 if (request == true) {
                     $http({
                         method: 'PUT',
@@ -108,12 +108,16 @@ component('categoryEditor', {
     ]
 });
 
+var isPhoto = false;
+
 function mouseOverEditCategory(element){
     element.childNodes[1].style.visibility='visible';
 };
 
 function mouseOutEditCategory(element){
-    element.childNodes[1].style.visibility='hidden';
+    if (isPhoto) {
+        element.childNodes[1].style.visibility='hidden';
+    }
 };
 
 function readCategoryPhotoURL(input) {
@@ -122,6 +126,8 @@ function readCategoryPhotoURL(input) {
 
         reader.onload = function (e) {
             $('#photo').attr('src', e.target.result);
+            isPhoto = true;
+            element.childNodes[1].style.visibility='hidden';
         };
 
         reader.readAsDataURL(input.files[0]);

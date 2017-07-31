@@ -9,18 +9,40 @@ component('categoryCreator', {
     controller: ['$http', '$scope',
         function CategoryCreatorController($http, $scope) {
 
-            var photoBase64 = '';
             $scope.errorMessage = '';
             $scope.editor = false;
             $scope.action = 'Create';
+            var photoBase64 = '';
+            document.getElementById('choose-photo-container').style.visibility='visible';
+            isPhoto = false;
 
             $scope.save = function () {
                 $scope.errorMessage = '';
-                getBase64(getPhoto());
+                validatePhoto(getPhoto());
+            };
+
+            function validatePhoto(file) {
+                if (file == undefined) {
+                    $scope.errorMessage = 'Choose photo, please.';
+                    return;
+                }
+                encodeBase64(file);
+            }
+
+            function encodeBase64(file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    photoBase64 = reader.result;
+                    crateCategory();
+                };
+            };
+
+            function getPhoto() {
+                return document.getElementById('choose-photo-input').files[0];
             };
 
             function crateCategory() {
-                console.log(photoBase64);
                 $http({
                     method: 'POST',
                     url: '/category/create',
@@ -40,21 +62,9 @@ component('categoryCreator', {
                 });
             }
 
-            function getBase64(file) {
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                    photoBase64 = reader.result;
-                    crateCategory();
-                };
-                /*reader.onerror = function (error) {
-                    console.log('Error: ', error);
-                };*/
-            };
-
-            function getPhoto() {
-                return document.getElementById('choosePhoto').files[0];
-            };
+            document.getElementById('choose-photo-button').addEventListener("click", function() {
+                document.getElementById('choose-photo-input').click();
+            });
 
         }
     ]

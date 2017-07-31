@@ -68,6 +68,23 @@ component('productDetail', {
                 }
                 return false;
             };
+
+            $scope.delete = function (product) {
+                var request = confirm('Are you sure?\nProduct "'
+                    + product.name + '" will and not be displayed.');
+                if (request == true) {
+                    $http({
+                        method: 'PUT',
+                        url: '/product/deactivate',
+                        data: product
+                    }).then(function(response) {
+                        if (response.status == 200) {
+                            var categoryName = product.category.name;
+                            window.location.replace('#!/catalog/' + categoryName);
+                        }
+                    });
+                };
+            };
         }
     ]
 });
