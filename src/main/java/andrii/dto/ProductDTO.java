@@ -12,6 +12,7 @@ public class ProductDTO {
     private BigDecimal price;
     private String description;
     private CategoryDTO category;
+    private String photo;
     private Status status = Status.IN_STOCK;
 
     private enum Status {
@@ -76,6 +77,14 @@ public class ProductDTO {
 
     public Product convertToEntity() {
         return new ModelMapper().map(this, Product.class);
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public static ProductDTO convertToDTO(Product product) {

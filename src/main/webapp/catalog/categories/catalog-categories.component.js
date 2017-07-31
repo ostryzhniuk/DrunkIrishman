@@ -1,17 +1,15 @@
 'use strict';
 
-angular.module('catalogCategories', [
-    'ngRoute'
-]);
+angular.module('catalogCategories', []);
 
 angular.
 module('catalogCategories').
 component('catalogCategories', {
     templateUrl: '/catalog/categories/catalog-categories.template.html',
-    controller: ['$http', '$scope', '$routeParams', '$rootScope',
+    controller: ['$http', '$scope', '$rootScope',
         function CatalogCategoriesController($http, $scope, $rootScope) {
 
-            $http.get('/categories').then(function(response) {
+            $http.get('/categories?loadImage=true').then(function(response) {
                 $scope.categories = response.data;
             });
 
@@ -35,13 +33,16 @@ component('catalogCategories', {
             };
 
             $scope.delete = function (category) {
-                var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
-                    'permanently delete the ' + category.name + ' category and all products of this category.');
+                var request = confirm('Are you sure?\nCategory '
+                    + category.name + ' will and not be displayed.');
                 if (request == true) {
                     $http({
                         method: 'PUT',
                         url: '/category/deactivate',
-                        data: category
+                        data: {
+                            id: category.id,
+                            name: category.name
+                        }
                     }).then(function(response) {
                         if (response.status == 200) {
                             window.location.reload();

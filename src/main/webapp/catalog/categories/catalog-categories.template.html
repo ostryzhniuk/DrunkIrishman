@@ -26,7 +26,7 @@
                     </a>
                 </div>
                 <a href="#!/catalog/{{category.name}}">
-                    <img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">
+                    <img ng-src="data:image/jpeg;base64,{{category.photo}}" id="photo">
                     <div id="inner-container">
                         <div class="capital-row">{{category.name}}</div>
                     </div>

@@ -2,7 +2,6 @@ package andrii.controllers;
 
 import andrii.dto.CategoryDTO;
 import andrii.dto.ProductDTO;
-import andrii.entities.Category;
 import andrii.services.CategoryService;
 import andrii.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,8 @@ public class CatalogController {
     }
 
     @GetMapping("/categories")
-    public List<Category> categories(){
-        return  productService.getCategories();
+    public List<CategoryDTO> categories(@RequestParam(value= "loadImage", defaultValue = "false") boolean loadImage){
+        return categoryService.getCategories(loadImage);
     }
 
     @GetMapping("/product/{productId}")
@@ -43,11 +42,5 @@ public class CatalogController {
     public CategoryDTO categoryByName (@PathVariable("categoryName") String categoryName) {
         return categoryService.getCategoryByName(categoryName);
     }
-
-    /*@GetMapping("/photo/{name}")
-    public byte[] getImage(@PathVariable("name") String name) throws IOException {
-        InputStream inputStream = getClass().getResourceAsStream("/" + name + ".jpg");
-        return IOUtils.toByteArray(inputStream);
-    }*/
 
 }
