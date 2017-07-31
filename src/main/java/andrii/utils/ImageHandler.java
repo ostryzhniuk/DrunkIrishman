@@ -29,8 +29,12 @@ public class ImageHandler {
 
     public static void save(BufferedImage bufferedImage, Path path) {
         try {
-            Files.createDirectories(path.getParent());
-            Files.createFile(path.getFileName());
+            if (Files.exists(path)) {
+                Files.delete(path);
+            } else {
+                Files.createDirectories(path.getParent());
+                Files.createFile(path.getFileName());
+            }
             ImageIO.write(bufferedImage, "jpg", path.toFile());
         } catch (IOException e) {
             throw new UncheckedIOException(e);

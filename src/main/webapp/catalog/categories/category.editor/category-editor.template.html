@@ -18,15 +18,15 @@
     <form ng-submit="save()">
 
         <div class="container">
-            <div class="thumbnail">
-                <!--<img ng-src="/resources/image/categories/{{category.id}}.jpg" id="photo">-->
+            <div class="thumbnail" onmouseover="mouseOverEditCategory(this)" onmouseout="mouseOutEditCategory(this)">
+                <div id="choose-photo-container">
+                    <input ng-model="photo" id="choose-photo-input" type="file" accept=".jpg,.jpeg,.png"
+                           onchange="readCategoryPhotoURL(this)">
+                    <button id="choose-photo-button" type="button" class="btn btn-default">Choose photo</button>
+                    <p><label id="choose-photo-label" for="choose-photo-button">1 X 1</label></p>
+                </div>
 
-                <!--<button id="choosePhoto2" type="button" class="btn btn-default">-->
-                <!--Choose photo-->
-                <!--</button>-->
-
-                <input ng-model="photo" id="choosePhoto" type="file" required>
-
+                <img ng-src="{{photo}}" id="photo">
             </div>
         </div>
 

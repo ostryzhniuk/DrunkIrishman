@@ -8,6 +8,7 @@
     width: 300px;
     padding: 0;
     text-align: center;
+    position: relative;
 }
 .container {
     padding: 5px;
@@ -36,9 +37,6 @@ button#save{
     margin-top: 10px;
     width: 300px;
 }
-input#choosePhoto{
-    margin-top: 50%;
-}
 div#message-container {
     margin-top: 20px;
     height: 25px;
@@ -63,4 +61,24 @@ div#message-container {
 .form-group {
     text-align:center;
     display: inline-block;
+}
+#choose-photo-input {
+    display: none;
+}
+#choose-photo-container {
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    visibility: hidden;
+}
+#choose-photo-button {
+    margin-top: 45%;
+    outline: none;
+    box-shadow: none;
+}
+#choose-photo-label {
+    margin-top: 70px;
+    font-size: 20px;
+    color: lightgray;
 }

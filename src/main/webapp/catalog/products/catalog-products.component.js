@@ -86,10 +86,10 @@ component('catalogProducts', {
 });
 
 
-function mouseOver2(element){
+function mouseOverProduct(element){
     element.childNodes[1].style.visibility='visible';
 };
 
-function mouseOut2(element){
+function mouseOutProduct(element){
     element.childNodes[1].style.visibility='hidden';
 };

@@ -15,13 +15,52 @@ component('categoryEditor', {
             $scope.successMessage = '';
             $scope.editor = true;
             $scope.action = 'Edit';
+            var photoBase64 = '';
 
             $http.get('/category/' + $routeParams.categoryName).then(function(response) {
                 $scope.category = response.data;
                 $scope.name = $scope.category.name;
+                loadPhoto($scope.category.id);
             });
 
+            function loadPhoto(categoryId) {
+                $http.get('/category/image/' + categoryId).then(function(response) {
+                    $scope.photo = 'data:image/jpeg;base64,' + response.data;
+                    photoBase64 = $scope.photo;
+                });
+            };
+
             $scope.save = function () {
+                $scope.errorMessage = '';
+                validatePhoto(getPhoto())
+            };
+
+            function validatePhoto(file) {
+                if (file == undefined) {
+                    if (photoBase64 == undefined || photoBase64 == '') {
+                        $scope.errorMessage = 'choose photo';
+                        return;
+                    }
+                    editCategory();
+                    return;
+                }
+                encodeBase64(file);
+            }
+
+            function encodeBase64(file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    photoBase64 = reader.result;
+                    editCategory();
+                };
+            };
+
+            function getPhoto() {
+                return document.getElementById('choose-photo-input').files[0];
+            };
+
+            function editCategory () {
                 $scope.errorMessage = '';
                 $scope.successMessage = '';
                 $http({
@@ -29,7 +68,8 @@ component('categoryEditor', {
                     url: '/category/update',
                     data: {
                         id: $scope.category.id,
-                        name: $scope.name
+                        name: $scope.name,
+                        photo: photoBase64
                     }
                 }).then(function(response) {
                     if (response.status == 200) {
@@ -57,9 +97,33 @@ component('categoryEditor', {
                             window.location.replace('#!/catalog/');
                         }
                     });
-                };
+                }
             };
+
+            document.getElementById('choose-photo-button').addEventListener("click", function() {
+                document.getElementById('choose-photo-input').click();
+            });
 
         }
     ]
 });
+
+function mouseOverEditCategory(element){
+    element.childNodes[1].style.visibility='visible';
+};
+
+function mouseOutEditCategory(element){
+    element.childNodes[1].style.visibility='hidden';
+};
+
+function readCategoryPhotoURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#photo').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+};

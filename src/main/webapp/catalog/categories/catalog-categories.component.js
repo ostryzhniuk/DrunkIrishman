@@ -56,10 +56,10 @@ component('catalogCategories', {
 });
 
 
-function mouseOver(element){
+function mouseOverCategory(element){
     element.childNodes[1].style.visibility='visible';
 };
 
-function mouseOut(element){
+function mouseOutCategory(element){
     element.childNodes[1].style.visibility='hidden';
 };

@@ -16,7 +16,7 @@
 <div class="panel-body">
     <div ng-repeat="category in categories | orderBy:orderProp">
         <div class="col-xs-3 container">
-            <div class="thumbnail" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">
+            <div class="thumbnail" onmouseover="mouseOverCategory(this)" onmouseout="mouseOutCategory(this)">
                 <div id="edit-container" ng-show="isAuthority('ADMIN')">
                     <span type="button" class="close glyphicon glyphicon-remove" ng-click="delete(category)"
                           data-toggle="tooltip" title="Remove"></span>

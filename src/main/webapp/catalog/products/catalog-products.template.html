@@ -15,7 +15,8 @@
 </div>
 <div class="panel-body">
     <div ng-repeat="product in products | orderBy:orderProp">
-        <div id="outer-container" class="col-xs-3" onmouseover="mouseOver2(this)" onmouseout="mouseOut2(this)">
+        <div id="outer-container" class="col-xs-3"
+             onmouseover="mouseOverProduct(this)" onmouseout="mouseOutProduct(this)">
 
             <div id="edit-container" ng-show="isAuthority('ADMIN')">
                 <span type="button" class="close glyphicon glyphicon-remove" ng-click="delete(product)"

@@ -49,6 +49,7 @@ public class CategoryService {
     public void update(CategoryDTO categoryDTO) {
         Category category = categoryDTO.convertToEntity();
         categoryDAO.update(category);
+        savePhoto(categoryDTO.getPhoto(), category.getId());
     }
 
     @Transactional
