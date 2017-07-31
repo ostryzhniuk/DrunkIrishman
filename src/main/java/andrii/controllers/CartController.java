@@ -4,10 +4,7 @@ import andrii.services.CartSet;
 import andrii.dto.CartDTO;
 import andrii.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CartController {
@@ -36,8 +33,8 @@ public class CartController {
     }
 
     @GetMapping("/cart")
-    public CartSet cart(){
-        return cartService.getCartSet();
+    public CartSet cart(@RequestParam(value= "loadImage", defaultValue = "false") boolean loadImage){
+        return cartService.getCartSet(loadImage);
     }
 
 

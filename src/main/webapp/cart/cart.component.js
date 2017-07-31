@@ -9,7 +9,7 @@ component('cart', {
     controller: ['$http', '$scope', '$rootScope',
         function CartController($http, $scope, $rootScope) {
 
-            $http.get('/cart').then(function(response) {
+            $http.get('/cart?loadImage=true').then(function(response) {
                 $scope.cart = response.data;
             });
 
@@ -50,7 +50,13 @@ component('cart', {
                 $http({
                     method: 'PUT',
                     url: '/addToCart',
-                    data: product
+                    data: {
+                        id: product.id,
+                        name: product.name,
+                        category: product.category,
+                        price: product.price,
+                        capacity: product.capacity
+                    }
                 }).then(function(response) {
                     $scope.cartSize = response.data;
                     $rootScope.cartSize = response.data;
@@ -65,7 +71,13 @@ component('cart', {
                 $http({
                     method: 'PUT',
                     url: '/removeFromCart',
-                    data: product
+                    data: {
+                        id: product.id,
+                        name: product.name,
+                        category: product.category,
+                        price: product.price,
+                        capacity: product.capacity
+                    }
                 }).then(function(response) {
                     $scope.cartSize = response.data;
                     $rootScope.cartSize = response.data;
@@ -79,7 +91,13 @@ component('cart', {
                 $http({
                     method: 'PUT',
                     url: '/decrease',
-                    data: product
+                    data: {
+                        id: product.id,
+                        name: product.name,
+                        category: product.category,
+                        price: product.price,
+                        capacity: product.capacity
+                    }
                 }).then(function(response) {
                     $scope.cartSize = response.data;
                     $rootScope.cartSize = response.data;

@@ -14,7 +14,7 @@ component('catalogProducts', {
             $scope.categoryName = $routeParams.categoryName;
             $scope.orderProp = 'name';
 
-            $http.get('/products/' + $routeParams.categoryName).then(function(response) {
+            $http.get('/products/' + $routeParams.categoryName + '?loadImage=true').then(function(response) {
                 $scope.products = response.data;
             });
 
@@ -30,7 +30,13 @@ component('catalogProducts', {
                 $http({
                     method: 'PUT',
                     url: '/addToCart',
-                    data: product
+                    data: {
+                        id: product.id,
+                        name: product.name,
+                        category: product.category,
+                        price: product.price,
+                        capacity: product.capacity
+                    }
                 }).then(function(response) {
                     $rootScope.cartSize = response.data;
                 });
@@ -54,13 +60,19 @@ component('catalogProducts', {
             };
 
             $scope.delete = function (product) {
-                var request = confirm('Are you sure?\nThis action CANNOT be undone! This will ' +
-                    'permanently delete the ' + product.name + ' category and all products of this category.');
+                var request = confirm('Are you sure?\nProduct '
+                    + product.name + ' will and not be displayed.');
                 if (request == true) {
                     $http({
                         method: 'PUT',
                         url: '/product/deactivate',
-                        data: product
+                        data: {
+                            id: product.id,
+                            name: product.name,
+                            category: product.category,
+                            price: product.price,
+                            capacity: product.capacity
+                        }
                     }).then(function(response) {
                         if (response.status == 200) {
                             window.location.reload();

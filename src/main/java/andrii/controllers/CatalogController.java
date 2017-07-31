@@ -19,8 +19,9 @@ public class CatalogController {
     private CategoryService categoryService;
 
     @GetMapping("/products/{categoryName}")
-    public List<ProductDTO> products(@PathVariable("categoryName") String categoryName){
-        return productService.getProductsByCategory(categoryName);
+    public List<ProductDTO> products(@PathVariable("categoryName") String categoryName,
+                                     @RequestParam(value= "loadImage", defaultValue = "false") boolean loadImage){
+        return productService.getProductsByCategory(categoryName, loadImage);
     }
 
     @GetMapping("/categories")

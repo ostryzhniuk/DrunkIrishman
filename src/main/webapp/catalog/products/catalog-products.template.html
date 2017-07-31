@@ -29,7 +29,7 @@
             <a class="clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">
                 <div class="thumbnail panel-body" >
 
-                    <img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">
+                    <img ng-src="data:image/jpeg;base64,{{product.photo}}" id="photo">
 
                     <div id="inner-container">
                         <a id="name-clickable-panel" href="#!/catalog/{{product.category.name}}/{{product.id}}">

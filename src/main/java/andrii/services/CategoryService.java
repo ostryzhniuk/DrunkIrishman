@@ -23,7 +23,7 @@ public class CategoryService {
     public List<CategoryDTO> getCategories(boolean loadPhoto) {
         List<CategoryDTO> categoryList = convertToDTOList(categoryDAO.getObjects());
         if (loadPhoto) {
-            categoryList.forEach(category -> category.setPhoto(loadPhoto(category)));
+            categoryList.forEach(category -> category.setPhoto(loadPhoto(category.getId())));
         }
         return categoryList;
     }
@@ -63,10 +63,10 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
-    private String loadPhoto(CategoryDTO categoryDTO){
+    public String loadPhoto(Integer categoryId){
         String separator = FileSystems.getDefault().getSeparator();
         Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
-                + separator + "categories" + separator + categoryDTO.getId() + ".jpg");
+                + separator + "categories" + separator + categoryId + ".jpg");
         return ImageHandler.loadEncodedImage(path);
     }
 

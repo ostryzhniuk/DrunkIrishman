@@ -16,7 +16,7 @@
     <div class="modal-body">
         <div ng-repeat="product in cart">
 
-            <img ng-src="/resources/image/products/{{product.id}}.jpg" id="productPhoto">
+            <img ng-src="data:image/jpeg;base64,{{product.photo}}" id="productPhoto">
 
             <div class="column">
                 <div id="productName">

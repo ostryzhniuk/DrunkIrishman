@@ -21,6 +21,10 @@ component('productDetail', {
                 descriptionHeightSensitive();
             });
 
+            $http.get('/product/image/' + $routeParams.productId).then(function(response) {
+                $scope.photo = response.data;
+            });
+
             $scope.addToCart = function (product){
                 product.quantity = $scope.number;
                 $http({
