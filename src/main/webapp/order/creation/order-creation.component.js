@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('login', [
-    'ngRoute'
+angular.module('orderCreation', [
+    'orderCreation'
 ]);
 
 angular.
-module('login').
-component('login', {
+module('orderCreation').
+component('orderCreation', {
     templateUrl: '/login/login.template.html',
     controller: ['$http', '$scope',
-        function LoginController($http, $scope) {
+        function OrderCreationController($http, $scope) {
 
             $scope.errorMessage = '';
 

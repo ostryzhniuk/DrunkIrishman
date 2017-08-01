@@ -39,6 +39,7 @@
     color: inherit;
     position: absolute;
     right: 15px;
+    top: 5px;
 }
 #edit-container {
     position: absolute;
@@ -54,4 +55,7 @@
     padding-top: 1px;
     margin-left: 2px;
     width: 103px;
+}
+#hr-heading {
+    margin: 10px 0em 0em;
 }

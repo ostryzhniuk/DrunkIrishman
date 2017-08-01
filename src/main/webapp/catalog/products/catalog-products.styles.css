@@ -74,6 +74,7 @@ a.clickable-panel {
     color: inherit;
     position: absolute;
     right: 15px;
+    top: 5px;
 }
 #edit-container {
     position: absolute;
@@ -83,4 +84,7 @@ a.clickable-panel {
 }
 #edit-button {
     margin-right: 15px;
+}
+#hr-heading {
+    margin: 10px 0em 0em;
 }

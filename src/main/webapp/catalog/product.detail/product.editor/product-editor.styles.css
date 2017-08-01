@@ -75,6 +75,7 @@ label {
     color: inherit;
     position: absolute;
     right: 15px;
+    top: 5px;
 }
 .product-actions-button {
     height: 24px;
@@ -86,6 +87,7 @@ a#to-review {
     color: inherit;
     position: absolute;
     left: 15px;
+    top: 8px;
 }
 button#to-review-button {
     height: 24px;
@@ -132,4 +134,7 @@ div#message-container {
 }
 #status-container {
     float: right;
+}
+#hr-heading {
+    margin: 10px 0em 0em;
 }

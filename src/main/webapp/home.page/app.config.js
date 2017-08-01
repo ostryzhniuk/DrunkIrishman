@@ -13,7 +13,8 @@ angular.module('shopApp', [
     'categoryEditor',
     'categoryCreator',
     'productCreator',
-    'productEditor'
+    'productEditor',
+    'orderCreation'
 ]);
 
 angular.
@@ -53,6 +54,9 @@ config(['$locationProvider' ,'$routeProvider', '$qProvider',
         }).
         when('/search/:searchParameter', {
             template: '<search-product></search-product>'
+        })
+        .when('/order/create', {
+            template: '<order-creation></order-creation>'
         }).
         otherwise('/catalog');
     }

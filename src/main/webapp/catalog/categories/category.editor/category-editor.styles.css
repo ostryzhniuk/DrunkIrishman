@@ -51,6 +51,7 @@ div#message-container {
     color: inherit;
     position: absolute;
     right: 15px;
+    top: 5px;
 }
 .category-actions-button {
     height: 24px;
@@ -81,4 +82,7 @@ div#message-container {
     margin-top: 30%;
     font-size: 20px;
     color: lightgray;
+}
+#hr-heading {
+    margin: 10px 0em 0em;
 }

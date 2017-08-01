@@ -38,7 +38,9 @@ public class ProductService {
     @Transactional
     public List<ProductDTO> search(String parameter) {
         List<Product> products = productDAO.getProductByName(parameter);
-        return convertToDTOList(products);
+        List<ProductDTO> productDTOList = convertToDTOList(products);
+        productDTOList.forEach(productDTO -> productDTO.setPhoto(loadPhoto(productDTO.getId())));
+        return productDTOList;
     }
 
     private List<ProductDTO> convertToDTOList(List<Product> productList) {

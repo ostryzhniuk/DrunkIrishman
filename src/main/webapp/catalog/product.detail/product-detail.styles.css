@@ -97,10 +97,14 @@ div#availability{
     color: inherit;
     position: absolute;
     right: 15px;
+    top: 5px;
 }
 .product-actions-button {
     height: 24px;
     padding-top: 1px;
     margin-left: 2px;
     width: 127px;
+}
+#hr-heading {
+    margin: 10px 0em 0em;
 }

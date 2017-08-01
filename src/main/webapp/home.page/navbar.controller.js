@@ -38,7 +38,6 @@ angular
 
     $scope.search = function () {
         if ($scope.searchParameter != undefined && $scope.searchParameter != "") {
-            console.log($scope.searchParameter);
             window.location.href = '#!/search/' + $scope.searchParameter;
         }
     };

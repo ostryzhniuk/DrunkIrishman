@@ -33,6 +33,53 @@ component('searchProduct', {
                     $rootScope.cartSize = response.data;
                 });
             };
+
+            $scope.isInStock = function (product){
+                if (product.status == 'IN_STOCK') {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+            $http.get('/currentUser').then(function(response) {
+                $rootScope.user = response.data;
+            });
+
+            $scope.isAuthority = function (role) {
+                if ($rootScope.user == undefined) {
+                    return false;
+                }
+                var authorities = $rootScope.user.authorities;
+                for (var authority in authorities) {
+                    if (authorities[authority].authority == role) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
+            $scope.delete = function (product) {
+                var request = confirm('Are you sure?\nProduct "'
+                    + product.name + '" will and not be displayed.');
+                if (request == true) {
+                    $http({
+                        method: 'PUT',
+                        url: '/product/deactivate',
+                        data: {
+                            id: product.id,
+                            name: product.name,
+                            category: product.category,
+                            price: product.price,
+                            capacity: product.capacity
+                        }
+                    }).then(function(response) {
+                        if (response.status == 200) {
+                            window.location.reload();
+                        }
+                    });
+                };
+            };
         }
     ]
 });
