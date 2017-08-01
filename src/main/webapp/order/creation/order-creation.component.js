@@ -47,7 +47,7 @@ component('orderCreation', {
                         user: $scope.userInformation
                     }
                 }).then(function(response) {
-                    window.location.replace('#!/catalog');
+                    window.location.replace('#!/order/create/success');
                     window.location.reload();
                 },function errorCallback(response) {
                     if (response.status == 403) {

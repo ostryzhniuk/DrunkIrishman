@@ -14,7 +14,8 @@ angular.module('shopApp', [
     'categoryCreator',
     'productCreator',
     'productEditor',
-    'orderCreation'
+    'orderCreation',
+    'successPage'
 ]);
 
 angular.
@@ -57,6 +58,9 @@ config(['$locationProvider' ,'$routeProvider', '$qProvider',
         })
         .when('/order/create/', {
             template: '<order-creation></order-creation>'
+        }).
+        when('/order/create/success', {
+            template: '<success-page></success-page>'
         }).
         otherwise('/catalog');
     }
