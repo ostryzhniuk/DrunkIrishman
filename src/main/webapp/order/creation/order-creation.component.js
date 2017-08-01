@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('orderCreation', [
-    'orderCreation'
-]);
+angular.module('orderCreation', []);
 
 angular.
 module('orderCreation').
