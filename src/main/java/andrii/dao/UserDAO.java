@@ -1,6 +1,7 @@
 package andrii.dao;
 
 import andrii.entities.User;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,11 +24,18 @@ public class UserDAO extends GenericDAO<User> {
 
     @Override
     public void update(User user) {
-
+        getSession().update(user);
     }
 
     @Override
     public void delete(User user) {
+        getSession().delete(user);
+    }
 
+    public User getUserByEmail(String email){
+        Query<User> query = getSession().createQuery("from User " +
+                "where email = :email");
+        query.setParameter("email", email);
+        return query.getSingleResult();
     }
 }

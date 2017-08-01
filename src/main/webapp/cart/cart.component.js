@@ -107,8 +107,31 @@ component('cart', {
                 });
             };
 
+            $http.get('/currentUser').then(function(response) {
+                $rootScope.user = response.data;
+            });
+
+            function isAuthority (role) {
+                if ($rootScope.user == undefined) {
+                    return false;
+                }
+                var authorities = $rootScope.user.authorities;
+                for (var authority in authorities) {
+                    if (authorities[authority].authority == role) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
             $scope.makeOrder = function (){
-                alert("Sorry, but this service is temporarily unavailable.");
+                // alert("Sorry, but this service is temporarily unavailable.");
+                if (isAuthority('ROLE_ANONYMOUS')) {
+                    window.location.replace('#!/login');
+                } else {
+                    window.location.replace('#!/order/create/');
+                }
+                $rootScope.modalInstance.close();
             };
 
         }

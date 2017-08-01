@@ -39,6 +39,18 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orderList;
 
+    public User() {
+    }
+
+    public User(String email, String name, String surname, LocalDate birthDate, String address, String phone) {
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.phone = phone;
+    }
+
     public Integer getId() {
         return id;
     }

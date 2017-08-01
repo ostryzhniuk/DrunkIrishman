@@ -45,4 +45,10 @@ public class UserService {
         return userRoleBuilder.getUserRole();
     }
 
+    public UserDTO getUserByEmail(String email){
+        User user = userDAO.getUserByEmail(email);
+        user.setPassword("**");
+        return UserDTO.convertToDTO(user);
+    }
+
 }

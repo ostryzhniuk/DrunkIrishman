@@ -55,7 +55,7 @@ config(['$locationProvider' ,'$routeProvider', '$qProvider',
         when('/search/:searchParameter', {
             template: '<search-product></search-product>'
         })
-        .when('/order/create', {
+        .when('/order/create/', {
             template: '<order-creation></order-creation>'
         }).
         otherwise('/catalog');

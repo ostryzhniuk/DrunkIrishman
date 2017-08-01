@@ -64,4 +64,9 @@ public class DefaultController {
         }
     }
 
+    @GetMapping("/userInformation")
+    public UserDTO userInformation() {
+        return userService.getUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+    }
+
 }
