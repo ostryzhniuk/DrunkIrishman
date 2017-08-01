@@ -6,6 +6,7 @@ import andrii.utils.ImageHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,5 +44,9 @@ public class CartService {
     public CartSet<CartDTO> remove(CartDTO cartDTO) {
         cartSet.remove(cartDTO);
         return cartSet;
+    }
+
+    public BigDecimal sum() {
+        return cartSet.sum();
     }
 }

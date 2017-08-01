@@ -45,10 +45,9 @@ public class UserService {
         return userRoleBuilder.getUserRole();
     }
 
+    @Transactional
     public UserDTO getUserByEmail(String email){
-        User user = userDAO.getUserByEmail(email);
-        user.setPassword("**");
-        return UserDTO.convertToDTO(user);
+        return UserDTO.convertToDTO(userDAO.getUserByEmail(email));
     }
 
 }

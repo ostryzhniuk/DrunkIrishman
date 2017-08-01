@@ -4,6 +4,8 @@ import andrii.dto.CartDTO;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 import java.util.HashSet;
 
 /** * Annotation-based configuration of session scope */
@@ -46,6 +48,16 @@ public class CartSet<T extends CartDTO> extends HashSet<T> {
                 .filter(product -> product.equals(t))
                 .findAny()
                 .get();
+    }
+
+    public BigDecimal sum(){
+        BigDecimal price = new BigDecimal(0);
+        for (CartDTO cartDTO : this) {
+            BigDecimal sum = cartDTO.getPrice().multiply(new BigDecimal(cartDTO.getQuantity()));
+            price = price.add(sum);
+        }
+        return price;
+
     }
 
 }

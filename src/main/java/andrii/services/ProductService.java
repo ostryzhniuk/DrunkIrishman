@@ -43,7 +43,7 @@ public class ProductService {
         return productDTOList;
     }
 
-    private List<ProductDTO> convertToDTOList(List<Product> productList) {
+    public List<ProductDTO> convertToDTOList(List<Product> productList) {
         return productList
                 .stream()
                 .map(product -> ProductDTO.convertToDTO(product))

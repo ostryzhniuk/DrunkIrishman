@@ -1,5 +1,7 @@
 package andrii.entities;
 
+import andrii.dto.CartDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,9 @@ public class OrderContent {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+
+    @Column(nullable = false)
+    private Integer quantity;
 
     public Integer getId() {
         return id;
@@ -40,5 +45,21 @@ public class OrderContent {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public static OrderContent createOrderContent(CartDTO cartDTO, Order order){
+        OrderContent orderContent = new OrderContent();
+        orderContent.setOrder(order);
+        orderContent.setProduct(cartDTO.convertToEntity());
+        orderContent.setQuantity(cartDTO.getQuantity());
+        return orderContent;
     }
 }

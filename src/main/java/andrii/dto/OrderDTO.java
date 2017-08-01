@@ -1,47 +1,28 @@
-package andrii.entities;
+package andrii.dto;
 
-import javax.persistence.*;
+import andrii.entities.Order;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.modelmapper.ModelMapper;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table
-public class Order {
+public class OrderDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(nullable = false)
+    @JsonFormat(pattern = "dd.MM.yyyy, HH:mm:ss")
     private LocalDateTime date;
-
-    @Column(nullable = false)
     private String address;
-
-    @Column(nullable = false)
     private String phone;
+    private BigDecimal price;
+    private boolean delivery = false;
+    private UserDTO user;
+    private List<OrderContentDTO> contentList;
+    private Status status = Status.IN_PROCESS;
 
     public enum Status {
         IN_PROCESS, IS_SENT, COMPLETED
     }
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Status status = Status.IN_PROCESS;
-
-    @Column(nullable = false)
-    private BigDecimal price;
-
-    @Column(nullable = false)
-    private boolean delivery = false;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderContent> contentList;
 
     public Integer getId() {
         return id;
@@ -99,19 +80,32 @@ public class Order {
         this.delivery = delivery;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 
-    public List<OrderContent> getContentList() {
+    public List<OrderContentDTO> getContentList() {
         return contentList;
     }
 
-    public void setContentList(List<OrderContent> contentList) {
+    public void setContentList(List<OrderContentDTO> contentList) {
         this.contentList = contentList;
     }
+
+    public Order convertToEntity() {
+        Order order = new ModelMapper().map(this, Order.class);
+        order.setUser(this.getUser().convertToEntity());
+        return order;
+    }
+
+    public static OrderDTO convertToDTO(Order order) {
+        OrderDTO orderDTO = new ModelMapper().map(order, OrderDTO.class);
+        orderDTO.setUser(UserDTO.convertToDTO(order.getUser()));
+        return orderDTO;
+    }
+
 }

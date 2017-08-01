@@ -75,16 +75,16 @@ public class ProductDTO {
         this.status = status;
     }
 
-    public Product convertToEntity() {
-        return new ModelMapper().map(this, Product.class);
-    }
-
     public String getPhoto() {
         return photo;
     }
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Product convertToEntity() {
+        return new ModelMapper().map(this, Product.class);
     }
 
     public static ProductDTO convertToDTO(Product product) {
