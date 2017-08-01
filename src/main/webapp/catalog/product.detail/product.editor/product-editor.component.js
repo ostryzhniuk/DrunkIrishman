@@ -28,7 +28,12 @@ component('productEditor', {
                 $scope.price = $scope.product.price;
                 $scope.capacity = $scope.product.capacity;
                 $scope.description = $scope.product.description;
+                $scope.status = $scope.product.status;
                 loadPhoto($scope.product.id);
+            });
+
+            $http.get('/statusList').then(function(response) {
+                $scope.statusList = response.data;
             });
 
             function loadPhoto(productId) {
@@ -71,6 +76,7 @@ component('productEditor', {
             };
 
             function editProduct () {
+                $scope.status = document.getElementById('status').value;
                 $http({
                     method: 'PUT',
                     url: '/product/update',
@@ -81,7 +87,8 @@ component('productEditor', {
                         capacity: $scope.capacity,
                         category: $scope.category,
                         description: $scope.description,
-                        photo: photoBase64
+                        photo: photoBase64,
+                        status: $scope.status
                     }
                 }).then(function(response) {
                     if (response.status == 200) {

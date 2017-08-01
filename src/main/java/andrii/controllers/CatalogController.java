@@ -44,4 +44,9 @@ public class CatalogController {
         return categoryService.getCategoryByName(categoryName);
     }
 
+    @GetMapping("/statusList")
+    public ProductDTO.Status[] statusList () {
+        return ProductDTO.Status.values();
+    }
+
 }

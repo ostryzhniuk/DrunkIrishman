@@ -57,6 +57,10 @@ div#description-container {
     margin-top: 20px;
     font-size: 13px;
 }
+#price-capacity-container {
+    display: flex;
+    margin-top: 20px;
+}
 label {
     font-size: 13px;
 }
@@ -117,4 +121,15 @@ div#message-container {
     margin-top: 30%;
     font-size: 20px;
     color: lightgray;
+}
+#status {
+    height: 25px;
+    width: 150px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 10px;
+    font-size: 13px;
+}
+#status-container {
+    float: right;
 }

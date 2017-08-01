@@ -15,7 +15,7 @@ public class ProductDTO {
     private String photo;
     private Status status = Status.IN_STOCK;
 
-    private enum Status {
+    public enum Status {
         IN_STOCK, SOLD_OUT
     }
 
