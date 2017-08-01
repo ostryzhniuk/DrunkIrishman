@@ -18,7 +18,7 @@ public class EditCatalogController {
 
     @PostMapping("/category/create")
     public void createCategory (@RequestBody CategoryDTO categoryDTO) {
-        categoryService.create(categoryDTO);
+        categoryService.save(categoryDTO);
     }
 
     @PutMapping("/category/update")

@@ -29,7 +29,7 @@ public class CategoryService {
     }
 
     @Transactional
-    public void create (CategoryDTO categoryDTO) {
+    public void save (CategoryDTO categoryDTO) {
         Category category = categoryDTO.convertToEntity();
         categoryDAO.save(category);
         savePhoto(categoryDTO.getPhoto(), category.getId());

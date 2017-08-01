@@ -17,8 +17,15 @@
     </span>
 </div>
 <div class="panel-body">
-    <div class=" col-sm-4 thumbnail">
-        <!--<img ng-src="/resources/image/products/{{product.id}}.jpg" id="photo">-->
+    <div class=" col-sm-4 thumbnail" onmouseover="mouseOverEditProduct(this)" onmouseout="mouseOutEditProduct(this)">
+        <div id="choose-photo-container">
+            <input ng-model="photo" id="choose-photo-input" type="file" accept=".jpg,.jpeg,.png"
+                   onchange="readProductPhotoURL(this)">
+            <button id="choose-photo-button" type="button" class="btn btn-default">Choose photo</button>
+            <p><label id="choose-photo-label" for="choose-photo-button">1 X 1</label></p>
+        </div>
+
+        <img ng-src="{{photo}}" id="photo">
     </div>
 
     <form ng-submit="save()">

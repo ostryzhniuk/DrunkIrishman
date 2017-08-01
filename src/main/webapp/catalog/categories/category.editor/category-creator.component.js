@@ -14,7 +14,7 @@ component('categoryCreator', {
             $scope.action = 'Create';
             var photoBase64 = '';
             document.getElementById('choose-photo-container').style.visibility='visible';
-            isPhoto = false;
+            isCategoryPhoto = false;
 
             $scope.save = function () {
                 $scope.errorMessage = '';
@@ -27,7 +27,7 @@ component('categoryCreator', {
                     return;
                 }
                 encodeBase64(file);
-            }
+            };
 
             function encodeBase64(file) {
                 var reader = new FileReader();
@@ -60,7 +60,7 @@ component('categoryCreator', {
                         $scope.errorMessage = 'Sorry, but system error occurred. Try again later, please.';
                     }
                 });
-            }
+            };
 
             document.getElementById('choose-photo-button').addEventListener("click", function() {
                 document.getElementById('choose-photo-input').click();

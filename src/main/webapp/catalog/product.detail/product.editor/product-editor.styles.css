@@ -15,6 +15,7 @@
     height: 402px;
     width: 402px;
     padding: 0;
+    position: relative;
 }
 #photo {
     width: 400px;
@@ -96,4 +97,24 @@ div#message-container {
 }
 #successMessage {
     color: green;
+}
+#choose-photo-input {
+    display: none;
+}
+#choose-photo-container {
+    position: absolute;
+    height: 402px;
+    width: 402px;
+    text-align: center;
+    visibility: hidden;
+}
+#choose-photo-button {
+    margin-top: 45%;
+    outline: none;
+    box-shadow: none;
+}
+#choose-photo-label {
+    margin-top: 30%;
+    font-size: 20px;
+    color: lightgray;
 }

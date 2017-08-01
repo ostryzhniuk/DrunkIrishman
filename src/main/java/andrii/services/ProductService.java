@@ -52,12 +52,15 @@ public class ProductService {
     public ProductDTO save(ProductDTO productDTO) {
         Product product = productDTO.convertToEntity();
         productDAO.save(product);
+        savePhoto(productDTO.getPhoto(), product.getId());
         return ProductDTO.convertToDTO(product);
     }
 
     @Transactional
     public void update(ProductDTO productDTO) {
-        productDAO.update(productDTO.convertToEntity());
+        Product product = productDTO.convertToEntity();
+        productDAO.update(product);
+        savePhoto(productDTO.getPhoto(), product.getId());
     }
 
     @Transactional

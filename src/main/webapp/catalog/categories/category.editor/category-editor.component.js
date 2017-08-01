@@ -27,7 +27,7 @@ component('categoryEditor', {
                 $http.get('/category/image/' + categoryId).then(function(response) {
                     $scope.photo = 'data:image/jpeg;base64,' + response.data;
                     photoBase64 = $scope.photo;
-                    isPhoto = true;
+                    isCategoryPhoto = true;
                 });
             };
 
@@ -47,7 +47,7 @@ component('categoryEditor', {
                     return;
                 }
                 encodeBase64(file);
-            }
+            };
 
             function encodeBase64(file) {
                 var reader = new FileReader();
@@ -108,14 +108,14 @@ component('categoryEditor', {
     ]
 });
 
-var isPhoto = false;
+var isCategoryPhoto = false;
 
 function mouseOverEditCategory(element){
     element.childNodes[1].style.visibility='visible';
 };
 
 function mouseOutEditCategory(element){
-    if (isPhoto) {
+    if (isCategoryPhoto) {
         element.childNodes[1].style.visibility='hidden';
     }
 };
@@ -126,8 +126,8 @@ function readCategoryPhotoURL(input) {
 
         reader.onload = function (e) {
             $('#photo').attr('src', e.target.result);
-            isPhoto = true;
-            element.childNodes[1].style.visibility='hidden';
+            isCategoryPhoto = true;
+            document.getElementById('choose-photo-container').style.visibility='hidden';
         };
 
         reader.readAsDataURL(input.files[0]);

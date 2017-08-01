@@ -10,9 +10,11 @@ component('productCreator', {
         function ProductCreatorController($http, $scope) {
 
             $scope.errorMessage = '';
-            $scope.successMessage = '';
             $scope.editor = false;
             $scope.action = 'Create';
+            var photoBase64 = '';
+            document.getElementById('choose-photo-container').style.visibility='visible';
+            isProductPhoto = false;
 
             $http.get('/categories').then(function(response) {
                 $scope.categories = response.data;
@@ -20,7 +22,31 @@ component('productCreator', {
 
             $scope.save = function () {
                 $scope.errorMessage = '';
-                $scope.successMessage = '';
+                validatePhoto(getPhoto());
+            };
+
+            function validatePhoto(file) {
+                if (file == undefined) {
+                    $scope.errorMessage = 'Choose photo, please.';
+                    return;
+                }
+                encodeBase64(file);
+            };
+
+            function encodeBase64(file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    photoBase64 = reader.result;
+                    crateProduct();
+                };
+            };
+
+            function getPhoto() {
+                return document.getElementById('choose-photo-input').files[0];
+            };
+
+            function crateProduct() {
                 $http({
                     method: 'POST',
                     url: '/product/create',
@@ -29,7 +55,8 @@ component('productCreator', {
                         price: $scope.price,
                         capacity: $scope.capacity,
                         category: $scope.category,
-                        description: $scope.description
+                        description: $scope.description,
+                        photo: photoBase64
                     }
                 }).then(function(response) {
                     var productId = response.data.id;
@@ -38,6 +65,10 @@ component('productCreator', {
                     $scope.errorMessage = 'Sorry, but an error occurred. Try again again, please.';
                 });
             };
+
+            document.getElementById('choose-photo-button').addEventListener("click", function() {
+                document.getElementById('choose-photo-input').click();
+            });
 
         }
     ]

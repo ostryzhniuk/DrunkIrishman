@@ -78,7 +78,7 @@ div#message-container {
     box-shadow: none;
 }
 #choose-photo-label {
-    margin-top: 70px;
+    margin-top: 30%;
     font-size: 20px;
     color: lightgray;
 }
