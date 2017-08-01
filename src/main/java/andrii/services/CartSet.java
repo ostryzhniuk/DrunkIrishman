@@ -51,13 +51,9 @@ public class CartSet<T extends CartDTO> extends HashSet<T> {
     }
 
     public BigDecimal sum(){
-        BigDecimal price = new BigDecimal(0);
-        for (CartDTO cartDTO : this) {
-            BigDecimal sum = cartDTO.getPrice().multiply(new BigDecimal(cartDTO.getQuantity()));
-            price = price.add(sum);
-        }
-        return price;
-
+        return this.stream()
+                .map(c -> c.getPrice().multiply(new BigDecimal(c.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
 }
