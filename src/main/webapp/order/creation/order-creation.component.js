@@ -42,7 +42,8 @@ component('orderCreation', {
                         user: $scope.userInformation
                     }
                 }).then(function(response) {
-                    // window.location.replace('#!/catalog/categories/edit/' + categoryName);
+                    window.location.replace('#!/catalog');
+                    window.location.reload();
                 },function errorCallback(response) {
                     if (response.status == 403) {
                         $scope.errorMessage = 'Access forbidden!';

@@ -32,6 +32,8 @@ public class OrderService {
                 .stream()
                 .map(cartDTO -> OrderContent.createOrderContent(cartDTO, order))
                 .forEach(this::saveOrderContent);
+
+        cartService.clearCart();
     }
 
     @Transactional

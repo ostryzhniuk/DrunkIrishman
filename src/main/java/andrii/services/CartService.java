@@ -49,4 +49,8 @@ public class CartService {
     public BigDecimal sum() {
         return cartSet.sum();
     }
+
+    public void clearCart(){
+        cartSet.clear();
+    }
 }
