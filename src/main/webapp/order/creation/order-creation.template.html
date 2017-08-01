@@ -3,42 +3,48 @@
 </head>
 
 <div class="panel-body">
-
-    <form ng-submit="processOrder()" id="order-form" class="col-sm-6 col-sm-offset-3">
-        <div id="capital-row">Check the data</div>
-
-        <div class="col-sm-3 block-container">
-            <div>
-                {{userInformation.name}} {{userInformation.surname}}
+    <div class="row">
+        <form ng-submit="processOrder()" id="order-form" class="col-sm-6 col-sm-offset-3">
+            <div id="capital-row">
+                Check the data
             </div>
 
-            <div class="form-group">
-                <input ng-model="phone" id="phone" class="form-control phone" maxlength="28"
-                       oninput="validatePhone(this);" placeholder="Insert your Phone Number *" required/>
-            </div>
+            <div class="col-sm-3 block-container">
+                <div>
+                    {{userInformation.name}} {{userInformation.surname}}
+                </div>
 
-            <div class="form-group">
+                <div class="form-group">
+                    <input ng-model="phone" id="phone" class="form-control phone" maxlength="28"
+                           oninput="validatePhone(this);" placeholder="Insert your Phone Number *" required/>
+                </div>
+
+                <div class="form-group">
                     <textarea ng-model="address" class="form-control" id="address" oninput="validateAddress(this)"
                               placeholder="Insert your Address *" required maxlength="300"/>
+                </div>
+
             </div>
 
-        </div>
+            <div class="col-sm-3 block-container">
+                <select class="form-control" id="pay-method" required>
+                    <option value="" disabled selected hidden>Payment method</option>
+                    <option value="delivery">Cash on delivery</option>
+                    <option value="online" disabled>Pay with a bank card</option>
+                </select>
 
-        <div class="col-sm-3 block-container">
-            <select class="form-control" id="pay-method" required>
-                <option value="" disabled selected hidden>Payment method</option>
-                <option value="delivery">Cash on delivery</option>
-                <option value="online" disabled>Pay with a bank card</option>
-            </select>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="delivery" value="">Delivery by courier</label>
+                </div>
 
-            <div class="checkbox">
-                <label><input type="checkbox" id="delivery" value="">Delivery by courier</label>
+                <button id="process-order" type="submit" class="btn btn-success">
+                    Confirm and process the order
+                </button>
             </div>
+        </form>
+    </div>
 
-            <button id="process-order" type="submit" class="btn btn-success">
-                Confirm and process the order
-            </button>
-        </div>
-
-    </form>
+    <div class="row" id="errorMessage">
+        {{errorMessage}}
+    </div>
 </div>

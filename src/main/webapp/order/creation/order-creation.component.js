@@ -13,11 +13,19 @@ component('orderCreation', {
 
             $scope.errorMessage = '';
 
-            $http.get('/userInformation').then(function(response) {
-                $scope.userInformation = response.data;
-                $scope.phone = $scope.userInformation.phone;
-                $scope.address = $scope.userInformation.address;
+            $http.get('/currentUser').then(function(response) {
+                $rootScope.user = response.data;
             });
+
+            if (!isAuthority('ROLE_ANONYMOUS')) {
+                $http.get('/userInformation').then(function(response) {
+                    $scope.userInformation = response.data;
+                    $scope.phone = $scope.userInformation.phone;
+                    $scope.address = $scope.userInformation.address;
+                });
+            } else {
+                window.location.replace('#!/catalog');
+            }
             
             function isDelivery() {
                 return document.getElementById("delivery").checked;
@@ -28,7 +36,6 @@ component('orderCreation', {
             }
 
             $scope.processOrder = function() {
-                console.log(getCurrentDateTime());
                 $scope.errorMessage = '';
 
                 $http({
@@ -51,7 +58,20 @@ component('orderCreation', {
                         $scope.errorMessage = 'Sorry, but system error occurred. Try again later, please.';
                     }
                 });
-            }
+            };
+
+            function isAuthority(role) {
+                if ($rootScope.user == undefined) {
+                    return false;
+                }
+                var authorities = $rootScope.user.authorities;
+                for (var authority in authorities) {
+                    if (authorities[authority].authority == role) {
+                        return true;
+                    }
+                }
+                return false;
+            };
 
         }
     ]
