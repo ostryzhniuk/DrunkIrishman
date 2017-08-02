@@ -8,6 +8,9 @@ import andrii.entities.OrderContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,7 +48,9 @@ public class OrderService {
 
     @Transactional
     public List<OrderDTO> getOrders(OrderDTO.Status status) {
-        return convertToDTOList(orderDAO.getOrders(OrderDTO.convertToEntityStatus(status)));
+        List<OrderDTO> orderDTOList = convertToDTOList(orderDAO.getOrders(OrderDTO.convertToEntityStatus(status)));
+        orderDTOList.sort(Comparator.comparing(OrderDTO::getDate));
+        return orderDTOList;
     }
 
     public List<OrderDTO> convertToDTOList(List<Order> orderList) {

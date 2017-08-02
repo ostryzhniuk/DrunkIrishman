@@ -1,5 +1,6 @@
 package andrii.controllers;
 
+import org.apache.catalina.connector.ClientAbortException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -23,5 +24,10 @@ class GlobalControllerExceptionHandler {
     @ExceptionHandler(IllegalStateException.class)
     public void handleInternalServerError(IllegalStateException e) {
         LOGGER.error("Java environment is not in an appropriate state for the requested operation", e);
+    }
+
+    @ExceptionHandler(ClientAbortException.class)
+    public void handleClientAbortException(ClientAbortException e) {
+        LOGGER.warn("An established connection was aborted by the software in your host machine");
     }
 }

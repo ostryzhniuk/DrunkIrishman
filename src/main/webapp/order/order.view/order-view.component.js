@@ -16,7 +16,7 @@ component('orderView', {
                 $scope.orders = response.data;
             });
 
-            $http.get('/orders/status/list').then(function(response) {
+            $http.get('/order/status/list').then(function(response) {
                 $scope.statusList = response.data;
             });
 
