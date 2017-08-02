@@ -8,11 +8,13 @@
 </div>
 
 <div class="panel-body">
-    <!--<div class="row">-->
+    <div class="row">
         <div class="list-group" id="list-group" ng-repeat="order in orders">
             <a href="" ng-click="showOrderContent(order)" class="list-group-item" id="list-group-item">
-                {{order.date}} {{order.status}}
+                
+                {{order.date}}
+                <div>{{order.status}}</div>
             </a>
         </div>
-    <!--</div>-->
+    </div>
 </div>
