@@ -55,11 +55,4 @@ public class OrderContent {
         this.quantity = quantity;
     }
 
-    public static OrderContent createOrderContent(CartDTO cartDTO, Order order){
-        OrderContent orderContent = new OrderContent();
-        orderContent.setOrder(order);
-        orderContent.setProduct(cartDTO.convertToEntity());
-        orderContent.setQuantity(cartDTO.getQuantity());
-        return orderContent;
-    }
 }

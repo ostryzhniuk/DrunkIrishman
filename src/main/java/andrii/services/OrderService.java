@@ -2,6 +2,7 @@ package andrii.services;
 
 import andrii.dao.OrderContentDAO;
 import andrii.dao.OrderDAO;
+import andrii.dto.CartDTO;
 import andrii.dto.OrderContentDTO;
 import andrii.dto.OrderDTO;
 import andrii.entities.Order;
@@ -42,7 +43,7 @@ public class OrderService {
         orderDAO.save(order);
         cartService.getCartSet(false)
                 .stream()
-                .map(cartDTO -> OrderContent.createOrderContent(cartDTO, order))
+                .map(cartDTO -> createOrderContent(cartDTO, order))
                 .forEach(this::saveOrderContent);
 
         cartService.clearCart();
@@ -83,11 +84,6 @@ public class OrderService {
     }
 
     @Transactional
-    public void changeOrderStatus(OrderDTO orderDTO) {
-        orderDAO.updateOrderStatus(orderDTO.convertToEntity());
-    }
-
-    @Transactional
     public List<OrderContentDTO> getOrderContentList(Integer orderId, boolean loadPhoto) {
         List<OrderContentDTO> orderContentDTOList = convertToContentDTOList(orderContentDAO.getObjects(orderId));
         if (loadPhoto) {
@@ -97,6 +93,20 @@ public class OrderService {
             });
         }
         return orderContentDTOList;
+    }
+
+    @Transactional
+    public void changeOrderStatus(OrderDTO orderDTO) {
+        orderDAO.updateOrderStatus(orderDAO.getOrder(orderDTO.getId()));
+    }
+
+    @Transactional
+    public OrderContent createOrderContent(CartDTO cartDTO, Order order){
+        OrderContent orderContent = new OrderContent();
+        orderContent.setOrder(order);
+        orderContent.setProduct(productService.getProductById(cartDTO.getId()));
+        orderContent.setQuantity(cartDTO.getQuantity());
+        return orderContent;
     }
 
 }

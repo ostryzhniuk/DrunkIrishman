@@ -36,7 +36,6 @@ public class OrderContentDTO {
 
     public OrderContent convertToEntity() {
         OrderContent orderContent = new ModelMapper().map(this, OrderContent.class);
-        orderContent.setOrder(this.getOrder().convertToEntity());
         return orderContent;
     }
 

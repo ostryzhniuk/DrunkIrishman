@@ -7,8 +7,6 @@ import andrii.dto.UserSignUpDTO;
 import andrii.entities.User;
 import andrii.entities.UserRole;
 import andrii.entities.UserRoleBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -49,12 +47,12 @@ public class UserService {
 
     @Transactional
     public UserDTO getUserDTOByEmail(String email){
-        return UserDTO.convertToDTO(userDAO.getUserByEmail(email));
+        return UserDTO.convertToDTO(userDAO.getUser(email));
     }
 
     @Transactional
     public User getUserByEmail(String email){
-        return userDAO.getUserByEmail(email);
+        return userDAO.getUser(email);
     }
 
     public org.springframework.security.core.userdetails.User getCurrentUser() {

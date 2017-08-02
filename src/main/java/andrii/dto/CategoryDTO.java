@@ -10,6 +10,7 @@ public class CategoryDTO {
 
     private Integer id;
     private String name;
+    private boolean isActive = true;
     private String photo;
 
     public Integer getId() {
@@ -26,6 +27,14 @@ public class CategoryDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getPhoto() {

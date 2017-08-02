@@ -21,12 +21,21 @@ public class CategoryDAO extends GenericDAO<Category> {
                 "where isActive = true").list();
     }
 
-    public Category getCategoryByName(String categoryName) {
+    public Category getCategory(String categoryName) {
         Query<Category> query = getSession().createQuery("from Category " +
                 "where name = :categoryName and " +
                 "isActive = true");
 
         query.setParameter("categoryName", categoryName);
+        return query.getSingleResult();
+    }
+
+    public Category getCategory(Integer categoryId) {
+        Query<Category> query = getSession().createQuery("from Category " +
+                "where id = :categoryId and " +
+                "isActive = true");
+
+        query.setParameter("categoryId", categoryId);
         return query.getSingleResult();
     }
 

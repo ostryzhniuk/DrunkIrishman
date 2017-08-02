@@ -29,6 +29,8 @@ public class ProductDTO implements Serializable {
         IN_STOCK, SOLD_OUT
     }
 
+    private boolean isActive = true;
+
     public Integer getId() {
         return id;
     }
@@ -93,6 +95,14 @@ public class ProductDTO implements Serializable {
         this.photo = photo;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     public Product convertToEntity() {
         return new ModelMapper().map(this, Product.class);
     }
@@ -101,6 +111,10 @@ public class ProductDTO implements Serializable {
         ProductDTO productDTO = new ModelMapper().map(product, ProductDTO.class);
         productDTO.setCategory(CategoryDTO.convertToDTO(product.getCategory()));
         return productDTO;
+    }
+
+    public static Product.Status convertToEntityStatus(Status status) {
+        return Enum.valueOf(Product.Status.class, status.toString());
     }
 
     @Override

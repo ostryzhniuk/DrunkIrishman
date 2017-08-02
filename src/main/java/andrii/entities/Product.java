@@ -29,7 +29,7 @@ public class Product {
     @Column
     private String description;
 
-    private enum Status {
+    public enum Status {
         IN_STOCK, SOLD_OUT
     }
 

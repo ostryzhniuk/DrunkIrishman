@@ -37,7 +37,7 @@ public class CategoryService {
 
     @Transactional
     public CategoryDTO getCategoryByName(String categoryName) {
-        Category category = categoryDAO.getCategoryByName(categoryName);
+        Category category = categoryDAO.getCategory(categoryName);
         if (category != null) {
             return CategoryDTO.convertToDTO(category);
         } else {
@@ -47,7 +47,7 @@ public class CategoryService {
 
     @Transactional
     public void update(CategoryDTO categoryDTO) {
-        Category category = categoryDTO.convertToEntity();
+        Category category = buildCategory(categoryDTO);
         categoryDAO.update(category);
         savePhoto(categoryDTO.getPhoto(), category.getId());
     }
@@ -77,6 +77,19 @@ public class CategoryService {
                 + separator + "categories" + separator + categoryId + ".jpg");
 
         ImageHandler.save(ImageHandler.decodeBase64Image(photoBASE64), path);
+    }
+
+    @Transactional
+    public Category getCategory(Integer categoryId) {
+        return categoryDAO.getCategory(categoryId);
+    }
+
+    @Transactional
+    public Category buildCategory(CategoryDTO categoryDTO){
+        Category category = getCategory(categoryDTO.getId());
+        category.setName(categoryDTO.getName());
+        category.setActive(categoryDTO.isActive());
+        return category;
     }
 
 }

@@ -31,7 +31,7 @@ public class CatalogController {
 
     @GetMapping("/product/{productId}")
     public ProductDTO product(@PathVariable("productId") Integer productId) {
-        return productService.getProductById(productId);
+        return productService.getProductDTOById(productId);
     }
 
     @GetMapping("/search/{parameter}")

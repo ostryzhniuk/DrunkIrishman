@@ -32,7 +32,7 @@ public class UserDAO extends GenericDAO<User> {
         getSession().delete(user);
     }
 
-    public User getUserByEmail(String email){
+    public User getUser(String email){
         Query<User> query = getSession().createQuery("from User " +
                 "where email = :email");
         query.setParameter("email", email);

@@ -14,11 +14,16 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static andrii.dto.ProductDTO.*;
+
 @Service
 public class ProductService {
 
     @Autowired
     private ProductDAO productDAO;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Transactional
     public List<ProductDTO> getProductsByCategory(String categoryName, boolean loadPhoto) {
@@ -31,9 +36,14 @@ public class ProductService {
     }
 
     @Transactional
-    public ProductDTO getProductById(Integer productId) {
+    public ProductDTO getProductDTOById(Integer productId) {
         Product product = productDAO.getProductById(productId);
-        return ProductDTO.convertToDTO(product);
+        return convertToDTO(product);
+    }
+
+    @Transactional
+    public Product getProductById(Integer productId) {
+        return productDAO.getProductById(productId);
     }
 
     @Transactional
@@ -47,7 +57,7 @@ public class ProductService {
     public List<ProductDTO> convertToDTOList(List<Product> productList) {
         return productList
                 .stream()
-                .map(product -> ProductDTO.convertToDTO(product))
+                .map(product -> convertToDTO(product))
                 .collect(Collectors.toList());
     }
 
@@ -56,14 +66,11 @@ public class ProductService {
         Product product = productDTO.convertToEntity();
         productDAO.save(product);
         savePhoto(productDTO.getPhoto(), product.getId());
-        return ProductDTO.convertToDTO(product);
+        return convertToDTO(product);
     }
 
     @Transactional
     public void save(List<ProductDTO> productList) {
-
-//        productList.forEach(productDTO -> System.out.println(productDTO.getName()));
-
         productList
                 .stream()
                 .map(product -> product.convertToEntity())
@@ -72,7 +79,7 @@ public class ProductService {
 
     @Transactional
     public void update(ProductDTO productDTO) {
-        Product product = productDTO.convertToEntity();
+        Product product = buildProduct(productDTO);
         productDAO.update(product);
         savePhoto(productDTO.getPhoto(), product.getId());
     }
@@ -100,6 +107,19 @@ public class ProductService {
     @Transactional
     public void createProductByCsv(String base64SourceData) {
         save(CSVHandler.parseProducts(base64SourceData));
+    }
+
+    @Transactional
+    public Product buildProduct(ProductDTO productDTO) {
+        Product product = productDAO.getProductById(productDTO.getId());
+        product.setName(productDTO.getName());
+        product.setCategory(categoryService.getCategory(productDTO.getCategory().getId()));
+        product.setCapacity(productDTO.getCapacity());
+        product.setPrice(productDTO.getPrice());
+        product.setDescription(productDTO.getDescription());
+        product.setStatus(convertToEntityStatus(productDTO.getStatus()));
+        product.setActive(productDTO.isActive());
+        return product;
     }
 
 }

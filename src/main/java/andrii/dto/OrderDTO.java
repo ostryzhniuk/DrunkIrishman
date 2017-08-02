@@ -99,13 +99,11 @@ public class OrderDTO {
     }
 
     public Order convertToEntity() {
-        Order order = new ModelMapper().map(this, Order.class);
-        return order;
+        return new ModelMapper().map(this, Order.class);
     }
 
     public static OrderDTO convertToDTO(Order order) {
-        OrderDTO orderDTO = new ModelMapper().map(order, OrderDTO.class);
-        return orderDTO;
+        return new ModelMapper().map(order, OrderDTO.class);
     }
 
     public static Order.Status convertToEntityStatus(Status status) {
