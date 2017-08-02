@@ -29,6 +29,7 @@
     <script src="/catalog/product.detail/product.editor/product-editor.component.js"></script>
     <script src="/order/creation/order-creation.component.js"></script>
     <script src="/order/success.page/success-page.component.js"></script>
+    <script src="/order/order.view/order-view.component.js"></script>
 </head>
 <body>
 
@@ -73,8 +74,8 @@
                     </div>
                 </form>
 
-                <ul class="nav navbar-nav" ng-if="!isAuthority('ROLE_ANONYMOUS')">
-                    <li><a href="#">Orders</a></li>
+                <ul class="nav navbar-nav" ng-if="isAuthority('ADMIN')">
+                    <li><a href="#!/orders/view">Orders</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

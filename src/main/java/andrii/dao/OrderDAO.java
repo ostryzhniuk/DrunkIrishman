@@ -1,6 +1,7 @@
 package andrii.dao;
 
 import andrii.entities.Order;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
@@ -26,5 +27,13 @@ public class OrderDAO extends GenericDAO<Order> {
     @Override
     public void delete(Order order) {
         getSession().delete(order);
+    }
+
+    public List<Order> getOrders(String status) {
+        Query<Order> query = getSession().createQuery("from Order " +
+                "where status = :status");
+
+        query.setParameter("status", status);
+        return query.list();
     }
 }
