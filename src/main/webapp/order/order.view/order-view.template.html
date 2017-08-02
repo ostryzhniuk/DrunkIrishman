@@ -4,6 +4,7 @@
 
 <div class="panel-heading" id="panel-heading">
     Orders
+    <!--<button ng-click="save()" type="button" class="btn btn-success save-button">Save</button>-->
     <hr id="hr-heading">
 </div>
 
@@ -38,7 +39,8 @@
                     <div id="status-container">
                         <select ng-model="order.status" ng-options="status for status in statusList track by status"
                                 ng-click="$event.stopPropagation();$event.preventDefault()"
-                                id="status" class="form-control">
+                                id="status" class="form-control"
+                                ng-change="changeStatus(this)">
                         </select>
                     </div>
                     <div class="checkbox" id="delivery-container">

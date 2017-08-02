@@ -58,7 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/product/create/byCsv",
                         "/order/status/list",
                         "/product/status/list",
-                        "/orders").hasAuthority("ADMIN")
+                        "/orders",
+                        "/order/status/change").hasAuthority("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login")

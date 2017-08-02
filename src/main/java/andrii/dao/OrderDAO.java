@@ -36,4 +36,14 @@ public class OrderDAO extends GenericDAO<Order> {
         query.setParameter("status", status);
         return query.list();
     }
+
+    public void updateOrderStatus(Order order) {
+        Query query = getSession().createQuery("update Order " +
+                "set status = :status " +
+                "where id = :id");
+
+        query.setParameter("id", order.getId());
+        query.setParameter("status", order.getStatus());
+        query.executeUpdate();
+    }
 }

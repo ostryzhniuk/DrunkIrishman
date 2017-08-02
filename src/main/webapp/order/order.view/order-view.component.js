@@ -11,7 +11,7 @@ component('orderView', {
 
             $http({
                 method: 'GET',
-                url: '/orders?status=' + 'IN_PROCESS',
+                url: '/orders?status=' + 'IN_PROCESS'
             }).then(function(response) {
                 $scope.orders = response.data;
             });
@@ -20,7 +20,7 @@ component('orderView', {
                 $scope.statusList = response.data;
             });
 
-            $scope.showOrderContent = function (order) {
+            $scope.showOrderContent = function(order) {
                 $rootScope.modalInstance = $uibModal.open({
                     templateUrl: '/order/order.content/order-content.template.html',
                     controller: 'OrderContentController',
@@ -32,6 +32,14 @@ component('orderView', {
                             return order;
                         }
                     }
+                });
+            };
+
+            $scope.changeStatus = function(element) {
+                $http({
+                    method: 'PUT',
+                    url: '/order/status/change',
+                    data: element.order
                 });
             };
 

@@ -28,4 +28,9 @@ public class OrderController {
         return  OrderDTO.Status.values();
     }
 
+    @PutMapping("/order/status/change")
+    public void changeOrderStatus(@RequestBody OrderDTO orderDTO) {
+        orderService.changeOrderStatus(orderDTO);
+    }
+
 }

@@ -60,4 +60,9 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void changeOrderStatus(OrderDTO orderDTO) {
+        orderDAO.updateOrderStatus(orderDTO.convertToEntity());
+    }
+
 }

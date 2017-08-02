@@ -39,7 +39,8 @@ component('signUp', {
                         surname: $scope.lastName,
                         birthDate: dateStr,
                         address: $scope.address,
-                        phone: $scope.phone}
+                        phone: $scope.phone
+                    }
                 }).then(function(response) {
                     $http({
                         method: 'POST',
