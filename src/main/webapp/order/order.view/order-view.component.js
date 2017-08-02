@@ -9,11 +9,15 @@ component('orderView', {
     controller: ['$http', '$scope', '$rootScope', '$uibModal',
         function OrderViewController($http, $scope, $rootScope, $uibModal) {
 
-            $http.get('/order/status/list').then(function(response) {
-                $scope.statusList = response.data;
-                $scope.statusViewParameter = response.data[0];
-                loadOrders();
-            });
+            if (!isAuthority('ROLE_ANONYMOUS')) {
+                $http.get('/order/status/list').then(function(response) {
+                    $scope.statusList = response.data;
+                    $scope.statusViewParameter = response.data[0];
+                    loadOrders();
+                });
+            } else {
+                window.location.replace('#!/catalog');
+            }
 
             function loadOrders() {
                 $http({
@@ -49,6 +53,20 @@ component('orderView', {
 
             $scope.reloadOrders = function() {
                 loadOrders();
+            };
+
+            function isAuthority(role) {
+                if ($rootScope.user == undefined) {
+                    return false;
+                }
+                var authorities = $rootScope.user.authorities;
+                for (var authority in authorities) {
+                    console.log(authorities[authority].authority)
+                    if (authorities[authority].authority == role) {
+                        return true;
+                    }
+                }
+                return false;
             };
 
         }

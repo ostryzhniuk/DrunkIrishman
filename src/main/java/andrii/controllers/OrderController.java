@@ -41,4 +41,9 @@ public class OrderController {
         return orderService.getOrderContentList(orderId, loadImage);
     }
 
+    @GetMapping("/user/history/orders")
+    public List<OrderDTO> userOrders(){
+        return  orderService.getUserOrders();
+    }
+
 }

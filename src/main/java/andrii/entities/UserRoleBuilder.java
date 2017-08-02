@@ -9,7 +9,7 @@ public class UserRoleBuilder {
     }
 
     public void setDefaultAuthority(){
-        userRole.setAuthority("user");
+        userRole.setAuthority("USER");
     }
 
     public void setAuthority(String authority) {

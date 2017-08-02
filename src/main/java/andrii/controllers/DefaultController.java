@@ -42,12 +42,7 @@ public class DefaultController {
 
     @GetMapping("/currentUser")
     public User currentUser(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return new User(authentication.getName(), "", authentication.getAuthorities());
-        }
-        return (User) authentication.getPrincipal();
+        return userService.getCurrrenyUser();
     }
 
     @PostMapping("/signUp")

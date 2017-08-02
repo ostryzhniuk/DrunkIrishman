@@ -30,6 +30,9 @@ public class OrderService {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserService userService;
+
     @Transactional
     public void saveOrder(OrderDTO orderDTO) {
         Order order = orderDTO.convertToEntity();
@@ -53,6 +56,14 @@ public class OrderService {
     @Transactional
     public List<OrderDTO> getOrders(OrderDTO.Status status) {
         List<OrderDTO> orderDTOList = convertToDTOList(orderDAO.getOrders(OrderDTO.convertToEntityStatus(status)));
+        orderDTOList.sort(Comparator.comparing(OrderDTO::getDate));
+        return orderDTOList;
+    }
+
+    @Transactional
+    public List<OrderDTO> getUserOrders() {
+        String userEmail = userService.getCurrrenyUser().getUsername();
+        List<OrderDTO> orderDTOList = convertToDTOList(orderDAO.getOrders(userEmail));
         orderDTOList.sort(Comparator.comparing(OrderDTO::getDate));
         return orderDTOList;
     }

@@ -9,6 +9,9 @@ import andrii.entities.UserRoleBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +51,16 @@ public class UserService {
     @Transactional
     public UserDTO getUserByEmail(String email){
         return UserDTO.convertToDTO(userDAO.getUserByEmail(email));
+    }
+
+    public org.springframework.security.core.userdetails.User getCurrrenyUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return new org.springframework.security.core.userdetails.User(authentication.getName(),
+                    "", authentication.getAuthorities());
+        }
+        return (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
     }
 
 }

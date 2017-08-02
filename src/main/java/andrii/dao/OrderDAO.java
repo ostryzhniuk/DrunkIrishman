@@ -37,6 +37,14 @@ public class OrderDAO extends GenericDAO<Order> {
         return query.list();
     }
 
+    public List<Order> getOrders(String userEmail) {
+        Query<Order> query = getSession().createQuery("from Order " +
+                "where user.email = :email");
+
+        query.setParameter("email", userEmail);
+        return query.list();
+    }
+
     public void updateOrderStatus(Order order) {
         Query query = getSession().createQuery("update Order " +
                 "set status = :status " +

@@ -51,8 +51,8 @@ angular
         });
     };
 
-    $scope.showHistory = function (){
+    /*$scope.showHistory = function (){
         alert("Sorry, but this service is temporarily unavailable.");
-    };
+    };*/
 
 });
