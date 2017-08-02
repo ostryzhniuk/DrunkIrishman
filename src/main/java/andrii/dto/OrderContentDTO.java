@@ -43,6 +43,7 @@ public class OrderContentDTO {
     public static OrderContentDTO convertToDTO(OrderContent orderContent) {
         OrderContentDTO orderContentDTO = new ModelMapper().map(orderContent, OrderContentDTO.class);
         orderContentDTO.setProduct(ProductDTO.convertToDTO(orderContent.getProduct()));
+        orderContentDTO.setOrder(OrderDTO.convertToDTO(orderContent.getOrder()));
         return orderContentDTO;
     }
 

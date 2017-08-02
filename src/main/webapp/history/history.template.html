@@ -4,11 +4,7 @@
 
 <div class="panel-heading" id="panel-heading">
 
-    <select ng-model="statusViewParameter" ng-options="status for status in statusList track by status"
-            id="status-view-parameter" class="form-control" ng-change="reloadOrders()">
-    </select>
-
-    <span id="capital-row">Orders</span>
+    <span id="capital-row">History</span>
 
     <hr id="hr-heading">
 </div>
@@ -42,11 +38,7 @@
 
                 <div id="right-container">
                     <div id="status-container">
-                        <select ng-model="order.status" ng-options="status for status in statusList track by status"
-                                ng-click="$event.stopPropagation();$event.preventDefault()"
-                                id="status" class="form-control"
-                                ng-change="changeStatus(this)">
-                        </select>
+                        {{order.status}}
                     </div>
                     <div class="checkbox" id="delivery-container">
                         <label>

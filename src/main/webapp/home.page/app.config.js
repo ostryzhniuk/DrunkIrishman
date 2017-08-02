@@ -17,7 +17,8 @@ angular.module('shopApp', [
     'orderCreation',
     'successPage',
     'orderView',
-    'orderContent'
+    'orderContent',
+    'history'
 ]);
 
 angular.
@@ -66,6 +67,9 @@ config(['$locationProvider' ,'$routeProvider', '$qProvider',
         })
         .when('/orders/view', {
             template: '<order-view></order-view>'
+        })
+        .when('/user/history', {
+            template: '<history></history>'
         })
         .otherwise('/catalog');
     }

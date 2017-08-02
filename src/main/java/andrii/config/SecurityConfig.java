@@ -48,7 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-                .antMatchers("/order/create").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/order/create",
+                        "/order/content").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/category/crate",
                         "/category/update",
                         "/category/deactivate",
@@ -59,8 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/order/status/list",
                         "/product/status/list",
                         "/orders",
-                        "/order/status/change",
-                        "/order/content").hasAuthority("ADMIN")
+                        "/order/status/change").hasAuthority("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login")
