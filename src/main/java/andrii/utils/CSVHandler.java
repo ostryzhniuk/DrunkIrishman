@@ -2,24 +2,18 @@ package andrii.utils;
 
 import andrii.dto.ProductDTO;
 import com.univocity.parsers.common.processor.BeanWriterProcessor;
-import com.univocity.parsers.common.processor.RowListProcessor;
-import com.univocity.parsers.common.processor.RowProcessor;
-import com.univocity.parsers.common.processor.RowWriterProcessor;
 import com.univocity.parsers.csv.CsvWriter;
 import com.univocity.parsers.csv.CsvWriterSettings;
-import com.univocity.parsers.fixed.FixedWidthFields;
-import com.univocity.parsers.fixed.FixedWidthWriter;
-import com.univocity.parsers.fixed.FixedWidthWriterSettings;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.List;
 
 public class CSVHandler {
 
-    public static void write(ProductDTO productDTO){
+    public static void writeProducts(List<ProductDTO> productList, Path path){
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         Writer outputWriter = new OutputStreamWriter(byteArrayOutputStream);
@@ -32,19 +26,12 @@ public class CSVHandler {
         CsvWriter writer = new CsvWriter(outputWriter, settings);
         writer.writeHeaders();
 
-        writer.processRecord(productDTO);
+        writer.processRecords(productList);
         writer.close();
-
-        Path path = Paths.get("D:\\test.csv");
 
         try(OutputStream outputStream = new FileOutputStream(path.toString())) {
 
-            if (Files.exists(path)) {
-                Files.delete(path);
-            } else {
-                Files.createDirectories(path.getParent());
-                Files.createFile(path.getFileName());
-            }
+            Files.createFile(path.getFileName());
 
             byteArrayOutputStream.writeTo(outputStream);
         } catch (FileNotFoundException e) {

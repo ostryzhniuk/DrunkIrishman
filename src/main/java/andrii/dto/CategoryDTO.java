@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 public class CategoryDTO implements Serializable {
 
-    @Parsed(index = 0)
     private Integer id;
     private String name;
     private String photo;
@@ -45,4 +44,8 @@ public class CategoryDTO implements Serializable {
         return new ModelMapper().map(category, CategoryDTO.class);
     }
 
+    @Override
+    public String toString() {
+        return id.toString();
+    }
 }

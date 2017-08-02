@@ -27,7 +27,7 @@ public class ProductService {
         if (loadPhoto) {
             productDTOList.forEach(productDTO -> productDTO.setPhoto(loadPhoto(productDTO.getId())));
         }
-        CSVHandler.write(productDTOList.get(0));
+//        CSVHandler.writeProducts(productDTOList, Paths.get("D:\\test.csv"));
         return productDTOList;
     }
 
