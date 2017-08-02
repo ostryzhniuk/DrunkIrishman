@@ -91,7 +91,7 @@ public class ProductService {
         Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
                 + separator + "products" + separator + productId + ".jpg");
 
-        ImageHandler.save(ImageHandler.decodeBASE64(photoBASE64), path);
+        ImageHandler.save(ImageHandler.decodeBase64Image(photoBASE64), path);
     }
 
     @Transactional

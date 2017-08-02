@@ -9,16 +9,13 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.*;
 
-public class ImageHandler {
+public class ImageHandler extends Base64Handler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageHandler.class);
 
-    public static BufferedImage decodeBASE64 (String sourceData) {
-        String formattedData = sourceData.split(",")[1];
-        Base64 decoder = new Base64();
+    public static BufferedImage decodeBase64Image(String sourceData) {
 
-        byte[] imageByte = decoder.decode(formattedData);
-        try (ByteArrayInputStream inputStream = new ByteArrayInputStream(imageByte)){
+        try (ByteArrayInputStream inputStream = new ByteArrayInputStream(decodeBASE64(sourceData))){
             return ImageIO.read(inputStream);
         } catch (IOException e) {
             throw new UncheckedIOException(e);

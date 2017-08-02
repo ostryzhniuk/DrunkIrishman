@@ -76,7 +76,7 @@ public class CategoryService {
         Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
                 + separator + "categories" + separator + categoryId + ".jpg");
 
-        ImageHandler.save(ImageHandler.decodeBASE64(photoBASE64), path);
+        ImageHandler.save(ImageHandler.decodeBase64Image(photoBASE64), path);
     }
 
 }
