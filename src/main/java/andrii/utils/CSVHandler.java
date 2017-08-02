@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class CSVHandler extends Base64Handler {
+public class CSVHandler {
 
     public static void writeProducts(List<ProductDTO> productList, Path path){
 
@@ -33,13 +33,15 @@ public class CSVHandler extends Base64Handler {
         try(OutputStream outputStream = new FileOutputStream(path.toString())) {
 
             Files.createFile(path.getFileName());
-
             byteArrayOutputStream.writeTo(outputStream);
-            byteArrayOutputStream.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
+        } finally {
+            try {
+                byteArrayOutputStream.close();
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
         }
 
     }
@@ -53,7 +55,7 @@ public class CSVHandler extends Base64Handler {
 
         CsvParser parser = new CsvParser(parserSettings);
 
-        try (InputStream inputStream = new ByteArrayInputStream(decodeBASE64(base64SourceData))) {
+        try (InputStream inputStream = new ByteArrayInputStream(Base64Handler.decodeBASE64(base64SourceData))) {
             parser.parse(inputStream);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

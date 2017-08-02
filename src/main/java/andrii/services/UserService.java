@@ -19,8 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-
     @Autowired
     private UserDAO userDAO;
 
@@ -56,7 +54,7 @@ public class UserService {
     public org.springframework.security.core.userdetails.User getCurrrenyUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+        if (authentication instanceof AnonymousAuthenticationToken) {
             return new org.springframework.security.core.userdetails.User(authentication.getName(),
                     "", authentication.getAuthorities());
         }

@@ -9,7 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.*;
 
-public class ImageHandler extends Base64Handler {
+import static andrii.utils.Base64Handler.decodeBASE64;
+
+public class ImageHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageHandler.class);
 
