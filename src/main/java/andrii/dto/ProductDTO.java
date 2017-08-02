@@ -9,28 +9,20 @@ import java.math.BigDecimal;
 
 public class ProductDTO implements Serializable {
 
+    @Parsed(index = 0)
     private Integer id;
 
-    @Parsed(index = 0)
     private String name;
-
-    @Parsed(index = 1)
     private BigDecimal capacity;
 
-    @Parsed(index = 2)
+    @Parsed(index = 1)
     private BigDecimal price;
 
     private CategoryDTO category;
-
-    @Parsed(index = 3)
-    private Integer categoryId;
-
-    @Parsed(index = 4)
     private String description;
-
     private String photo;
 
-    @Parsed(index = 5)
+    @Parsed(index = 2)
     private Status status = Status.IN_STOCK;
 
     public enum Status {

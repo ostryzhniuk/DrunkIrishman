@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 
 import java.io.Serializable;
 
-public class CategoryDTO implements Serializable {
+public class CategoryDTO {
 
     private Integer id;
     private String name;
@@ -44,8 +44,4 @@ public class CategoryDTO implements Serializable {
         return new ModelMapper().map(category, CategoryDTO.class);
     }
 
-    @Override
-    public String toString() {
-        return id.toString();
-    }
 }

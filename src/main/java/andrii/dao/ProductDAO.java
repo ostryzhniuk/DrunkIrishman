@@ -85,4 +85,17 @@ public class ProductDAO extends GenericDAO<Product> {
         query.setParameter("id", productId);
         query.executeUpdate();
     }
+
+    public void updatePriceAndStatus(Product product) {
+        Query query = getSession().createQuery("update Product " +
+                "set price = :price, " +
+                "status = :status " +
+                "where id = :id");
+
+        query.setParameter("id", product.getId());
+        query.setParameter("price", product.getPrice());
+        query.setParameter("status", product.getStatus());
+
+        query.executeUpdate();
+    }
 }

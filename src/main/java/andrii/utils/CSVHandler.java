@@ -21,9 +21,8 @@ public class CSVHandler extends Base64Handler {
         Writer outputWriter = new OutputStreamWriter(byteArrayOutputStream);
         CsvWriterSettings settings = new CsvWriterSettings();
 
-        settings.setNullValue("null");
         settings.setRowWriterProcessor(new BeanWriterProcessor<>(ProductDTO.class));
-        settings.setHeaders("name", "capacity", "price", "category", "description", "status");
+        settings.setHeaders("id", "price", "status");
 
         CsvWriter writer = new CsvWriter(outputWriter, settings);
         writer.writeHeaders();

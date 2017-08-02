@@ -62,14 +62,12 @@ public class ProductService {
     @Transactional
     public void save(List<ProductDTO> productList) {
 
-        productList.forEach(productDTO -> System.out.println(productDTO.getName()));
+//        productList.forEach(productDTO -> System.out.println(productDTO.getName()));
 
-        /*
         productList
                 .stream()
                 .map(product -> product.convertToEntity())
-                .forEach(product -> productDAO.save(product));
-        */
+                .forEach(product -> productDAO.updatePriceAndStatus(product));
     }
 
     @Transactional
