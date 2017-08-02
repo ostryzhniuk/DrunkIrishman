@@ -2,6 +2,7 @@ package andrii.services;
 
 import andrii.dao.OrderContentDAO;
 import andrii.dao.OrderDAO;
+import andrii.dto.OrderContentDTO;
 import andrii.dto.OrderDTO;
 import andrii.entities.Order;
 import andrii.entities.OrderContent;
@@ -60,9 +61,21 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
+    public List<OrderContentDTO> convertToContentDTOList(List<OrderContent> orderContentList) {
+        return orderContentList
+                .stream()
+                .map(orderContent -> OrderContentDTO.convertToDTO(orderContent))
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public void changeOrderStatus(OrderDTO orderDTO) {
         orderDAO.updateOrderStatus(orderDTO.convertToEntity());
+    }
+
+    public List<OrderContentDTO> getOrderContentList(Integer orderId) {
+        List<OrderContent> orderContentList = orderContentDAO.getObjects(orderId);
+        return convertToContentDTOList(orderContentList);
     }
 
 }

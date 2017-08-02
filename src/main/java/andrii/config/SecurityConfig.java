@@ -59,7 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/order/status/list",
                         "/product/status/list",
                         "/orders",
-                        "/order/status/change").hasAuthority("ADMIN")
+                        "/order/status/change",
+                        "/order/content").hasAuthority("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/login")

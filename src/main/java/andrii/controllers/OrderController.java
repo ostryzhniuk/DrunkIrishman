@@ -33,4 +33,9 @@ public class OrderController {
         orderService.changeOrderStatus(orderDTO);
     }
 
+    @GetMapping("/order/content")
+    public void orderContent(@RequestParam(value= "orderId") Integer orderId) {
+        orderService.getOrderContentList(orderId);
+    }
+
 }

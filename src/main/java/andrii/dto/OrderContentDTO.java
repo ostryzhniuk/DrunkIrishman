@@ -43,9 +43,7 @@ public class OrderContentDTO {
     }
 
     public static OrderContentDTO convertToDTO(OrderContent orderContent) {
-        OrderContentDTO orderContentDTO = new ModelMapper().map(orderContent, OrderContentDTO.class);
-        orderContentDTO.setOrder(OrderDTO.convertToDTO(orderContent.getOrder()));
-        return orderContentDTO;
+        return new ModelMapper().map(orderContent, OrderContentDTO.class);
     }
 
     public Integer getQuantity() {
