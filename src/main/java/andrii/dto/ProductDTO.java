@@ -20,8 +20,10 @@ public class ProductDTO implements Serializable {
     @Parsed(index = 2)
     private BigDecimal price;
 
-    @Parsed(index = 3)
     private CategoryDTO category;
+
+    @Parsed(index = 3)
+    private Integer categoryId;
 
     @Parsed(index = 4)
     private String description;
