@@ -1,13 +1,25 @@
 #panel-heading {
     text-align: center;
+    position: relative;
+}
+#capital-row {
     color: #2c5c11;
     font-size: 18px;
     font-weight: bold;
     font-family: Cambria;
-    position: relative;
 }
 #hr-heading {
     margin: 10px 0em 0em;
+}
+select#status-view-parameter {
+    height: 25px;
+    width: 150px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 13px;
+    position: absolute;
+    outline: none;
+    box-shadow: none;
 }
 #list-group-item {
     border-radius: 1px;
@@ -31,7 +43,7 @@ textarea#address {
     width: 100%;
     cursor: hand;
 }
-#status {
+select#status {
     height: 25px;
     width: 150px;
     padding-top: 1px;

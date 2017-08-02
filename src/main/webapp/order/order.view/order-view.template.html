@@ -3,7 +3,12 @@
 </head>
 
 <div class="panel-heading" id="panel-heading">
-    Orders
+
+    <select ng-model="statusViewParameter" ng-options="status for status in statusList track by status"
+            id="status-view-parameter" class="form-control" ng-change="reloadOrders()">
+    </select>
+
+    <span id="capital-row">Orders</span>
     <!--<button ng-click="save()" type="button" class="btn btn-success save-button">Save</button>-->
     <hr id="hr-heading">
 </div>

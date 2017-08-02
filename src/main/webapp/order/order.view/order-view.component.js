@@ -9,16 +9,20 @@ component('orderView', {
     controller: ['$http', '$scope', '$rootScope', '$uibModal',
         function OrderViewController($http, $scope, $rootScope, $uibModal) {
 
-            $http({
-                method: 'GET',
-                url: '/orders?status=' + 'IN_PROCESS'
-            }).then(function(response) {
-                $scope.orders = response.data;
-            });
-
             $http.get('/order/status/list').then(function(response) {
                 $scope.statusList = response.data;
+                $scope.statusViewParameter = response.data[0];
+                loadOrders();
             });
+
+            function loadOrders() {
+                $http({
+                    method: 'GET',
+                    url: '/orders?status=' + $scope.statusViewParameter
+                }).then(function(response) {
+                    $scope.orders = response.data;
+                });
+            }
 
             $scope.showOrderContent = function(order) {
                 $rootScope.modalInstance = $uibModal.open({
@@ -41,6 +45,10 @@ component('orderView', {
                     url: '/order/status/change',
                     data: element.order
                 });
+            };
+
+            $scope.reloadOrders = function() {
+                loadOrders();
             };
 
         }
