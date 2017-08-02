@@ -15,6 +15,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static andrii.dto.OrderDTO.convertToEntityStatus;
+
 @Service
 public class OrderService {
 
@@ -56,7 +58,7 @@ public class OrderService {
 
     @Transactional
     public List<OrderDTO> getOrders(OrderDTO.Status status) {
-        List<OrderDTO> orderDTOList = convertToDTOList(orderDAO.getOrders(OrderDTO.convertToEntityStatus(status)));
+        List<OrderDTO> orderDTOList = convertToDTOList(orderDAO.getOrders(convertToEntityStatus(status)));
         orderDTOList.sort(Comparator.comparing(OrderDTO::getDate));
         return orderDTOList;
     }
@@ -97,7 +99,9 @@ public class OrderService {
 
     @Transactional
     public void changeOrderStatus(OrderDTO orderDTO) {
-        orderDAO.updateOrderStatus(orderDAO.getOrder(orderDTO.getId()));
+        Order order = orderDAO.getOrder(orderDTO.getId());
+        order.setStatus(convertToEntityStatus(orderDTO.getStatus()));
+        orderDAO.updateOrderStatus(order);
     }
 
     @Transactional
