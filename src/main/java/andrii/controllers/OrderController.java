@@ -1,5 +1,6 @@
 package andrii.controllers;
 
+import andrii.dto.OrderContentDTO;
 import andrii.dto.OrderDTO;
 import andrii.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class OrderController {
     }
 
     @GetMapping("/order/content")
-    public void orderContent(@RequestParam(value= "orderId") Integer orderId) {
-        orderService.getOrderContentList(orderId);
+    public List<OrderContentDTO> orderContent(@RequestParam(value= "orderId") Integer orderId) {
+        return orderService.getOrderContentList(orderId);
     }
 
 }

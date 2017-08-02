@@ -1,15 +1,13 @@
 package andrii.dto;
 
-import andrii.entities.Order;
 import andrii.entities.OrderContent;
-import andrii.entities.Product;
 import org.modelmapper.ModelMapper;
 
 public class OrderContentDTO {
 
     private Integer id;
     private OrderDTO order;
-    private Product product;
+    private ProductDTO product;
     private Integer quantity;
 
     public Integer getId() {
@@ -28,11 +26,11 @@ public class OrderContentDTO {
         this.order = order;
     }
 
-    public Product getProduct() {
+    public ProductDTO getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductDTO product) {
         this.product = product;
     }
 
@@ -43,7 +41,9 @@ public class OrderContentDTO {
     }
 
     public static OrderContentDTO convertToDTO(OrderContent orderContent) {
-        return new ModelMapper().map(orderContent, OrderContentDTO.class);
+        OrderContentDTO orderContentDTO = new ModelMapper().map(orderContent, OrderContentDTO.class);
+        orderContentDTO.setProduct(ProductDTO.convertToDTO(orderContent.getProduct()));
+        return orderContentDTO;
     }
 
     public Integer getQuantity() {

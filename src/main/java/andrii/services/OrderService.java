@@ -73,6 +73,7 @@ public class OrderService {
         orderDAO.updateOrderStatus(orderDTO.convertToEntity());
     }
 
+    @Transactional
     public List<OrderContentDTO> getOrderContentList(Integer orderId) {
         List<OrderContent> orderContentList = orderContentDAO.getObjects(orderId);
         return convertToContentDTOList(orderContentList);
