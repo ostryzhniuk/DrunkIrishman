@@ -1,6 +1,5 @@
 package andrii.dao;
 
-import andrii.entities.Order;
 import andrii.entities.OrderContent;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;

@@ -32,14 +32,13 @@ hr {
 #quantity {
     width: 150px;
 }
-/*#orderContainer {*/
-    /*text-align: right;*/
-/*}*/
-/*#orderAmount {*/
-    /*margin-left: 300px;*/
-    /*margin-top: 5px;*/
-    /*float: left;*/
-/*}*/
+#orderContainer {
+    text-align: right;
+    margin-right: 50px;
+}
+.order-details {
+    margin-left: 100px;
+}
 
 
 
