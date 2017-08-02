@@ -9,6 +9,8 @@ component('catalogCategories', {
     controller: ['$http', '$scope', '$rootScope',
         function CatalogCategoriesController($http, $scope, $rootScope) {
 
+            var csvBase64 = '';
+
             $http.get('/categories?loadImage=true').then(function(response) {
                 $scope.categories = response.data;
             });
@@ -51,10 +53,37 @@ component('catalogCategories', {
                 };
             };
 
+            document.getElementById('open-csv-button').addEventListener("click", function() {
+                document.getElementById('open-csv-input').click();
+            });
+
+            csvProductReader.onload = function () {
+                csvBase64 = csvProductReader.result;
+                createProducts();
+            };
+
+            function createProducts() {
+                $http({
+                    method: 'POST',
+                    url: '/product/create/byCsv',
+                    data: {
+                        base64SourceData: csvBase64
+                    }
+                }).then(function(response) {
+                    if (response.status == 200) {
+                        alert('Data has been successfully saved!');
+                    }
+                },function errorCallback(response) {
+                    alert('Sorry, but an error occurred.\n' +
+                        'Maybe You data is wrong. Try again, please.');
+                });
+            };
+
         }
     ]
 });
 
+var csvProductReader = new FileReader();
 
 function mouseOverCategory(element){
     element.childNodes[1].style.visibility='visible';
@@ -62,4 +91,10 @@ function mouseOverCategory(element){
 
 function mouseOutCategory(element){
     element.childNodes[1].style.visibility='hidden';
+};
+
+function readCSVinCategories(input) {
+    if (input.files && input.files[0]) {
+        csvProductReader.readAsDataURL(input.files[0]);
+    }
 };

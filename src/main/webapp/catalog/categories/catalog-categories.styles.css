@@ -59,3 +59,6 @@
 #hr-heading {
     margin: 10px 0em 0em;
 }
+#open-csv-input {
+    display: none;
+}
