@@ -100,13 +100,11 @@ public class OrderDTO {
 
     public Order convertToEntity() {
         Order order = new ModelMapper().map(this, Order.class);
-        order.setUser(this.getUser().convertToEntity());
         return order;
     }
 
     public static OrderDTO convertToDTO(Order order) {
         OrderDTO orderDTO = new ModelMapper().map(order, OrderDTO.class);
-        orderDTO.setUser(UserDTO.convertToDTO(order.getUser()));
         return orderDTO;
     }
 

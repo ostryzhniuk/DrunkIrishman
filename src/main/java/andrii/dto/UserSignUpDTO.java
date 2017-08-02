@@ -6,10 +6,11 @@ import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
 
-public class UserDTO {
+public class UserSignUpDTO {
 
     private Integer id;
     private String email;
+    private String password;
     private String name;
     private String surname;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -31,6 +32,14 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -75,10 +84,6 @@ public class UserDTO {
 
     public User convertToEntity() {
         return new ModelMapper().map(this, User.class);
-    }
-
-    public static UserDTO convertToDTO(User user) {
-       return new ModelMapper().map(user, UserDTO.class);
     }
 
 }

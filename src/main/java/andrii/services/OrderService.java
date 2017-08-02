@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,6 +36,7 @@ public class OrderService {
     public void saveOrder(OrderDTO orderDTO) {
         Order order = orderDTO.convertToEntity();
 
+        order.setUser(userService.getUserByEmail(userService.getCurrentUser().getUsername()));
         order.setPrice(cartService.sum());
 
         orderDAO.save(order);
@@ -62,7 +62,7 @@ public class OrderService {
 
     @Transactional
     public List<OrderDTO> getUserOrders() {
-        String userEmail = userService.getCurrrenyUser().getUsername();
+        String userEmail = userService.getCurrentUser().getUsername();
         List<OrderDTO> orderDTOList = convertToDTOList(orderDAO.getOrders(userEmail));
         orderDTOList.sort(Comparator.comparing(OrderDTO::getDate));
         return orderDTOList;

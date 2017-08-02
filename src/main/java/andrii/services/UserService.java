@@ -3,6 +3,7 @@ package andrii.services;
 import andrii.dao.UserDAO;
 import andrii.dao.UserRoleDAO;
 import andrii.dto.UserDTO;
+import andrii.dto.UserSignUpDTO;
 import andrii.entities.User;
 import andrii.entities.UserRole;
 import andrii.entities.UserRoleBuilder;
@@ -29,7 +30,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Transactional
-    public void save(UserDTO userDTO) {
+    public void save(UserSignUpDTO userDTO) {
         User user = userDTO.convertToEntity();
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -47,11 +48,16 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO getUserByEmail(String email){
+    public UserDTO getUserDTOByEmail(String email){
         return UserDTO.convertToDTO(userDAO.getUserByEmail(email));
     }
 
-    public org.springframework.security.core.userdetails.User getCurrrenyUser() {
+    @Transactional
+    public User getUserByEmail(String email){
+        return userDAO.getUserByEmail(email);
+    }
+
+    public org.springframework.security.core.userdetails.User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication instanceof AnonymousAuthenticationToken) {

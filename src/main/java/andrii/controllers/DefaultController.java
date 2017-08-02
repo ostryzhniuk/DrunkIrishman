@@ -2,6 +2,7 @@ package andrii.controllers;
 
 import andrii.dto.LoginDTO;
 import andrii.dto.UserDTO;
+import andrii.dto.UserSignUpDTO;
 import andrii.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,11 +43,11 @@ public class DefaultController {
 
     @GetMapping("/currentUser")
     public User currentUser(){
-        return userService.getCurrrenyUser();
+        return userService.getCurrentUser();
     }
 
     @PostMapping("/signUp")
-    public void signUp(@RequestBody UserDTO userDTO) {
+    public void signUp(@RequestBody UserSignUpDTO userDTO) {
         userService.save(userDTO);
     }
 
@@ -61,7 +62,7 @@ public class DefaultController {
 
     @GetMapping("/userInformation")
     public UserDTO userInformation() {
-        return userService.getUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        return userService.getUserDTOByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
 }
