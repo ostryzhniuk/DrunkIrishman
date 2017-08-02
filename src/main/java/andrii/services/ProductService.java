@@ -27,8 +27,6 @@ public class ProductService {
         if (loadPhoto) {
             productDTOList.forEach(productDTO -> productDTO.setPhoto(loadPhoto(productDTO.getId())));
         }
-//        CSVHandler.writeProducts(productDTOList, Paths.get("D:\\test.csv"));
-        CSVHandler.parseProducts().forEach(productDTO -> System.out.println(productDTO.getName()));
         return productDTOList;
     }
 
@@ -62,6 +60,14 @@ public class ProductService {
     }
 
     @Transactional
+    public void save(List<ProductDTO> productList) {
+        productList
+                .stream()
+                .map(product -> product.convertToEntity())
+                .forEach(product -> productDAO.save(product));
+    }
+
+    @Transactional
     public void update(ProductDTO productDTO) {
         Product product = productDTO.convertToEntity();
         productDAO.update(product);
@@ -86,6 +92,11 @@ public class ProductService {
                 + separator + "products" + separator + productId + ".jpg");
 
         ImageHandler.save(ImageHandler.decodeBASE64(photoBASE64), path);
+    }
+
+    @Transactional
+    public void createProductByCsv(String base64SourceData) {
+        save(CSVHandler.parseProducts(base64SourceData));
     }
 
 }

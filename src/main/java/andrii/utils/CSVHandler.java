@@ -11,10 +11,9 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
-public class CSVHandler {
+public class CSVHandler extends Base64Handler {
 
     public static void writeProducts(List<ProductDTO> productList, Path path){
 
@@ -46,8 +45,8 @@ public class CSVHandler {
 
     }
 
-    public static List<ProductDTO> parseProducts(){
-        BeanListProcessor<ProductDTO> beanListProcessor = new BeanListProcessor<ProductDTO>(ProductDTO.class);
+    public static List<ProductDTO> parseProducts(String base64SourceData){
+        BeanListProcessor<ProductDTO> beanListProcessor = new BeanListProcessor<>(ProductDTO.class);
 
         CsvParserSettings parserSettings = new CsvParserSettings();
         parserSettings.setProcessor(beanListProcessor);
@@ -55,7 +54,7 @@ public class CSVHandler {
 
         CsvParser parser = new CsvParser(parserSettings);
 
-        try (InputStream inputStream = new FileInputStream(Paths.get("D:\\test.csv").toFile())) {
+        try (InputStream inputStream = new ByteArrayInputStream(decodeBASE64(base64SourceData))) {
             parser.parse(inputStream);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
