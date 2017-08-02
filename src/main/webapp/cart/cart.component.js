@@ -125,7 +125,6 @@ component('cart', {
             };
 
             $scope.makeOrder = function (){
-                // alert("Sorry, but this service is temporarily unavailable.");
                 if (isAuthority('ROLE_ANONYMOUS')) {
                     window.location.replace('#!/login');
                 } else {
