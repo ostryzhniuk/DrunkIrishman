@@ -27,7 +27,7 @@ public class ProductService {
         if (loadPhoto) {
             productDTOList.forEach(productDTO -> productDTO.setPhoto(loadPhoto(productDTO.getId())));
         }
-        CSVHandler.parse(productDTOList.get(0));
+        CSVHandler.write(productDTOList.get(0));
         return productDTOList;
     }
 
