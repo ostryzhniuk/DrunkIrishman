@@ -1,18 +1,34 @@
 package andrii.dto;
 
 import andrii.entities.Product;
+import com.univocity.parsers.annotations.Parsed;
 import org.modelmapper.ModelMapper;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ProductDTO {
+public class ProductDTO implements Serializable {
 
     private Integer id;
+
+    @Parsed(index = 0)
     private String name;
+
+    @Parsed(index = 1)
     private BigDecimal capacity;
+
+    @Parsed(index = 2)
     private BigDecimal price;
-    private String description;
+
+    @Parsed(index = 3)
     private CategoryDTO category;
+
+    @Parsed(index = 4)
+    private String description;
+
     private String photo;
+
+    @Parsed(index = 5)
     private Status status = Status.IN_STOCK;
 
     public enum Status {

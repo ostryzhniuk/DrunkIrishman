@@ -1,10 +1,14 @@
 package andrii.dto;
 
 import andrii.entities.Category;
+import com.univocity.parsers.annotations.Parsed;
 import org.modelmapper.ModelMapper;
 
-public class CategoryDTO {
+import java.io.Serializable;
 
+public class CategoryDTO implements Serializable {
+
+    @Parsed(index = 0)
     private Integer id;
     private String name;
     private String photo;

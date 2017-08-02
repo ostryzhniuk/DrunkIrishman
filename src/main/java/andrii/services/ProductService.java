@@ -3,6 +3,7 @@ package andrii.services;
 import andrii.dao.ProductDAO;
 import andrii.dto.ProductDTO;
 import andrii.entities.Product;
+import andrii.utils.CSVHandler;
 import andrii.utils.ImageHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class ProductService {
         if (loadPhoto) {
             productDTOList.forEach(productDTO -> productDTO.setPhoto(loadPhoto(productDTO.getId())));
         }
+        CSVHandler.parse(productDTOList.get(0));
         return productDTOList;
     }
 
