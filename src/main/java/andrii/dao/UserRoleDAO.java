@@ -17,17 +17,17 @@ public class UserRoleDAO extends GenericDAO<UserRole> {
 
     @Override
     public List<UserRole> getObjects() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void update(UserRole userRole) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void delete(UserRole userRole) {
-
+        throw new UnsupportedOperationException();
     }
 
 }
