@@ -9,8 +9,6 @@ component('catalogCategories', {
     controller: ['$http', '$scope', '$rootScope',
         function CatalogCategoriesController($http, $scope, $rootScope) {
 
-            var csvBase64 = '';
-
             $http.get('/categories?loadImage=true').then(function(response) {
                 $scope.categories = response.data;
             });
@@ -58,11 +56,11 @@ component('catalogCategories', {
             });
 
             csvProductReader.onload = function () {
-                csvBase64 = csvProductReader.result;
-                createProducts();
+                var csvBase64 = csvProductReader.result;
+                createProducts(csvBase64);
             };
 
-            function createProducts() {
+            function createProducts(csvBase64) {
                 $http({
                     method: 'POST',
                     url: '/product/create/byCsv',

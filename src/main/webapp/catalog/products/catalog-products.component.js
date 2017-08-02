@@ -81,6 +81,33 @@ component('catalogProducts', {
                 };
             };
 
+            document.getElementById('open-csv-button').addEventListener("click", function() {
+                document.getElementById('open-csv-input').click();
+            });
+
+            csvProductReader.onload = function () {
+                var csvBase64 = csvProductReader.result;
+                createProducts(csvBase64);
+            };
+
+            function createProducts(csvBase64) {
+                $http({
+                    method: 'POST',
+                    url: '/product/create/byCsv',
+                    data: {
+                        base64SourceData: csvBase64
+                    }
+                }).then(function(response) {
+                    if (response.status == 200) {
+                        alert('Data has been successfully saved!');
+                        window.location.reload();
+                    }
+                },function errorCallback(response) {
+                    alert('Sorry, but an error occurred.\n' +
+                        'Maybe You data is wrong. Try again, please.');
+                });
+            };
+
         }
     ]
 });

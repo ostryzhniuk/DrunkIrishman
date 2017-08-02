@@ -88,3 +88,15 @@ a.clickable-panel {
 #hr-heading {
     margin: 10px 0em 0em;
 }
+#open-csv-input {
+    display: none;
+}
+#open-csv-button {
+    color: inherit;
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    height: 24px;
+    padding-top: 1px;
+    margin-left: 2px;
+}

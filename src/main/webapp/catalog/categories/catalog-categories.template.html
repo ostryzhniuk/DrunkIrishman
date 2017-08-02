@@ -3,7 +3,14 @@
 </head>
 
 <div id="panel-heading" class="panel-heading">
+
+    <input ng-model="photo" id="open-csv-input" type="file" accept=".csv" onchange="readCSVinCategories(this)">
+    <button id="open-csv-button" type="button" class="btn btn-default">
+        Update price and status using CSV
+    </button>
+
     Classification
+
     <span id="create-panel" ng-show="isAuthority('ADMIN')">
         <a id="create-product" href="#!/catalog/products/create/">
             <button type="button" class="btn btn-default category-actions-button">Add product</button>
@@ -11,11 +18,8 @@
         <a href="#!/catalog/categories/create/">
             <button type="button" class="btn btn-default category-actions-button">Add category</button>
         </a>
-        <input ng-model="photo" id="open-csv-input" type="file" accept=".csv" onchange="readCSVinCategories(this)">
-        <button id="open-csv-button" type="button" class="btn btn-default category-actions-button">
-            Import CSV
-        </button>
     </span>
+
     <hr id="hr-heading">
 </div>
 <div class="panel-body">
