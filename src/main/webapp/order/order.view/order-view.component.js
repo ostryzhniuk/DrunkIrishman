@@ -16,9 +16,12 @@ component('orderView', {
                 $scope.orders = response.data;
             });
 
+            $http.get('/orders/status/list').then(function(response) {
+                $scope.statusList = response.data;
+            });
+
             $scope.showOrderContent = function (order) {
                 $rootScope.modalInstance = $uibModal.open({
-                    // component: 'orderContent',
                     templateUrl: '/order/order.content/order-content.template.html',
                     controller: 'OrderContentController',
                     windowClass: 'app-modal-window',

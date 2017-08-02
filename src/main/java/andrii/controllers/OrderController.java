@@ -23,4 +23,9 @@ public class OrderController {
         return  orderService.getOrders(status);
     }
 
+    @GetMapping("/orders/status/list")
+    public OrderDTO.Status[] orderStatusList(){
+        return  OrderDTO.Status.values();
+    }
+
 }

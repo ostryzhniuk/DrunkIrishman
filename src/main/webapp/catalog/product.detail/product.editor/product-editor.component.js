@@ -32,7 +32,7 @@ component('productEditor', {
                 loadPhoto($scope.product.id);
             });
 
-            $http.get('/statusList').then(function(response) {
+            $http.get('/product/status/list').then(function(response) {
                 $scope.statusList = response.data;
             });
 
