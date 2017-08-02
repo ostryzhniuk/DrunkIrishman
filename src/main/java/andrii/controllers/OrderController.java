@@ -35,8 +35,10 @@ public class OrderController {
     }
 
     @GetMapping("/order/content")
-    public List<OrderContentDTO> orderContent(@RequestParam(value= "orderId") Integer orderId) {
-        return orderService.getOrderContentList(orderId);
+    public List<OrderContentDTO> orderContent(@RequestParam(value = "orderId") Integer orderId,
+                                              @RequestParam(value= "loadImage", defaultValue = "false")
+                                                      boolean loadImage) {
+        return orderService.getOrderContentList(orderId, loadImage);
     }
 
 }

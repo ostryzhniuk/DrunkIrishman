@@ -9,7 +9,7 @@ module('orderContent')
 
     $http({
         method: 'GET',
-        url: '/order/content?orderId=' + order.id
+        url: '/order/content?orderId=' + order.id + '&loadImage=true'
     }).then(function(response) {
         $scope.orderContentList = response.data;
         console.log($scope.orderContentList);

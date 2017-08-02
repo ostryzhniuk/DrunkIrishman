@@ -27,6 +27,9 @@ public class OrderService {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private ProductService productService;
+
     @Transactional
     public void saveOrder(OrderDTO orderDTO) {
         Order order = orderDTO.convertToEntity();
@@ -74,9 +77,15 @@ public class OrderService {
     }
 
     @Transactional
-    public List<OrderContentDTO> getOrderContentList(Integer orderId) {
-        List<OrderContent> orderContentList = orderContentDAO.getObjects(orderId);
-        return convertToContentDTOList(orderContentList);
+    public List<OrderContentDTO> getOrderContentList(Integer orderId, boolean loadPhoto) {
+        List<OrderContentDTO> orderContentDTOList = convertToContentDTOList(orderContentDAO.getObjects(orderId));
+        if (loadPhoto) {
+            orderContentDTOList.forEach(item -> {
+                String photoBase64 = productService.loadPhoto(item.getProduct().getId());
+                item.getProduct().setPhoto(photoBase64);
+            });
+        }
+        return orderContentDTOList;
     }
 
 }
