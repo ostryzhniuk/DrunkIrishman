@@ -16,6 +16,20 @@ component('orderView', {
                 $scope.orders = response.data;
             });
 
+            $scope.showOrderContent = function (order) {
+                $rootScope.modalInstance = $uibModal.open({
+                    component: 'cart',
+                    windowClass: 'app-modal-window',
+                    size: 'lg',
+                    backdrop: true,
+                    resolve: {
+                        order: function () {
+                            return order;
+                        }
+                    }
+                });
+            };
+
         }
     ]
 });

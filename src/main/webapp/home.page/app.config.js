@@ -16,7 +16,8 @@ angular.module('shopApp', [
     'productEditor',
     'orderCreation',
     'successPage',
-    'orderView'
+    'orderView',
+    'orderContent'
 ]);
 
 angular.

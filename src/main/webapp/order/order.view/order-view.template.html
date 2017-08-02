@@ -2,10 +2,17 @@
     <link rel="stylesheet" href="/order/order.view/order-view.styles.css"/>
 </head>
 
+<div class="panel-heading" id="panel-heading">
+    Orders
+    <hr id="hr-heading">
+</div>
+
 <div class="panel-body">
-    <div class="row">
-        <div ng-repeat="order in orders">
-            {{order.date}} {{order.status}}
+    <!--<div class="row">-->
+        <div class="list-group" id="list-group" ng-repeat="order in orders">
+            <a href="" ng-click="showOrderContent(order)" class="list-group-item" id="list-group-item">
+                {{order.date}} {{order.status}}
+            </a>
         </div>
-    </div>
+    <!--</div>-->
 </div>
