@@ -9,7 +9,12 @@ component('orderView', {
     controller: ['$http', '$scope', '$rootScope',
         function OrderViewController($http, $scope, $rootScope) {
 
-            
+            $http({
+                method: 'GET',
+                url: '/orders?status=' + 'IN_PROCESS',
+            }).then(function(response) {
+                $scope.orders = response.data;
+            });
 
         }
     ]

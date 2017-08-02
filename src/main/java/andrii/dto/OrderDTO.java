@@ -2,6 +2,7 @@ package andrii.dto;
 
 import andrii.entities.Order;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.modelmapper.ModelMapper;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ public class OrderDTO {
     private BigDecimal price;
     private boolean delivery = false;
     private UserDTO user;
+    @JsonIgnore
     private List<OrderContentDTO> contentList;
     private Status status = Status.IN_PROCESS;
 
@@ -106,6 +108,10 @@ public class OrderDTO {
         OrderDTO orderDTO = new ModelMapper().map(order, OrderDTO.class);
         orderDTO.setUser(UserDTO.convertToDTO(order.getUser()));
         return orderDTO;
+    }
+
+    public static Order.Status convertToEntityStatus(Status status) {
+        return Enum.valueOf(Order.Status.class, status.toString());
     }
 
 }

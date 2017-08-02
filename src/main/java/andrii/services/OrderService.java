@@ -45,7 +45,7 @@ public class OrderService {
 
     @Transactional
     public List<OrderDTO> getOrders(OrderDTO.Status status) {
-        return convertToDTOList(orderDAO.getOrders(status.toString()));
+        return convertToDTOList(orderDAO.getOrders(OrderDTO.convertToEntityStatus(status)));
     }
 
     public List<OrderDTO> convertToDTOList(List<Order> orderList) {
@@ -54,7 +54,5 @@ public class OrderService {
                 .map(order -> OrderDTO.convertToDTO(order))
                 .collect(Collectors.toList());
     }
-
-
 
 }

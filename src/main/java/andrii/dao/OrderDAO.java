@@ -29,7 +29,7 @@ public class OrderDAO extends GenericDAO<Order> {
         getSession().delete(order);
     }
 
-    public List<Order> getOrders(String status) {
+    public List<Order> getOrders(Order.Status status) {
         Query<Order> query = getSession().createQuery("from Order " +
                 "where status = :status");
 

@@ -4,6 +4,8 @@
 
 <div class="panel-body">
     <div class="row">
-        Orders
+        <div ng-repeat="order in orders">
+            {{order.date}} {{order.status}}
+        </div>
     </div>
 </div>
