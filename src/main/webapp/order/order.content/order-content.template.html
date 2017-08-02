@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/cart/cart.styles.css"/>
+    <link rel="stylesheet" href="/order/order.content/order-content.styles.css"/>
 </head>
 
 <div class="app-modal-window">
@@ -9,7 +9,31 @@
 
     <div class="modal-body">
 
-        {{order.date}}
+        <div ng-repeat="content in orderContentList">
+
+            <img ng-src="data:image/jpeg;base64,{{orderContent.product.photo}}" id="productPhoto">
+
+            <div class="column">
+                <div id="productName">
+                    {{content.product.name}}
+                </div>
+                <div id="productPrice">Price:&nbsp;{{content.product.price}}&nbsp;$</div>
+            </div>
+
+            <div class="column">
+                <div id="quantity">
+                    Quantity:&nbsp;<b>{{content.quantity}}</b>
+                </div>
+                <div id="total">Total:&nbsp;{{sumPrice(content.product, content.quantity)}}&nbsp;$</div>
+            </div>
+
+            <hr>
+        </div>
+
+        <div id="orderContainer">
+            <span id="orderAmount">Order amount:&nbsp;{{order.price}}&nbsp;$</span>
+        </div>
 
     </div>
+
 </div>

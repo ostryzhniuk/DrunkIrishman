@@ -4,7 +4,42 @@
 hr {
     border-color: #c7bfbf;
 }
-
+.column {
+    display: inline-table;
+    vertical-align: top;
+    margin-left: 10px;
+}
+#productName {
+    vertical-align: top;
+    font-size: 15px;
+    font-weight: bold;
+    width: 400px;
+    height: 50px;
+    display: inline-block;
+}
+#productPhoto {
+    width: 100px;
+    height: 100px;
+}
+#productPrice {
+    margin-top: 20px;
+    color: #989898;
+}
+#total {
+    margin-top: 36px;
+    color: #989898;
+}
+#quantity {
+    width: 150px;
+}
+/*#orderContainer {*/
+    /*text-align: right;*/
+/*}*/
+/*#orderAmount {*/
+    /*margin-left: 300px;*/
+    /*margin-top: 5px;*/
+    /*float: left;*/
+/*}*/
 
 
 
