@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,7 @@ public class CategoryService {
     @Transactional
     public List<CategoryDTO> getCategories(boolean loadPhoto) {
         List<CategoryDTO> categoryList = convertToDTOList(categoryDAO.getObjects());
+        categoryList.sort(Comparator.comparing(CategoryDTO::getName));
         if (loadPhoto) {
             categoryList.forEach(category -> category.setPhoto(loadPhoto(category.getId())));
         }
