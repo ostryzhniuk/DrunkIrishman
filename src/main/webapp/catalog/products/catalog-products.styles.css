@@ -92,7 +92,6 @@ a.clickable-panel {
     display: none;
 }
 #open-csv-button {
-    color: inherit;
     position: absolute;
     left: 15px;
     top: 8px;
