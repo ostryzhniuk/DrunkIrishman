@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -23,9 +24,12 @@ public class DatabaseConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseConfig.class);
 
+    @Value("${db.password}")
+    private String dbPassword;
+
     @Bean
-    public static DataSource dataSource() {
-        return  createDataSource("127.0.0.1", "3306", "drunkIrishman", "root", "qwerty");
+    public DataSource dataSource() {
+        return  createDataSource("127.0.0.1", "3306", "drunkIrishman", "root", dbPassword);
     }
 
     private static DataSource createDataSource(String address,
