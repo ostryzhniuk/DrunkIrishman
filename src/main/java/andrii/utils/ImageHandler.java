@@ -30,7 +30,6 @@ public class ImageHandler {
                 Files.delete(path);
             } else {
                 Files.createDirectories(path.getParent());
-                Files.createFile(path.getFileName());
             }
             ImageIO.write(bufferedImage, "jpg", path.toFile());
         } catch (IOException e) {
