@@ -24,7 +24,7 @@ public class Order {
     private String phone;
 
     public enum Status {
-        IN_PROCESS, IS_SENT, COMPLETED
+        IN_PROCESS, IS_SENT, COMPLETED, CANCELED
     }
 
     @Column(nullable = false)

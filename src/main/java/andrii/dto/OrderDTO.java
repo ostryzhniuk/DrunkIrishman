@@ -23,7 +23,7 @@ public class OrderDTO {
     private Status status = Status.IN_PROCESS;
 
     public enum Status {
-        IN_PROCESS, IS_SENT, COMPLETED
+        IN_PROCESS, IS_SENT, COMPLETED, CANCELED
     }
 
     public Integer getId() {
