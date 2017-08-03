@@ -5,6 +5,7 @@ import andrii.dao.CategoryDAO;
 import andrii.dto.CategoryDTO;
 import andrii.entities.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.nio.file.FileSystems;
@@ -16,6 +17,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
+
+    @Value("${resources.path}")
+    private String resourcesPath;
 
     @Autowired
     private CategoryDAO categoryDAO;
@@ -68,14 +72,14 @@ public class CategoryService {
 
     public String loadPhoto(Integer categoryId){
         String separator = FileSystems.getDefault().getSeparator();
-        Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
+        Path path = Paths.get(resourcesPath + "DrunkIrishman" + separator + "images"
                 + separator + "categories" + separator + categoryId + ".jpg");
         return ImageHandler.loadEncodedImage(path);
     }
 
     private void savePhoto(String photoBASE64, Integer categoryId) {
         String separator = FileSystems.getDefault().getSeparator();
-        Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
+        Path path = Paths.get(resourcesPath + "DrunkIrishman" + separator + "images"
                 + separator + "categories" + separator + categoryId + ".jpg");
 
         ImageHandler.save(ImageHandler.decodeBase64Image(photoBASE64), path);

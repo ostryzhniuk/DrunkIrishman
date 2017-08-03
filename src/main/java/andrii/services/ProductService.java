@@ -6,6 +6,7 @@ import andrii.entities.Product;
 import andrii.utils.CSVHandler;
 import andrii.utils.ImageHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.nio.file.FileSystems;
@@ -24,6 +25,9 @@ public class ProductService {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Value("${resources.path}")
+    private String resourcesPath;
 
     @Transactional
     public List<ProductDTO> getProductsByCategory(String categoryName, boolean loadPhoto) {
@@ -91,14 +95,14 @@ public class ProductService {
 
     public String loadPhoto(Integer productId){
         String separator = FileSystems.getDefault().getSeparator();
-        Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
+        Path path = Paths.get(resourcesPath + "DrunkIrishman" + separator + "images"
                 + separator + "products" + separator + productId + ".jpg");
         return ImageHandler.loadEncodedImage(path);
     }
 
     private void savePhoto(String photoBASE64, Integer productId) {
         String separator = FileSystems.getDefault().getSeparator();
-        Path path = Paths.get("C:" + separator + "DrunkIrishman" + separator + "images"
+        Path path = Paths.get(resourcesPath + "DrunkIrishman" + separator + "images"
                 + separator + "products" + separator + productId + ".jpg");
 
         ImageHandler.save(ImageHandler.decodeBase64Image(photoBASE64), path);
